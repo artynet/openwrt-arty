@@ -1,0 +1,11 @@
+--- icu.old/source/Makefile.in	2011-05-10 17:33:19.613879146 +0200
++++ icu/source/Makefile.in	2011-05-10 17:33:28.743879146 +0200
+@@ -126,7 +126,7 @@
+	$(INSTALL_SCRIPT) $(top_srcdir)/install-sh $(DESTDIR)$(pkgdatadir)/install-sh
+	@$(MKINSTALLDIRS) $(DESTDIR)$(libdir)/pkgconfig
+	$(INSTALL_DATA) $(ALL_PKGCONFIG_FILES) $(DESTDIR)$(libdir)/pkgconfig/
+-	$(INSTALL_DATA) $(top_srcdir)/../license.html $(DESTDIR)$(pkgdatadir)/license.html
++	$(INSTALL_DATA) $(top_srcdir)/license.html $(DESTDIR)$(pkgdatadir)/license.html
+	$(INSTALL_SCRIPT) $(top_builddir)/config/icu-config $(DESTDIR)$(bindir)/icu-config
+	$(INSTALL_DATA) $(top_builddir)/config/Makefile.inc $(DESTDIR)$(pkglibdir)/Makefile.inc
+	cd $(DESTDIR)$(pkglibdir)/..; \

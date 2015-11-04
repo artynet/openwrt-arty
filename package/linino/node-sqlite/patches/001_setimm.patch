@@ -1,0 +1,11 @@
+--- a/package.json	2014-08-06 21:40:33.000000000 +0200
++++ b/package.json	2014-09-11 15:30:09.866447626 +0200
+@@ -38,7 +38,7 @@
+     "dependencies": {
+         "nan": "1.1.2",
+         "node-pre-gyp": "0.5.22",
+-        "set-immediate": "0.1.1"
++        "setimmediate": "1.0.2"
+     },
+     "bundledDependencies": [
+         "node-pre-gyp"

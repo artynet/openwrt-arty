@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=udev
 PKG_VERSION:=173
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=@KERNEL/linux/utils/kernel/hotplug/
@@ -134,7 +134,12 @@ define Package/udev/install
 			60-persistent-storage.rules \
 			80-drivers.rules \
 			95-udev-late.rules) \
+			./files/11-media-by-label-auto-mount-alt.rules \
 		$(1)/lib/udev/rules.d
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/udev-init $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/tmpudev-init $(1)/etc/init.d
 
 	$(INSTALL_DIR) $(1)/lib
 	$(CP) $(PKG_INSTALL_DIR)/lib/libudev.so* $(1)/lib
