@@ -41,14 +41,14 @@ $(eval $(call Profile,LININO_YUNONE))
 # Linino YunOneLei
 
 define Profile/LININO_YUNONELEI
-	NAME:=Linino YunOneChow
+	NAME:=Linino YunOneLei
 	PACKAGES:=kmod-usb-core kmod-usb-ohci kmod-usb2 kmod-ledtrig-usbdev kmod-usb-storage \
 		kmod-fs-vfat kmod-fs-msdos kmod-fs-ntfs kmod-fs-ext4 linino-scripts linino-conf \
 		kmod-nls-cp437 kmod-nls-cp850 kmod-nls-cp852 kmod-nls-iso8859-1 kmod-nls-utf8
 endef
 
 define Profile/LININO_YUNONELEI/Description
-	Select this in order to build an image for Arduino Yun and Linino One
+	Select this in order to build an image for Arduino Yun, Linino One and Linino Lei
 endef
 
 $(eval $(call Profile,LININO_YUNONELEI))
