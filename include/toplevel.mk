@@ -107,6 +107,7 @@ defconfig: scripts/config/conf prepare-tmpinfo FORCE
 deflinino: scripts/config/conf prepare-tmpinfo FORCE
 	touch .config
 	@if [ -e $(TOPDIR)/configfiles/lininoconfig ]; then cp $(TOPDIR)/configfiles/lininoconfig .config; fi
+	@if [ -e $(TOPDIR)/configfiles/linino_defconfig ]; then cp $(TOPDIR)/configfiles/linino_defconfig target/linux/ar71xx/config-3.18; fi
 	$< --defconfig=.config Config.in
 
 confdefault-y=allyes
