@@ -214,7 +214,7 @@ define Package/openssl-util/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/openssl $(1)/usr/bin/
 endef
 
-OST_CPPFLAGS += $(HOST_FPIC)
+HOST_CPPFLAGS += $(HOST_FPIC)
 
 ifeq ($(HOST_ARCH),x86_64)
   OPENSSL_HOST_TARGET:=linux-x86_64
