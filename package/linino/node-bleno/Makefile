@@ -22,7 +22,7 @@ PKG_NODE_VERSION:=0.10.38
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-bleno
-  DEPENDS:=+node +bluez-libs
+  DEPENDS:=+node +bluez-libs +udev
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -40,21 +40,16 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+	$(MAKE_FLAGS) \
 	PATH="/usr/bin/:$(PATH)" \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
-        CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) -I$(STAGING_DIR)/usr/include" \
-        CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) -I$(STAGING_DIR)/usr/include" \
-	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/ -L$(STAGING_DIR)/usr/lib" \
+	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) -I$(STAGING_DIR)/usr/include" \
+	CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) -I$(STAGING_DIR)/usr/include" \
+	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/ -L$(STAGING_DIR)/lib" \
 	npm_config_arch=mips \
 	npm_config_nodedir=$(BUILD_DIR)/node-v$(PKG_NODE_VERSION)/ \
 	PREFIX="$(PKG_INSTALL_DIR)/usr/" \
-	npm install --target_arch=mips -g $(PKG_BUILD_DIR)
+	$(STAGING_DIR_HOST)/bin/npm install --target_arch=mips -g $(PKG_BUILD_DIR)
 endef
 
 define Package/node-bleno/install

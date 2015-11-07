@@ -37,22 +37,12 @@ endef
 define Build/Prepare
 	/bin/tar xzf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components 1
 	$(Build/Patch)
-	(cd $(PKG_BUILD_DIR) && npm install --build-from-source --target_arch=mips nan@1.1.0)
 endef
-
-# mkdir -p $(PKG_BUILD_DIR)/node_modules
-# (cd $(PKG_BUILD_DIR) && npm install --build-from-source --target_arch=mips nan@1.1.0)
-# npm install --build-from-source --target_arch=mips --prefix $(PKG_BUILD_DIR)/node_modules
 
 EXTRA_CXXFLAGS += -I$(STAGING_DIR)/usr/include/security
 
 define Build/Compile
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+	$(MAKE_FLAGS) \
 	PATH="/usr/bin/:$(PATH)" \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
 	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/ -L$(STAGING_DIR)/lib" \
@@ -61,7 +51,7 @@ define Build/Compile
 	npm_config_arch=mips \
 	npm_config_nodedir=$(BUILD_DIR)/node-v$(PKG_NODE_VERSION)/ \
 	PREFIX="$(PKG_INSTALL_DIR)/usr/" \
-	npm install --build-from-source --target_arch=mips -g $(PKG_BUILD_DIR)
+	$(STAGING_DIR_HOST)/bin/npm install --build-from-source --target_arch=mips -g $(PKG_BUILD_DIR)
 endef
 
 define Package/node-authenticate-pam/install
