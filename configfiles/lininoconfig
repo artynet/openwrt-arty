@@ -3281,8 +3281,9 @@ CONFIG_PACKAGE_python-ncurses=m
 CONFIG_PACKAGE_python-openssl=m
 # CONFIG_PACKAGE_python-pip is not set
 CONFIG_PACKAGE_python-pydoc=m
-# CONFIG_PACKAGE_python-pyserial is not set
+CONFIG_PACKAGE_python-pyserial=m
 CONFIG_PACKAGE_python-setuptools=m
+CONFIG_PACKAGE_python-sleekxmpp=m
 # CONFIG_PACKAGE_python-smbus is not set
 CONFIG_PACKAGE_python-sqlite3=m
 CONFIG_PACKAGE_python-unittest=m
