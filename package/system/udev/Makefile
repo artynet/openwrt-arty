@@ -91,7 +91,8 @@ udev-extra-lib-bin-$(CONFIG_UDEV_EXTRA_rule_generator) += \
 udev-extra-lib-data-$(CONFIG_UDEV_EXTRA_rule_generator) += \
 	rule_generator.functions
 udev-extra-rules-$(CONFIG_UDEV_EXTRA_rule_generator) += \
-	75-cd-aliases-generator.rules 75-persistent-net-generator.rules
+	75-cd-aliases-generator.rules
+	# 75-cd-aliases-generator.rules 75-persistent-net-generator.rules
 
 udev-extra-lib-bin-$(CONFIG_UDEV_EXTRA_scsi_id) += scsi_id
 
