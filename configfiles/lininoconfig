@@ -4047,7 +4047,7 @@ CONFIG_PACKAGE_luci-app-voice-core=m
 CONFIG_PACKAGE_luci-app-watchcat=m
 CONFIG_PACKAGE_luci-app-wol=m
 CONFIG_PACKAGE_luci-app-wshaper=m
-CONFIG_PACKAGE_luci-webpanel-linino=m
+CONFIG_PACKAGE_luci-webpanel-linino=y
 
 #
 # 4. Themes
