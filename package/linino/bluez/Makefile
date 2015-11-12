@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bluez
-PKG_VERSION:=5.36
-PKG_RELEASE:=1
+PKG_VERSION:=5.35
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/linux/bluetooth/
-PKG_MD5SUM:=9a0ee479cacc44fac68f6a65b1cd3eba
+PKG_MD5SUM:=9981441d7a61e2ad849b01106fa73445
 
 PKG_LICENSE:=GPL-2.0+
 PKG_LICENSE_FILES:=COPYING
@@ -71,6 +71,7 @@ define Package/bluez-daemon/conffiles
 /etc/bluetooth/network.conf
 /etc/bluetooth/input.conf
 /etc/bluetooth/proximity.conf
+/etc/bluetooth/audio.conf
 /etc/config/bluetooth
 endef
 
@@ -145,12 +146,32 @@ define Package/bluez-daemon/install
 	$(INSTALL_DIR) $(1)/etc/dbus-1/system.d/
 	$(INSTALL_DATA) ./files/bluetooth.dbus $(1)/etc/dbus-1/system.d/bluetooth.conf
 	$(INSTALL_DIR) $(1)/etc/bluetooth
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/src/main.conf $(1)/etc/bluetooth/main.conf
+	$(INSTALL_DATA) ./files/main.conf $(1)/etc/bluetooth/main.conf
+	$(INSTALL_DATA) ./files/audio.conf $(1)/etc/bluetooth/audio.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/network/network.conf $(1)/etc/bluetooth/network.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/input/input.conf $(1)/etc/bluetooth/input.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/proximity/proximity.conf $(1)/etc/bluetooth/proximity.conf
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/bluetoothd.init $(1)/etc/init.d/bluetoothd
+endef
+
+define Package/bluez-daemon/postinst
+#!/bin/sh
+if [ -e $${IPKG_INSTROOT}/etc/bluetooth/main.conf ]
+then
+    BOARD=$$(awk '/machine/ {print $$4}' /proc/cpuinfo)
+    MACSHORT=`ifconfig wlan0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | tail -c 6 | sed s/://g`
+    sed -i -e "s/BlueZ/$${BOARD}-$${MACSHORT}/g" $${IPKG_INSTROOT}/etc/bluetooth/main.conf
+    case $${BOARD} in
+        'Tian')
+            sed -i -e s/#Class/Class/g $${IPKG_INSTROOT}/etc/bluetooth/main.conf
+            sed -i -e "/Class/ s|$$|0x20041C|" $${IPKG_INSTROOT}/etc/bluetooth/main.conf
+            ;;
+        *)
+            ;;
+    esac
+fi
+exit 0
 endef
 
 $(eval $(call BuildPackage,bluez-examples))
