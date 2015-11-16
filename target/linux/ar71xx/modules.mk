@@ -58,7 +58,7 @@ define KernelPackage/spi-tty-plain
   DEPENDS:=@TARGET_ar71xx
   KCONFIG:=CONFIG_SPI_TTY_PLAIN
   FILES:=$(LINUX_DIR)/drivers/spi/spi-tty-plain.ko
-  # AUTOLOAD:=$(call AutoLoad,95,spi-tty-plain)
+  AUTOLOAD:=$(call AutoLoad,95,spi-tty-plain)
 endef
 
 define KernelPackage/spi-tty-plain/description
