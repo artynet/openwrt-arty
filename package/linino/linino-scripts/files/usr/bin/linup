@@ -51,7 +51,7 @@ settings () {
 
     dateonboard=$(uname -a | awk {'print $7,$6,$10'} | sed 's/ /-/g')
 
-    datelatest=$(wget -c -q -O 2>&1 - http://download.linino.org/linino_distro/$1/$2/ | grep $boardname -m 1 | awk {'print $7'} | sed 's/align="right">//g')
+    datelatest=$(wget -c -q -O 2>&1 - http://download.linino.org/linino_distro/linino-2.0/$1/$2/ | grep $boardname -m 1 | awk {'print $7'} | sed 's/align="right">//g')
 
 	if [ -z $datelatest ]
 	then
@@ -225,7 +225,7 @@ download () {
     if [ ! -e $1 ]
     then
 
-	    wget http://download.linino.org/linino_distro/$2/$3/$1
+	    wget http://download.linino.org/linino_distro/linino-2.0/$2/$3/$1
 
     fi
 
@@ -252,7 +252,7 @@ hashsum () {
     echo "Calculating MD5 checksums..."
     echo ""
 
-		wget -q -O - http://download.linino.org/linino_distro/$2/$3/md5sums | grep $1 > lininosum_$4
+		wget -q -O - http://download.linino.org/linino_distro/linino-2.0/$2/$3/md5sums | grep $1 > lininosum_$4
 
 		md5sum -c lininosum_$4
 
