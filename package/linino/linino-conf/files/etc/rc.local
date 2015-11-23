@@ -3,6 +3,8 @@
 
 # wifi-refresh
 
+change-bootloader
+
 wifi-live-or-reset
 
 exit 0

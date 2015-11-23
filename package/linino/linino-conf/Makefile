@@ -66,6 +66,11 @@ define Package/linino-conf/install
 	
 	# /etc/arduino DIR
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Yun.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Caterina-YunMini.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Caterina-One.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Lei.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Chiwawa.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Sofia-Tian.hex $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/linino-arduino-release $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/gpg_gen_key_batch $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/wifi_timezones.csv.gz $(1)/etc/arduino/
@@ -81,6 +86,7 @@ define Package/linino-conf/install
 	$(INSTALL_DATA) ./files/etc/linino/YunSerialTerminal.hex $(1)/etc/linino/
 	$(INSTALL_DATA) ./files/etc/linino/LeiSerialTerminal.hex $(1)/etc/linino/
 	$(INSTALL_DATA) ./files/etc/linino/YunMiniSerialTerminal.hex $(1)/etc/linino/
+	$(INSTALL_DATA) ./files/etc/linino/mips-onoff-tian.hex $(1)/etc/linino/
 
 	# /etc/linino DIR (bathos firmware)
 	$(INSTALL_DATA) ./files/etc/linino/bathos-one.hex $(1)/etc/linino
