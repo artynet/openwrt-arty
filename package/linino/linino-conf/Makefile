@@ -62,7 +62,7 @@ define Package/linino-conf/install
 	$(INSTALL_CONF) ./files/etc/config/firewall $(1)/etc/config/
 	$(INSTALL_CONF) ./files/etc/config/system $(1)/etc/config/
 	$(INSTALL_CONF) ./files/etc/config/uhttpd $(1)/etc/config/
-	$(INSTALL_CONF) ./files/etc/config/mcuiocfg $(1)/etc/config/
+	# $(INSTALL_CONF) ./files/etc/config/mcuiocfg $(1)/etc/config/
 	
 	# /etc/arduino DIR
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Yun.hex $(1)/etc/arduino/
