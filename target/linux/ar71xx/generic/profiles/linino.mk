@@ -53,6 +53,21 @@ endef
 
 $(eval $(call Profile,LININO_YUNONELEI))
 
+# Linino AVR
+
+define Profile/LININO_AVR
+	NAME:=Linino AVR
+	PACKAGES:=kmod-usb-core kmod-usb-ohci kmod-usb2 kmod-ledtrig-usbdev kmod-usb-storage \
+		kmod-fs-vfat kmod-fs-msdos kmod-fs-ntfs kmod-fs-ext4 linino-scripts linino-conf \
+		kmod-nls-cp437 kmod-nls-cp850 kmod-nls-cp852 kmod-nls-iso8859-1 kmod-nls-utf8
+endef
+
+define Profile/LININO_AVR/Description
+	Select this in order to build an image for Linino AVR boards (Yun, Yun-Mini, One, Lei)
+endef
+
+$(eval $(call Profile,LININO_AVR))
+
 # ###########################
 #							#
 # Starting Single Profiles	#
