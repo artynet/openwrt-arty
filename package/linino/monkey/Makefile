@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=monkey
 PKG_VERSION:=1.6.6
-PKG_RELEASE:=1
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://monkey-project.com/releases/1.6/
-PKG_MD5SUM:=
+PKG_MD5SUM:=03966619b24c999803806b345fe1916a
 
 PKG_INSTALL:=1
 
@@ -52,23 +52,41 @@ define Package/monkey/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/usr/lib
 	
-	$(INSTALL_DIR) $(1)/www
-	$(CP) -R $(PKG_INSTALL_DIR)/usr/var/www/monkey $(1)/www
+	$(INSTALL_DIR) $(1)/usr/var/www
+	$(CP) -R $(PKG_INSTALL_DIR)/usr/var/www/monkey $(1)/usr/var/www
 	
-	$(INSTALL_DIR) $(1)/etc
-	$(CP) -R $(PKG_INSTALL_DIR)/usr/etc/monkey $(1)/etc
+	$(INSTALL_DIR) $(1)/usr/etc
+	$(CP) -R $(PKG_INSTALL_DIR)/usr/etc/monkey $(1)/usr/etc
+endef
+
+define Package/monkey/postinst
+#!/bin/sh
+if [ -e $${IPKG_INSTROOT}/usr/etc/monkey/monkey.conf ]
+then
+	sed -i -e s/www-data/root/g $${IPKG_INSTROOT}/usr/etc/monkey/monkey.conf
+fi
+
+if [ ! -d $${IPKG_INSTROOT}/usr/var/run ]
+then
+    mkdir -p $${IPKG_INSTROOT}/usr/var/run
+fi
+
+if [ ! -d $${IPKG_INSTROOT}/usr/var/log ]
+then
+    mkdir -p $${IPKG_INSTROOT}/usr/var/log
+fi
 endef
 
 define Package/monkey/postrm
 #!/bin/sh
-if [ -e $${IPKG_INSTROOT}/etc/monkey ]
+if [ -d $${IPKG_INSTROOT}/usr/etc/monkey ]
 then
-    rm -rf $${IPKG_INSTROOT}/etc/monkey
+    rm -rf $${IPKG_INSTROOT}/usr/etc/monkey
 fi
 
-if [ -e $${IPKG_INSTROOT}/www/monkey ]
+if [ -d $${IPKG_INSTROOT}/usr/var/www/monkey ]
 then
-    rm -rf $${IPKG_INSTROOT}/www/monkey
+    rm -rf $${IPKG_INSTROOT}/usr/var/www/monkey
 fi
 
 exit 0
