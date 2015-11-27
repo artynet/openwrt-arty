@@ -19,6 +19,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+# v0.19 : introducing board check since TIAN doesn't need console setting swap
+#
 # v0.14 : fixing consoleboot variable for old u-boot
 #
 # v0.13 : mcuio disable is now redirected to /dev/null ; fixing messages strings
@@ -69,6 +71,27 @@ ins_spittyplain () {
     fi
 
 }
+
+boardcheck () {
+
+    case $1 in
+        "tian")
+            echo ""
+            echo "Your board doesn't need a change in the console settings ! Aborting..."
+            echo ""
+            exit 0
+            ;;
+	    *)
+            ;;
+    esac
+
+}
+
+# check boardname : Tian doesn't need the console settings swap
+
+boardname=$(awk '/machine/ {print tolower($4)}' /proc/cpuinfo)
+
+boardcheck $boardname
 
 # Main
 
