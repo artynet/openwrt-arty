@@ -9,9 +9,9 @@ then
     exit 1
 fi
 
-if ! [ -f $PROGRAM ]
+if [ ! -f "$PROGRAM" ]
 then
-    echo "Missing binary file \"$PROGRAM\""
+    echo "Missing binary file ! (i.e. firmware.bin/firmware.hex)"
     exit 1
 fi
 
