@@ -6337,6 +6337,7 @@ CONFIG_PACKAGE_smartmontools=m
 # CONFIG_PACKAGE_sockread is not set
 # CONFIG_PACKAGE_spi-tools is not set
 CONFIG_PACKAGE_spidev-test=m
+CONFIG_PACKAGE_sshpass=m
 # CONFIG_PACKAGE_stm32flash is not set
 # CONFIG_PACKAGE_stoken is not set
 CONFIG_PACKAGE_strace=m
