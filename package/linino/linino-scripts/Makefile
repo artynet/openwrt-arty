@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.4
-PKG_RELEASE:=7
+PKG_RELEASE:=8
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -36,8 +36,8 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/wifi-live-or-reset $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/wifi-reset-and-reboot $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/reset-to-factory-anyway $(1)/usr/bin/
-	$(INSTALL_BIN) ./files/usr/bin/run-avrdude $(1)/usr/bin/
-	$(INSTALL_BIN) ./files/usr/bin/run-swddude $(1)/usr/bin/
+	# $(INSTALL_BIN) ./files/usr/bin/run-avrdude $(1)/usr/bin/
+	# $(INSTALL_BIN) ./files/usr/bin/run-swddude $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/merge-sketch-with-bootloader.lua $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/wifi-reset-button-pressed $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/wifi-reset-button-released $(1)/usr/bin/
@@ -58,7 +58,7 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/detect-console $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/wifi-refresh $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/flash-samd21 $(1)/usr/bin
-	$(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
+	# $(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/linup $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/change-bootloader $(1)/usr/bin
 
