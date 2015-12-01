@@ -57,8 +57,8 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/lininoio $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/detect-console $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/wifi-refresh $(1)/usr/bin
-	$(INSTALL_BIN) ./files/usr/bin/flash-samd21 $(1)/usr/bin
-	$(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
+	# $(INSTALL_BIN) ./files/usr/bin/flash-samd21 $(1)/usr/bin
+	# $(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/linup $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/change-bootloader $(1)/usr/bin
 

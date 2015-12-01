@@ -116,10 +116,10 @@ CONFIG_TARGET_ar71xx_generic=y
 # CONFIG_TARGET_ar71xx_generic_JA76PF is not set
 # CONFIG_TARGET_ar71xx_generic_JA76PF2 is not set
 # CONFIG_TARGET_ar71xx_generic_JWAP003 is not set
-CONFIG_TARGET_ar71xx_generic_LININO=y
+# CONFIG_TARGET_ar71xx_generic_LININO is not set
 # CONFIG_TARGET_ar71xx_generic_LININO_YUNONE is not set
 # CONFIG_TARGET_ar71xx_generic_LININO_YUNONELEI is not set
-# CONFIG_TARGET_ar71xx_generic_LININO_AVR is not set
+CONFIG_TARGET_ar71xx_generic_LININO_AVR=y
 # CONFIG_TARGET_ar71xx_generic_LININO_YUN is not set
 # CONFIG_TARGET_ar71xx_generic_LININO_ONE is not set
 # CONFIG_TARGET_ar71xx_generic_LININO_FREEDOG is not set
