@@ -1,4 +1,4 @@
-# provisioning.sh v40 : A simple system update script
+# provisioning.sh v42 : A simple system update script
 # Copyright (C) 2014 Dog Hunter AG
 #
 # Author : Arturo Rinaldi
@@ -16,6 +16,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# v45 : adding support for branch SAMD
 #
 # v40 : adding TIAN and LEI
 #
@@ -69,7 +71,7 @@ checkarguments () {
     then
 
         echo ""
-        echo "USAGE : linup <revision> ( latest or YYYYMMDD.x where x=0,1,2...n ) <branch> ( optional : lininoIO or master ) "
+        echo "USAGE : provisioning.sh <revision> ( latest or YYYYMMDD.x where x=0,1,2...n ) <branch> ( optional : lininoIO or samd ) "
         echo ""
         exit 0
 
@@ -101,12 +103,18 @@ templateimage () {
 
 	    template='openwrt-ar71xx-generic-linino-'$1'-'$args'squashfs-sysupgrade.bin'
 
-    elif [ $2 == 'lininoIO' ]
+    elif [ $2 == 'lininoIO' ] || [ $2 == 'avr' ] || [ $2 == 'samd' ]
     then
 
 	    template='lininoIO-generic-linino-'$1'-squashfs-sysupgrade.bin'
 
     fi
+
+}
+
+templateimage-simple () {
+
+	template='lininoIO-generic-linino-'$1'-squashfs-sysupgrade.bin'
 
 }
 
@@ -138,14 +146,8 @@ infos () {
 boardavailable2 () {
 
     case $1 in
-	    "yun") ;;
-	    "chiwawa") ;;
-	    "freedog") ;;
-	    "one") ;;
-        "yun-mini") ;;
-        "tian") ;;
-        "lei") ;;
-	    *) echo "Your board is not supported ! Aborting..." && exit 0;;
+        "tian") ;
+        *) echo "Your board is not belonging to the SAMD architecture ! Aborting..." && exit 0;;
     esac
 
 }
@@ -398,7 +400,9 @@ boardavailable2 $boardname
 
 settings $branch $1
 
-templateimage $boardname $branch
+# templateimage $boardname $branch
+
+templateimage-simple $boardname
 
 verifyupgrade $dateonboard $datelatest
 
