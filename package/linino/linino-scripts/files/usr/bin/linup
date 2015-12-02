@@ -1,4 +1,4 @@
-# provisioning.sh v45-avr : A simple system update script
+# provisioning.sh v46-avr : A simple system update script
 # Copyright (C) 2014 Dog Hunter AG
 #
 # Author : Arturo Rinaldi
@@ -114,7 +114,7 @@ templateimage () {
 
 }
 
-templateimage-simple () {
+templateimagesimple () {
 
 	template='lininoIO-generic-linino-'$1'-squashfs-sysupgrade.bin'
 
@@ -408,7 +408,7 @@ settings $branch $1
 
 # templateimage $boardname $branch
 
-templateimage-simple $boardname
+templateimagesimple $boardname
 
 verifyupgrade $dateonboard $datelatest
 
