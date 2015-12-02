@@ -112,7 +112,7 @@ templateimage () {
 
 }
 
-templateimage-simple () {
+templateimagesimple () {
 
 	template='lininoIO-generic-linino-'$1'-squashfs-sysupgrade.bin'
 
@@ -146,7 +146,7 @@ infos () {
 boardavailable2 () {
 
     case $1 in
-        "tian") ;
+        "tian") ;;
         *) echo "Your board is not belonging to the SAMD architecture ! Aborting..." && exit 0;;
     esac
 
@@ -402,7 +402,7 @@ settings $branch $1
 
 # templateimage $boardname $branch
 
-templateimage-simple $boardname
+templateimagesimple $boardname
 
 verifyupgrade $dateonboard $datelatest
 
