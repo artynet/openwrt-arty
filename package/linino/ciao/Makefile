@@ -27,7 +27,7 @@ define Package/ciao
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=The new Ciao CPU-MCU Bridge
-  DEPENDS:=+python +python-mini +python-paho-mqtt +python-expat +python-openssl +pyserial
+  DEPENDS:=+python-base +python-light +python-paho-mqtt +python-expat +python-openssl +python-pyserial +python-codecs
 endef
 
 define Package/ciao/description
