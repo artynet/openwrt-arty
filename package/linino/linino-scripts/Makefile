@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.4
-PKG_RELEASE:=8
+PKG_RELEASE:=9
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -61,6 +61,7 @@ define Package/linino-scripts/install
 	# $(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/linup $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/change-bootloader $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/overlay-only $(1)/usr/bin
 
 	$(INSTALL_BIN) ./files/etc/init.d/rename-wifi-if-access-point $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/generate_new_gpg_key $(1)/etc/init.d
