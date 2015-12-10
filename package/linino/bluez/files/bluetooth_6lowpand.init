@@ -1,0 +1,21 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2015 Nordic Semiconductor
+
+#start after bluetoothd (62)
+START=63
+
+start() {
+	echo "start bluetooth_6lowpand"
+	modprobe bluetooth_6lowpan
+	sleep 1
+	echo 35 > /sys/kernel/debug/bluetooth/6lowpan_psm
+	hciconfig hci0 reset
+	sleep 1
+	killall bluetoothd
+	bluetooth_6lowpand -w 3 -t 5 -a -d
+}
+
+stop() {
+	echo "stop bluetooth_6lowpand"
+	killall -9 bluetooth_6lowpand
+}
