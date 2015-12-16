@@ -72,6 +72,7 @@ define Package/bluez-daemon/conffiles
 /etc/bluetooth/input.conf
 /etc/bluetooth/proximity.conf
 /etc/bluetooth/audio.conf
+/etc/bluetooth/bluetooth_6lowpand.conf
 /etc/config/bluetooth
 endef
 
@@ -148,6 +149,7 @@ define Package/bluez-daemon/install
 	$(INSTALL_DIR) $(1)/etc/bluetooth
 	$(INSTALL_DATA) ./files/main.conf $(1)/etc/bluetooth/main.conf
 	$(INSTALL_DATA) ./files/audio.conf $(1)/etc/bluetooth/audio.conf
+	$(INSTALL_DATA) ./files/bluetooth_6lowpand.conf $(1)/etc/bluetooth/bluetooth_6lowpand.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/network/network.conf $(1)/etc/bluetooth/network.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/input/input.conf $(1)/etc/bluetooth/input.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/proximity/proximity.conf $(1)/etc/bluetooth/proximity.conf
