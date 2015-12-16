@@ -3,16 +3,18 @@
 
 #start after bluetoothd (62)
 START=63
+PROG=/usr/bin/bluetooth_6lowpand
+HCICONFIG=/usr/bin/hciconfig
 
 start() {
 	echo "start bluetooth_6lowpand"
-	modprobe bluetooth_6lowpan
 	sleep 1
 	echo 35 > /sys/kernel/debug/bluetooth/6lowpan_psm
-	hciconfig hci0 reset
 	sleep 1
 	killall bluetoothd
-	bluetooth_6lowpand -w 3 -t 5 -a -d
+	sleep 1
+	$HCICONFIG hci0 reset
+	$PROG -w 3 -t 5 -W -d
 }
 
 stop() {
