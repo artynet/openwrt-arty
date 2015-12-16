@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bluez
 PKG_VERSION:=5.35
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/linux/bluetooth/
@@ -122,6 +122,7 @@ define Package/bluez-utils/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bccmd $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bluemoon $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/btmon $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bluetooth_6lowpand $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/tools/btmgmt $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ciptool $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/hciattach $(1)/usr/bin/
@@ -155,6 +156,7 @@ define Package/bluez-daemon/install
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/proximity/proximity.conf $(1)/etc/bluetooth/proximity.conf
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/bluetoothd.init $(1)/etc/init.d/bluetoothd
+	$(INSTALL_BIN) ./files/bluetooth_6lowpand.init $(1)/etc/init.d/bluetoothd_6lowpand
 endef
 
 define Package/bluez-daemon/postinst
