@@ -30,7 +30,7 @@ define Package/python-paho-mqtt
   SUBMENU:=Python
   TITLE:=python-paho-mqtt
   URL:=http://sourceforge.net/projects/paho-mqtt
-  DEPENDS:=+python-base +python-expat +python-openssl +libopenssl
+  DEPENDS:=+python-base +python-xml +python-openssl +libopenssl
 endef
 
 define Package/python-paho-mqtt/description

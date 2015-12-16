@@ -3262,6 +3262,7 @@ CONFIG_PACKAGE_python-distutils=m
 # CONFIG_PACKAGE_python-dns is not set
 CONFIG_PACKAGE_python-email=m
 CONFIG_PACKAGE_python-expat=m
+CONFIG_PACKAGE_python-gattlib=m
 CONFIG_PACKAGE_python-gdbm=m
 # CONFIG_PACKAGE_python-gtk is not set
 # CONFIG_PACKAGE_python-hippo-canvas is not set
@@ -3605,28 +3606,28 @@ CONFIG_PACKAGE_boost=m
 #
 # Libraries
 #
-# CONFIG_PACKAGE_boost-atomic is not set
-# CONFIG_PACKAGE_boost-chrono is not set
+CONFIG_PACKAGE_boost-atomic=m
+CONFIG_PACKAGE_boost-chrono=m
 CONFIG_PACKAGE_boost-container=m
-# CONFIG_PACKAGE_boost-context is not set
-# CONFIG_PACKAGE_boost-coroutine is not set
-# CONFIG_PACKAGE_boost-date_time is not set
-# CONFIG_PACKAGE_boost-filesystem is not set
+CONFIG_PACKAGE_boost-context=m
+CONFIG_PACKAGE_boost-coroutine=m
+CONFIG_PACKAGE_boost-date_time=m
+CONFIG_PACKAGE_boost-filesystem=m
 # CONFIG_PACKAGE_boost-graph is not set
-# CONFIG_PACKAGE_boost-iostreams is not set
-# CONFIG_PACKAGE_boost-locale is not set
+CONFIG_PACKAGE_boost-iostreams=m
+CONFIG_PACKAGE_boost-locale=m
 # CONFIG_PACKAGE_boost-log is not set
-# CONFIG_PACKAGE_boost-math is not set
-# CONFIG_PACKAGE_boost-program_options is not set
-# CONFIG_PACKAGE_boost-random is not set
-# CONFIG_PACKAGE_boost-python is not set
+CONFIG_PACKAGE_boost-math=m
+CONFIG_PACKAGE_boost-program_options=m
+CONFIG_PACKAGE_boost-random=m
+CONFIG_PACKAGE_boost-python=m
 # CONFIG_PACKAGE_boost-regex is not set
-# CONFIG_PACKAGE_boost-serialization is not set
-# CONFIG_PACKAGE_boost-signals is not set
-# CONFIG_PACKAGE_boost-system is not set
-# CONFIG_PACKAGE_boost-thread is not set
-# CONFIG_PACKAGE_boost-timer is not set
-# CONFIG_PACKAGE_boost-wave is not set
+CONFIG_PACKAGE_boost-serialization=m
+CONFIG_PACKAGE_boost-signals=m
+CONFIG_PACKAGE_boost-system=m
+CONFIG_PACKAGE_boost-thread=m
+CONFIG_PACKAGE_boost-timer=m
+CONFIG_PACKAGE_boost-wave=m
 CONFIG_PACKAGE_ccid=m
 # CONFIG_PACKAGE_check is not set
 CONFIG_PACKAGE_classpath=m
