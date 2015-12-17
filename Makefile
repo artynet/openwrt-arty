@@ -56,6 +56,10 @@ dirclean: clean
 	rm -rf $(STAGING_DIR_HOST) $(TOOLCHAIN_DIR) $(BUILD_DIR_HOST) $(BUILD_DIR_TOOLCHAIN)
 	rm -rf $(TMP_DIR)
 
+hostclean: clean
+	rm -rf $(STAGING_DIR_HOST) $(BUILD_DIR_HOST)
+	rm -rf $(TMP_DIR)
+
 ifndef DUMP_TARGET_DB
 $(BUILD_DIR)/.prepared: Makefile
 	@mkdir -p $$(dirname $@)
