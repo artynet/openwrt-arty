@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gattlib
 PKG_VERSION:=0.20150805
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://pypi.python.org/packages/source/g/gattlib/
@@ -32,6 +32,11 @@ endef
 
 define Package/python-gattlib/description
 	Bluetooth Python extension module to allow Python ” “developers to use system Bluetooth resources.
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	rm -v $(PKG_BUILD_DIR)/src/*.o
 endef
 
 define Build/Compile
