@@ -8,11 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libicu
-PKG_VERSION:=54.1
+PKG_VERSION:=55.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=icu4c-54_1-src.tgz
+PKG_MD5SUM:=e2d523df79d6cb7855c2fbe284f4db29
 
+PKG_SOURCE:=icu4c-55_1-src.tgz
 PKG_SOURCE_URL:=http://download.icu-project.org/files/icu4c/$(PKG_VERSION)
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/icu
@@ -36,7 +37,7 @@ define Package/libicu
 endef
 
 define Package/libicu/description
-	ICU is the premier library for software internationalization. ICU 4.2 is a major reference release of ICU, with
+	ICU is the premier library for software internationalization. ICU 55.1 is a major reference release of ICU, with
 	new features, new APIs, and many bug fixes in data and code.
 endef
 
