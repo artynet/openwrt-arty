@@ -27,7 +27,7 @@ define Package/python-sleekxmpp
   SUBMENU:=Python
   TITLE:=python-sleekxmpp
   URL:=http://sourceforge.net/projects/pysleekxmpp
-  DEPENDS:=+python +python-expat +python-openssl +python-pyserial
+  DEPENDS:=+python +python-xml +python-openssl +python-pyserial
 endef
 
 define Package/python-sleekxmpp/description
