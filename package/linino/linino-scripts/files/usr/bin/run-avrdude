@@ -4,10 +4,18 @@ boardname=$(awk '/machine/ {print tolower($4)}' /proc/cpuinfo)
 
 case $boardname in
 	'lei')
-		GPIO=gpio15
-		PROGRAMMER=linuxgpio-chow;;
+		# Check for Lei V04
+		if [ -d /sys/class/gpio15 ]
+		then
+			GPIO=gpio15
+		else 
+			GPIO=gpio14
+		fi
+		OE_LEVEL=0
+		PROGRAMMER=linuxgpio-lei;;
 	*)
 		GPIO=gpio21
+		OE_LEVEL=1
 		PROGRAMMER=linuxgpio;;
 esac
 
@@ -32,10 +40,11 @@ if [ "x$GPIO_DS" != "x" ]; then
 fi
 
 # unbind spi_gpio driver
-echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind 
+# the new kernel takes care of it so we can comment it out
+# echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind 
 
 # program AVR
-echo 1 > $OE_PATH
+echo $OE_LEVEL > $OE_PATH
 
 # read efuse settings
 avrdude  -q -q -c $PROGRAMMER -C /etc/avrdude.conf -p m32u4 -U efuse:r:/tmp/efuse:d
@@ -49,7 +58,8 @@ else
 fi
 
 # bind spi_gpio driver
-echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/bind
+# the new kernel takes care of it so we can comment it out
+# echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/bind
 
 # Restore previous status
 echo $OE_VALUE > $OE_PATH
