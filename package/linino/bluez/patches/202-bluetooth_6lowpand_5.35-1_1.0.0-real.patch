@@ -1,7 +1,7 @@
 
 --- /dev/null
 +++ b/tools/bluetooth_6lowpand.c
-@@ -0,0 +1,1254 @@
+@@ -0,0 +1,1252 @@
 +/* Copyright (c) 2015 Nordic Semiconductor. All Rights Reserved.
 + *
 + * The information contained herein is confidential property of Nordic
@@ -830,8 +830,6 @@
 +					else
 +						printf("Device %s connect fail!\n", addr);
 +				}
-+
-+				continue;
 +			}
 +		}
 +
