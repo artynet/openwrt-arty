@@ -12,9 +12,6 @@ start() {
 		'Chiwawa')
 			boardname="Industrial"
 			;;
-		*)
-			exit 0
-			;;
 	esac
 
 	MODE=`/sbin/uci get wireless.@wifi-iface[0].mode`
