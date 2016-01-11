@@ -1,0 +1,21 @@
+--- a/package.json	2015-10-25 17:44:02.973263888 +0100
++++ b/package.json	2015-10-25 17:44:20.525264450 +0100
+@@ -1,10 +1,6 @@
+ {
+   "name": "authenticate-pam",
+   "version": "v0.2.2",
+-  "scripts": {
+-    "preinstall": "node-gyp configure && node-gyp build",
+-    "preuninstall": "rm -rf build/*"
+-  },
+   "main": "build/Release/authenticate_pam.node",
+   "description": "Asynchronous PAM authentication for Node.JS",
+   "homepage": "https://github.com/RushPL/node-authenticate-pam",
+@@ -17,6 +13,6 @@
+     "url": "https://github.com/RushPL/node-authenticate-pam.git"
+   },
+   "dependencies": {
+-    "nan": "1.1.0"
++    "nan": "2.1.0"
+   }
+ }
