@@ -53,8 +53,15 @@ prepare: $(target/stamp-compile)
 clean: FORCE
 	rm -rf $(BUILD_DIR) $(STAGING_DIR) $(BIN_DIR) $(BUILD_LOG_DIR)
 
+simpleclean: FORCE
+	rm -rf $(BIN_DIR)/{u-boot-*,linino-*,*sums,*.txt}
+
 dirclean: clean
 	rm -rf $(STAGING_DIR_HOST) $(TOOLCHAIN_DIR) $(BUILD_DIR_HOST) $(BUILD_DIR_TOOLCHAIN)
+	rm -rf $(TMP_DIR)
+
+hostclean: clean
+	rm -rf $(STAGING_DIR_HOST) $(BUILD_DIR_HOST)
 	rm -rf $(TMP_DIR)
 
 ifndef DUMP_TARGET_DB
