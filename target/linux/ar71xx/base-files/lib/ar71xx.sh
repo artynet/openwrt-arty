@@ -1075,6 +1075,27 @@ ar71xx_board_detect() {
 	*"HiWiFi HC6361")
 		name="hiwifi-hc6361"
 		;;
+	*"Linino Chiwawa")
+		name="linino-chiwawa"
+		;;
+	*"Linino Freedog")
+		name="linino-freedog"
+		;;
+	*"Linino One")
+		name="linino-one"
+		;;
+	*"Linino Lei")
+		name="linino-lei"
+		;;
+	*"Linino Tian")
+		name="linino-tian"
+		;;
+	*"Linino Yun-Mini")
+		name="linino-yun-mini"
+		;;
+	*"Linino Yun")
+		name="linino-yun"
+		;;
 	esac
 
 	[ -z "$AR71XX_MODEL" ] && [ "${machine:0:8}" = 'TP-LINK ' ] && \
