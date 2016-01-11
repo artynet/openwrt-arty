@@ -1,0 +1,10 @@
+--- a/deps/uv/src/unix/getaddrinfo.c	2015-10-13 19:20:07.000000000 +0200
++++ b/deps/uv/src/unix/getaddrinfo.c	2015-10-20 11:19:13.000000000 +0200
+@@ -99,6 +99,7 @@
+   int err;
+
+   req = container_of(w, uv_getaddrinfo_t, work_req);
++    req->hints->ai_flags &= ~AI_V4MAPPED;
+   err = getaddrinfo(req->hostname, req->service, req->hints, &req->addrinfo);
+   req->retcode = uv__getaddrinfo_translate_error(err);
+ }
