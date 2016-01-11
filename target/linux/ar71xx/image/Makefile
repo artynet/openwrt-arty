@@ -14,7 +14,7 @@ IMAGE_PROFILE:=$(if $(PROFILE),$(PROFILE),Default)
 
 KERNEL_LOADADDR = 0x80060000
 
-DEVICE_VARS += NETGEAR_KERNEL_MAGIC NETGEAR_BOARD_ID NETGEAR_HW_ID CMDLINE CONSOLE IMAGE_SIZE BOARDNAME LOADER_FLASH_OFFS LOADER_TYPE
+DEVICE_VARS += NETGEAR_KERNEL_MAGIC NETGEAR_BOARD_ID NETGEAR_HW_ID CMDLINE CONSOLE IMAGE_SIZE BOARDNAME LOADER_FLASH_OFFS
 
 define Build/netgear-squashfs
 	rm -rf $@.fs $@.squashfs
@@ -73,40 +73,24 @@ define Build/mktplinkfw-initramfs
 	@mv $@.new $@
 endef
 
-define Build/tplink-safeloader
-       -$(STAGING_DIR_HOST)/bin/tplink-safeloader \
-               -B $(TPLINK_BOARD_NAME) \
-               -V $(REVISION) \
-               -k $(word 1,$^) \
-               -r $@ \
-               -o $@.new \
-               $2 \
-               -j \
-               $(if $(findstring sysupgrade,$1),-S) && mv $@.new $@ || rm -f $@
-endef
-
 define Build/loader-common
 	rm -rf $@.src
 	$(MAKE) -C lzma-loader \
 		PKG_BUILD_DIR="$@.src" \
 		TARGET_DIR="$(dir $@)" LOADER_NAME="$(notdir $@)" \
-		BOARD="$(BOARDNAME)" \
+		KERNEL_CMDLINE="$(CMDLINE)" BOARD="$(BOARDNAME)" \
 		LZMA_TEXT_START=0x80a00000 LOADADDR=0x80060000 \
-		$(1) compile loader.$(LOADER_TYPE)
-	mv "$@.$(LOADER_TYPE)" "$@"
+		$(1) compile loader.gz
+	mv "$@.gz" "$@"
 	rm -rf $@.src
 endef
 
 define Build/loader-okli-compile
-	$(call Build/loader-common,FLASH_OFFS=$(LOADER_FLASH_OFFS) FLASH_MAX=0 KERNEL_CMDLINE="$(CMDLINE)")
+	$(call Build/loader-common,FLASH_OFFS=$(LOADER_FLASH_OFFS) FLASH_MAX=0)
 endef
 
 define Build/loader-kernel
 	$(call Build/loader-common,LOADER_DATA="$@")
-endef
-
-define Build/loader-kernel-cmdline
-	$(call Build/loader-common,LOADER_DATA="$@" KERNEL_CMDLINE="$(CMDLINE)")
 endef
 
 define Build/loader-okli
@@ -119,7 +103,7 @@ define Build/copy-file
 	cat "$(1)" > "$@"
 endef
 
-DEVICE_VARS += TPLINK_HWID TPLINK_HWREV TPLINK_FLASHLAYOUT TPLINK_HEADER_VERSION TPLINK_BOARD_NAME
+DEVICE_VARS += TPLINK_HWID TPLINK_HWREV TPLINK_FLASHLAYOUT TPLINK_HEADER_VERSION
 
 # UBNT_BOARD e.g. one of (XS2, XS5, RS, XM)
 # UBNT_TYPE e.g. one of (BZ, XM, XW)
@@ -280,7 +264,6 @@ TARGET_DEVICES += wndr3700 wndr3700v2 wndr3800 wndr3800ch wndrmac wndrmacv2
 define Device/tplink
   TPLINK_HWREV := 0x1
   TPLINK_HEADER_VERSION := 1
-  LOADER_TYPE := gz
   KERNEL := kernel-bin | patch-cmdline | lzma
   KERNEL_INITRAMFS := kernel-bin | patch-cmdline | lzma | mktplinkfw-initramfs
   IMAGES := sysupgrade.bin factory.bin
@@ -294,7 +277,7 @@ $(Device/tplink)
   COMPILE := loader-$(1).gz
   COMPILE/loader-$(1).gz := loader-okli-compile
   KERNEL := copy-file $(KDIR)/vmlinux.bin.lzma | uImage lzma -M 0x4f4b4c49 | loader-okli $(1)
-  KERNEL_INITRAMFS := copy-file $(KDIR)/vmlinux-initramfs.bin.lzma | loader-kernel-cmdline | mktplinkfw-initramfs
+  KERNEL_INITRAMFS := copy-file $(KDIR)/vmlinux-initramfs.bin.lzma | loader-kernel | mktplinkfw-initramfs
 endef
 
 define Device/tplink-4m
@@ -326,19 +309,6 @@ $(Device/tplink)
   TPLINK_FLASHLAYOUT := 16Mlzma
   IMAGE_SIZE := 15872k
 endef
-
-define Device/cpe210-220-510-520
-  MTDPARTS := spi0.0:128k(u-boot)ro,64k(pation-table)ro,64k(product-info)ro,1536k(kernel),6144k(rootfs),192k(config)ro,64k(ART)ro,7680k@0x40000(firmware)
-  IMAGE_SIZE := 7680k
-  BOARDNAME := CPE510
-  TPLINK_BOARD_NAME := CPE510
-  LOADER_TYPE := elf
-  KERNEL := kernel-bin | patch-cmdline | lzma | loader-kernel
-  IMAGES := sysupgrade.bin factory.bin
-  IMAGE/sysupgrade.bin := append-rootfs | tplink-safeloader sysupgrade
-  IMAGE/factory.bin := append-rootfs | tplink-safeloader factory
-endef
-TARGET_DEVICES += cpe210-220-510-520
 
 define Device/tl-wdr4300-v1
 $(Device/tplink-8mlzma)
@@ -560,14 +530,6 @@ define Device/minibox-v1
     CONSOLE := ttyATH0,115200
 endef
 TARGET_DEVICES += minibox-v1
-
-define Device/omy-x1
-    $(Device/tplink-8mlzma)
-    BOARDNAME := OMY-X1
-    DEVICE_PROFILE := OMYX1
-    TPLINK_HWID := 0x06660201
-endef
-TARGET_DEVICES += omy-x1
 
 define Device/onion-omega
     $(Device/tplink-16mlzma)
@@ -1099,15 +1061,6 @@ define Device/smart-300
 endef
 TARGET_DEVICES += smart-300
 
-define Device/tellstick-znet-lite
-    $(Device/tplink-16mlzma)
-    BOARDNAME := TELLSTICK-ZNET-LITE
-    DEVICE_PROFILE := TELLSTICKZNETLITE
-    TPLINK_HWID := 0x00726001
-    CONSOLE := ttyATH0,115200
-endef
-TARGET_DEVICES += tellstick-znet-lite
-
 define Device/oolite
     $(Device/tplink-16mlzma)
     BOARDNAME := GS-OOLITE
@@ -1379,6 +1332,21 @@ LOADER_MAKE := $(NO_TRACE_MAKE) -C lzma-loader KDIR=$(KDIR)
 VMLINUX:=$(BIN_DIR)/$(IMG_PREFIX)-vmlinux
 UIMAGE:=$(BIN_DIR)/$(IMG_PREFIX)-uImage
 
+fs_squash:=squashfs-only
+fs_64k:=64k
+fs_64kraw:=64kraw
+fs_128k:=128k
+fs_256k:=256k
+ifeq ($(CONFIG_TARGET_ROOTFS_INITRAMFS),y)
+	fs_squash:=initramfs
+	fs_64k:=initramfs
+	fs_64kraw:=initramfs
+	fs_128k:=initramfs
+	fs_256k:=initramfs
+	VMLINUX:=$(BIN_DIR)/$(IMG_PREFIX)-vmlinux-initramfs
+	UIMAGE:=$(BIN_DIR)/$(IMG_PREFIX)-uImage-initramfs
+endif
+
 # $(1): input file.
 # $(2): output file.
 # $(3): extra arguments for lzma.
@@ -1388,7 +1356,9 @@ endef
 
 define PatchKernel
 	cp $(KDIR)/vmlinux$(3) $(KDIR_TMP)/vmlinux$(3)-$(1)
+ifneq ($(CONFIG_IMAGE_CMDLINE_HACK),)
 	$(STAGING_DIR_HOST)/bin/patch-cmdline $(KDIR_TMP)/vmlinux$(3)-$(1) "$(strip $(2))"
+endif
 endef
 
 define PatchKernel/initramfs
@@ -1402,14 +1372,19 @@ endef
 # $(4): name suffix, e.g. "-initramfs".
 define PatchKernelLzma
 	cp $(KDIR)/vmlinux$(4) $(KDIR_TMP)/vmlinux$(4)-$(1)
+ifneq ($(CONFIG_IMAGE_CMDLINE_HACK),)
 	$(STAGING_DIR_HOST)/bin/patch-cmdline $(KDIR_TMP)/vmlinux$(4)-$(1) "$(strip $(2))"
+endif
 	$(call CompressLzma,$(KDIR_TMP)/vmlinux$(4)-$(1),$(KDIR_TMP)/vmlinux$(4)-$(1).bin.lzma,$(3))
 endef
 
 define PatchKernelGzip
 	cp $(KDIR)/vmlinux$(3) $(KDIR_TMP)/vmlinux$(3)-$(1)
+ifneq ($(CONFIG_IMAGE_CMDLINE_HACK),)
 	$(STAGING_DIR_HOST)/bin/patch-cmdline $(KDIR_TMP)/vmlinux$(3)-$(1) "$(strip $(2))"
 	gzip -9n -c $(KDIR_TMP)/vmlinux$(3)-$(1) > $(KDIR_TMP)/vmlinux$(3)-$(1).bin.gz
+endif
+	gzip -9 -c $(KDIR_TMP)/vmlinux$(3)-$(1) > $(KDIR_TMP)/vmlinux$(3)-$(1).bin.gz
 endef
 
 ifneq ($(SUBTARGET),mikrotik)
@@ -1452,6 +1427,16 @@ define MkuImageOKLI
 	$(call MkuImage,lzma,-M 0x4f4b4c49,$(KDIR)/vmlinux.bin.lzma,$(KDIR_TMP)/vmlinux-$(1).okli)
 endef
 endif
+
+define Image/Build/LininoLzma
+ $(call MkuImageLzma,$(2),$(3) $(4))
+ $(call Image/Build/Ath,$(1),$(2),$(3),$(4),$(5),$(6),$(7))
+endef
+
+define Image/Build/LininoLzma/initramfs
+ $(call MkuImageLzma/initramfs,$(2),$(3) $(4))
+endef
+
 
 # $(1): name of the 1st file.
 # $(2): size limit of the 1st file if it is greater than 262144, or
@@ -1538,6 +1523,28 @@ define Image/BuildLoader
 endef
 
 #
+# Embed patched lzma-compressed kernel inside lzma-loader.
+#
+# Specifying the command line via the lzma-loader doesn't work with some
+# models (like the TP-LINK CPE series), so this version first patches the
+# command line in the image and then builds the loader around it.
+#
+# $(1), suffix of output filename, e.g. generic, lowercase board name, etc.
+# $(2), suffix of target file to build, e.g. bin, gz, elf
+# $(3), kernel command line to pass from lzma-loader to kernel
+# $(4), unused here
+# $(5), suffix of kernel filename, e.g. -initramfs, or empty
+define Image/BuildLoaderPatched
+	$(call PatchKernelLzma,$(1),$(3))
+	-rm -rf $(KDIR)/lzma-loader
+	$(LOADER_MAKE) LOADER=loader-$(1).$(2) \
+		LZMA_TEXT_START=0x80a00000 LOADADDR=0x80060000 \
+		LOADER_DATA="$(KDIR_TMP)/vmlinux-$(1)$(5).bin.lzma" BOARD="$(1)" \
+		compile loader.$(2)
+	-$(CP) $(KDIR)/loader-$(1).$(2) $(KDIR)/loader-$(1)$(5).$(2)
+endef
+
+#
 # Build lzma-loader alone which will search for lzma-compressed kernel identified by
 # uImage header with magic "OKLI" at boot time.
 #
@@ -1556,7 +1563,13 @@ define Build/Clean
 	$(LOADER_MAKE) clean
 endef
 
-alfa_ap120c_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,13312k(rootfs),1536k(kernel),1152k(unknown)ro,64k(art)ro;spi0.1:-(unknown)
+#
+linino_mtdlayout_4M=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,2752k(rootfs),896k(kernel),64k(nvram),64k(art),3648k@0x50000(firmware)
+linino_mtdlayout_8M=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6464k(rootfs),1280k(kernel),64k(nvram),64k(art),7744k@0x50000(firmware)
+linino_mtdlayout_16M=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,14656k(rootfs),1280k(kernel),64k(nvram),64k(art),15936k@0x50000(firmware)
+#
+# modifications for Linino boards
+#
 alfa_ap96_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,256k(u-boot-env)ro,13312k(rootfs),2048k(kernel),512k(caldata)ro,15360k@0x80000(firmware)
 alfa_mtdlayout_8M=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6144k(rootfs),1600k(kernel),64k(nvram),64k(art)ro,7744k@0x50000(firmware)
 alfa_mtdlayout_16M=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,15936k(firmware),64k(nvram),64k(art)ro
@@ -1587,6 +1600,7 @@ cameo_ap123_mtdlayout_4M=mtdparts=spi0.0:64k(u-boot)ro,64k(nvram)ro,3712k(firmwa
 cameo_db120_mtdlayout=mtdparts=spi0.0:64k(uboot)ro,64k(nvram)ro,15936k(firmware),192k(lang)ro,64k(mac)ro,64k(art)ro
 cameo_db120_mtdlayout_8M=mtdparts=spi0.0:64k(uboot)ro,64k(nvram)ro,7872k(firmware),128k(lang)ro,64k(art)ro
 cap4200ag_mtdlayout=mtdparts=spi0.0:256k(u-boot),64k(u-boot-env),320k(custom)ro,1536k(kernel),12096k(rootfs),2048k(failsafe),64k(art),13632k@0xa0000(firmware)
+cpe510_mtdlayout=mtdparts=spi0.0:128k(u-boot)ro,64k(pation-table)ro,64k(product-info)ro,1536k(kernel),6144k(rootfs),192k(config)ro,64k(ART)ro,7680k@0x40000(firmware)
 eap300v2_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env),320k(custom),13632k(firmware),2048k(failsafe),64k(art)ro
 db120_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6336k(rootfs),1408k(kernel),64k(nvram),64k(art)ro,7744k@0x50000(firmware)
 dgl_5500_mtdlayout=mtdparts=spi0.0:192k(u-boot)ro,64k(nvram)ro,15296k(firmware),192k(lang)ro,512k(my-dlink)ro,64k(mac)ro,64k(art)ro
@@ -2044,6 +2058,28 @@ define Image/Build/Senao
 		$(call sysupname,$(1),$(2))
 endef
 
+Image/Build/TPLINK-SAFELOADER/loader = $(call Image/BuildLoaderPatched,$(1),elf,$(2) $(3))
+
+define Image/Build/TPLINK-SAFELOADER
+	[ -e "$(KDIR)/loader-$(2).elf" ]
+
+	-$(STAGING_DIR_HOST)/bin/tplink-safeloader \
+		-B $(5) \
+		-k $(KDIR)/loader-$(2).elf \
+		-r $(KDIR)/root.$(1) \
+		-V $(REVISION) \
+		-j \
+		-o $(call factoryname,$(1),$(2))
+	-$(STAGING_DIR_HOST)/bin/tplink-safeloader \
+		-B $(5) \
+		-k $(KDIR)/loader-$(2).elf \
+		-r $(KDIR)/root.$(1) \
+		-V $(REVISION) \
+		-j -S \
+		-o $(call sysupname,$(1),$(2))
+endef
+
+
 define Image/Build/CyberTAN
 	echo -n '' > $(KDIR_TMP)/empty.bin
 	$(STAGING_DIR_HOST)/bin/trx -o $(KDIR)/image.tmp \
@@ -2350,6 +2386,40 @@ TARGET_DEVICES += c-55
 
 $(eval $(call SingleProfile,ALFA,64k,ALFANX,alfa-nx,ALFA-NX,ttyS0,115200,$$(alfa_mtdlayout_8M),1638400,6291456,vmlinux.gz.uImage,pb9x-2.6.31-jffs2))
 $(eval $(call SingleProfile,ALFA,64k,HORNETUB,hornet-ub,HORNET-UB,ttyATH0,115200,$$(alfa_mtdlayout_8M),1638400,6291456,kernel_image,rootfs_image))
+
+# SingleProfile parameters (example with yun board):
+#
+#    Build rule          : [LininoLzma] the rule to use to build this
+#                          profile configuration
+#    profile name        : [LININO_YUN_16M_250k] it is the profile name
+#                          for this configuration. It can be an existent profile
+#                          name that you can find in
+#                          target/linux/ar71xx/generic/profiles/. It can also be
+#                          a generic name in order to use it with MultiProfile
+#                          build
+#    image name          : [linino-yun-16m-250k] string used to build the image
+#                          file's name
+#    machine name        : [linino-yun] you can find this value in the
+#                          architecture file arch/mips/ath79/mach-linino-yun.c
+#    console parameters  : ttyATH0,250000
+#    mtdparts parameters : [$$(linino_mtdlayout_16M)]
+#    TODO : 1310720,15007744
+#    TODO : RKuImage
+
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_YUN,linino-yun,linino-yun,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_ONE,linino-one,linino-one,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_FREEDOG,linino-freedog,linino-freedog,ttyATH0,250000,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_CHIWAWA,linino-chiwawa,linino-chiwawa,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_LEI,linino-lei,linino-lei,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_TIAN,linino-tian,linino-tian,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+$(eval $(call SingleProfile,LininoLzma,64k,LININO_YUN_MINI,linino-yun-mini,linino-yun-mini,ttyATH0,115200,$$(linino_mtdlayout_16M),RKuImage))
+
+# LININO_SINGLE_PROFILES is the list of all available Linino's profiles
+LININO_SINGLE_PROFILES:=LININO_YUN LININO_ONE LININO_FREEDOG LININO_CHIWAWA LININO_LEI LININO_YUN_MINI LININO_TIAN
+LININO_AVR_PROFILES:=LININO_YUN LININO_ONE LININO_CHIWAWA LININO_LEI LININO_YUN_MINI
+LININO_YUNONECHOW_PROFILES:=LININO_YUN LININO_ONE LININO_CHOWCHOW LININO_YUN_MINI
+LININO_YUNONE_PROFILES:=LININO_YUN LININO_ONE LININO_YUN_MINI
+
 $(eval $(call SingleProfile,ALFA,64k,TUBE2H8M,tube2h-8M,TUBE2H,ttyATH0,115200,$$(alfa_mtdlayout_8M),1638400,6291456,kernel.image,rootfs.image))
 
 $(eval $(call SingleProfile,AthGzip,64k,AP81,ap81,AP81,ttyS0,115200,$$(ap81_mtdlayout),RKuImage))
@@ -2357,7 +2427,6 @@ $(eval $(call SingleProfile,AthGzip,64k,AP83,ap83,AP83,ttyS0,115200,$$(ap83_mtdl
 $(eval $(call SingleProfile,AthGzip,64k,AP96,ap96,AP96,ttyS0,115200,$$(ap96_mtdlayout),RKuImage))
 $(eval $(call SingleProfile,AthGzip,64k,WNDAP360,wndap360,WNDAP360,ttyS0,9600,$$(wndap360_mtdlayout),KRuImage))
 
-$(eval $(call SingleProfile,AthLzma,64k,ALFAAP120C,alfa-ap120c,ALFA-AP120C,ttyS0,115200,$$(alfa_ap120c_mtdlayout),RKuImage))
 $(eval $(call SingleProfile,AthLzma,64k,ALFAAP96,alfa-ap96,ALFA-AP96,ttyS0,115200,$$(alfa_ap96_mtdlayout),RKuImage))
 $(eval $(call SingleProfile,AthLzma,64k,ALL0258N,all0258n,ALL0258N,ttyS0,115200,$$(all0258n_mtdlayout),KRuImage,65536))
 $(eval $(call SingleProfile,AthLzma,256k,ALL0315N,all0315n,ALL0315N,ttyS0,115200,$$(all0315n_mtdlayout),KRuImage,262144))
@@ -2485,6 +2554,8 @@ $(eval $(call SingleProfile,Seama,64k,QIHOO360,qihoo-c301,QIHOO-C301,ttyS0,11520
 
 $(eval $(call SingleProfile,Senao,squashfs-only,EAP300V2,eap300v2,EAP300V2,ttyS0,115200,$$(eap300v2_mtdlayout)))
 
+$(eval $(call SingleProfile,TPLINK-SAFELOADER,64kraw,CPE510,cpe210-220-510-520,CPE510,ttyS0,115200,$$(cpe510_mtdlayout),CPE510))
+
 $(eval $(call SingleProfile,WHRHPG300N,64kraw,WHRG301N,whr-g301n,WHR-G301N,ttyS0,115200,$$(whrhpg300n_mtdlayout),WHR-G301N))
 $(eval $(call SingleProfile,WHRHPG300N,64kraw,WHRHPG300N,whr-hp-g300n,WHR-HP-G300N,ttyS0,115200,$$(whrhpg300n_mtdlayout),WHR-HP-G300N))
 $(eval $(call SingleProfile,WHRHPG300N,64kraw,WHRHPGN,whr-hp-gn,WHR-HP-GN,ttyS0,115200,$$(whrhpg300n_mtdlayout),WHR-HP-GN))
@@ -2512,6 +2583,23 @@ $(eval $(call MultiProfile,AP152,AP152_16M))
 $(eval $(call MultiProfile,DIR615IX,DIR615I1 DIR615I3))
 $(eval $(call MultiProfile,EWDORIN, EWDORINAP EWDORINRT EWDORIN16M))
 $(eval $(call MultiProfile,OPENMESH,OM2P OM5P MR600 MR900 MR1750))
+
+# MultiProfile parameters (example with yun board):
+#
+#    profile name        : [LININO_YUN] it is the profile name for this
+#                          configuration. It must be an existent profile name
+#                          that you can find in
+#                          target/linux/ar71xx/generic/profiles/.
+#    profile to build    : [LININO_YUN_16M LININO_YUN_16M_250k] it is the list
+#                          of SingleProfile(s) to build. Here you must write
+#                          the SingleProfile names space separated.
+
+# LININO MULTI PROFILES
+$(eval $(call MultiProfile,LININO, $(LININO_SINGLE_PROFILES)))
+$(eval $(call MultiProfile,LININO_YUNONECHOW, $(LININO_YUNONECHOW_PROFILES)))
+$(eval $(call MultiProfile,LININO_YUNONE, $(LININO_YUNONE_PROFILES)))
+$(eval $(call MultiProfile,LININO_AVR, $(LININO_AVR_PROFILES)))
+
 $(eval $(call MultiProfile,TEW652BRP,TEW652BRP_FW TEW652BRP_RECOVERY))
 $(eval $(call MultiProfile,TUBE2H,TUBE2H8M TUBE2H16M))
 $(eval $(call MultiProfile,WNR612V2,REALWNR612V2 N150R))
