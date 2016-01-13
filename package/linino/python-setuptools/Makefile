@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools
-PKG_VERSION:=19.1.1
+PKG_VERSION:=19.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=setuptools-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://pypi.python.org/packages/source/s/setuptools/
-PKG_MD5SUM:=fff1ae21769ffdf1f0e994b658c50861
+PKG_MD5SUM:=78353b1f80375ca5e088f4b4627ffe03
 
 HOST_BUILD_DEPENDS:=python/host
 
