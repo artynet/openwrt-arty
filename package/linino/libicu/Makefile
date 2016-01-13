@@ -14,7 +14,8 @@ PKG_RELEASE:=1
 PKG_MD5SUM:=e2d523df79d6cb7855c2fbe284f4db29
 
 PKG_SOURCE:=icu4c-55_1-src.tgz
-PKG_SOURCE_URL:=http://download.icu-project.org/files/icu4c/$(PKG_VERSION)
+#PKG_SOURCE_URL:=http://download.icu-project.org/files/icu4c/$(PKG_VERSION)
+PKG_SOURCE_URL:=@SF/icu
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/icu
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/icu
