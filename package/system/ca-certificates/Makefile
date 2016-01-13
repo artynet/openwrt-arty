@@ -8,7 +8,10 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ca-certificates
 PKG_VERSION:=20160104
+<<<<<<< e0ed330ddd29333f3b413d3bf0a6b9568c28db32
 PKG_MAINTAINER:=Christian Schoenebeck <christian.schoenebeck@gmail.com>
+=======
+>>>>>>> updating icu, setuptools and ca-certificates Makefile
 
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=http://ftp.debian.org/debian/pool/main/c/ca-certificates
