@@ -1,8 +1,8 @@
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2006 OpenWrt.org
 
-START=99
-STOP=99
+START=49
+STOP=49
 
 start () {
 

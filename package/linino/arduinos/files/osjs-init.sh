@@ -1,15 +1,15 @@
 #!/bin/sh /etc/rc.common
 
-START=99
+START=49
 
-boot () {
+start () {
 
     if [ -e /etc/config/uhttpd ] && `! grep -qs osjs /etc/config/uhttpd`
     then
     	# make the webserver ponting to /osjs instead of /www
-    	sed -i -e 's/www/osjs\/dist/g' /etc/config/uhttpd /etc/config/uhttpd
+    	sed -i -e 's/www/osjs\/dist/g' /etc/config/uhttpd
         # Restarting uHttp server
-    	/etc/init.d/uhttpd restart
+    	# /etc/init.d/uhttpd restart
     fi
 
     if [ ! -d /osjs/dist/luci ]
