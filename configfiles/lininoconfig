@@ -216,6 +216,7 @@ CONFIG_TARGET_ARCH_PACKAGES="ar71xx"
 CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mno-branch-likely -mips32r2 -mtune=34kc"
 CONFIG_CPU_TYPE="34kc"
 CONFIG_LINUX_3_18=y
+CONFIG_DEFAULT_arduinos=y
 CONFIG_DEFAULT_base-files=y
 CONFIG_DEFAULT_busybox=y
 CONFIG_DEFAULT_dnsmasq=y
@@ -234,7 +235,6 @@ CONFIG_DEFAULT_libc=y
 CONFIG_DEFAULT_libgcc=y
 CONFIG_DEFAULT_linino-conf=y
 CONFIG_DEFAULT_linino-scripts=y
-CONFIG_DEFAULT_luci-webpanel-linino=y
 CONFIG_DEFAULT_mtd=y
 CONFIG_DEFAULT_netifd=y
 CONFIG_DEFAULT_odhcp6c=y
