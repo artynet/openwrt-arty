@@ -31,7 +31,7 @@ define Package/linino-conf/conffiles
 /etc/rc.local
 /etc/shadow
 /etc/httpd.conf
-/etc/crontabs
+/etc/crontabs/root
 endef
 
 define Build/Compile
@@ -43,6 +43,7 @@ define Package/linino-conf/install
 	$(INSTALL_DIR) $(1)/etc/arduino
 	$(INSTALL_DIR) $(1)/etc/linino
 	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_DIR) $(1)/etc/crontabs
 	$(INSTALL_DIR) $(1)/etc/triggerhappy/triggers.d
 	
 	# /etc/avahi DIR
@@ -58,7 +59,9 @@ define Package/linino-conf/install
 	$(INSTALL_CONF) ./files/etc/shadow $(1)/etc/
 	$(INSTALL_CONF) ./files/etc/httpd.conf $(1)/etc/
 	$(INSTALL_CONF) ./files/etc/fw_env.config $(1)/etc/
-	$(INSTALL_CONF) ./files/etc/crontabs $(1)/etc/
+
+	# /etc/crontabs DIR
+	$(INSTALL_CONF) ./files/etc/crontabs $(1)/etc/crontabs/root
 
 	# /etc/config DIR
 	$(INSTALL_CONF) ./files/etc/config/firewall $(1)/etc/config/
