@@ -31,6 +31,7 @@ define Package/linino-conf/conffiles
 /etc/rc.local
 /etc/shadow
 /etc/httpd.conf
+/etc/crontabs
 endef
 
 define Build/Compile
@@ -57,6 +58,7 @@ define Package/linino-conf/install
 	$(INSTALL_CONF) ./files/etc/shadow $(1)/etc/
 	$(INSTALL_CONF) ./files/etc/httpd.conf $(1)/etc/
 	$(INSTALL_CONF) ./files/etc/fw_env.config $(1)/etc/
+	$(INSTALL_CONF) ./files/etc/crontabs $(1)/etc/
 
 	# /etc/config DIR
 	$(INSTALL_CONF) ./files/etc/config/firewall $(1)/etc/config/
