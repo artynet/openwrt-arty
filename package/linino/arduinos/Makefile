@@ -9,12 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=arduinos
 PKG_VERSION:=2.0
-PKG_REVISION:=674dd46
+PKG_REVISION:=da87e1b
 PKG_RELEASE:=$(PKG_REVISION)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_REVISION).tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/sources
-PKG_MD5SUM:=74ec1de84b9abd05bfdb11db1da72d5e
+PKG_MD5SUM:=468af5da1349ad71c0d91a6ea1c80e24
 PKG_BUILD_DIR:=$(BUILD_DIR)/arduinos-$(PKG_REVISION)
 
 include $(INCLUDE_DIR)/package.mk
