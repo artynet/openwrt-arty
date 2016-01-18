@@ -11,7 +11,7 @@ start () {
         /usr/sbin/gen-cert
     fi
 
-    /usr/sbin/shellinaboxd -s /:SSH --cert=/etc/ssl/certs -b --user=root
+    /usr/sbin/shellinaboxd -s /:SSH --cert=/etc/ssl/certs -b --user=root -t
 
 }
 
