@@ -7,19 +7,19 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=arduinos
-PKG_VERSION:=2.0
-PKG_REVISION:=341d765
+PKG_NAME:=arduinoos
+PKG_VERSION:=2.0.0
+PKG_REVISION:=6ae4b82
 PKG_RELEASE:=$(PKG_REVISION)
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_REVISION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_REVISION).tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/sources
-PKG_MD5SUM:=15f7aa1b7a64ae1f37d91678018d9dd3
-PKG_BUILD_DIR:=$(BUILD_DIR)/arduinos-$(PKG_REVISION)
+PKG_MD5SUM:=b39d3e08aece8a5bea7d667cdb9cd8e7
+PKG_BUILD_DIR:=$(BUILD_DIR)/arduinoos-$(PKG_VERSION)-$(PKG_REVISION)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/arduinos
+define Package/arduinoos
   SECTION:=luci
   CATEGORY:=LuCI
   SUBMENU:=3. Applications
@@ -27,7 +27,7 @@ define Package/arduinos
   DEPENDS:=+luci +luci-lib-json +uhttpd-mod-lua +lua-coxpcall +lua-wsapi-base +lua-wsapi-xavante +lua-base64 +lua-xavante +luafilesystem +iw +shellinabox
 endef
 
-define Package/arduinos/description
+define Package/arduinoos/description
 	The new Linino configuration panel based on Os.js
 endef
 
@@ -35,7 +35,7 @@ define Build/Compile
 	# NOOP
 endef
 
-define Package/arduinos/install
+define Package/arduinoos/install
 	$(INSTALL_DIR) $(1)/
 	$(INSTALL_DIR) $(1)/usr/lib/lua
 	$(INSTALL_DIR) $(1)/usr/bin
@@ -49,7 +49,7 @@ define Package/arduinos/install
 	$(INSTALL_BIN) files/osjs-init.sh $(1)/etc/init.d/osjs-init
 endef
 
-define Package/arduinos/postinst
+define Package/arduinoos/postinst
 #!/bin/sh
 if [ -e /etc/config/uhttpd ]
 then
@@ -68,7 +68,7 @@ fi
 exit 0
 endef
 
-define Package/arduinos/postrm
+define Package/arduinoos/postrm
 #!/bin/sh
 if [ -e /etc/config/uhttpd ] && [ -d /osjs ]
 then
@@ -85,4 +85,4 @@ fi
 exit 0
 endef
 
-$(eval $(call BuildPackage,arduinos))
+$(eval $(call BuildPackage,arduinoos))
