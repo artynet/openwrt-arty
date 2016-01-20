@@ -84,7 +84,12 @@ wnr1000-v2)
 linino-yun | \
 linino-yun-mini | \
 linino-one | \
-linino-chiwawa | \
+linino-chiwawa)
+	ucidef_set_led_wlan "wlan" "WLAN" "wlan" "wlan0"
+	ucidef_set_led_usbdev "usb" "USB" "usb" "1-1"
+	ucidef_set_led_netdev "lan" "LAN" "ath9k-phy0" "eth1"
+	;;
+
 linino-lei | \
 linino-tian)
 	ucidef_set_led_wlan "wlan" "WLAN" "wlan" "wlan0"
