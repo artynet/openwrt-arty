@@ -7,7 +7,4 @@ change-bootloader
 
 wifi-live-or-reset
 
-# Update at boot
-sleep 120 && /bin/opkg update >/dev/null 2>&1
-
 exit 0
