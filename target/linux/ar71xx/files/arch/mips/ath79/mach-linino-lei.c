@@ -193,7 +193,7 @@ static void __init lei_setup(void)
 	int r;
 	void __iomem *reg;
 	unsigned v;
-	
+
 	/* make lan / wan leds software controllable */
 	ath79_gpio_output_select(CHOWCHOW_GPIO_LED0, AR934X_GPIO_OUT_GPIO);
 	ath79_gpio_output_select(CHOWCHOW_GPIO_LED1, AR934X_GPIO_OUT_GPIO);
@@ -268,11 +268,13 @@ static void __init lei_setup(void)
 	ath79_register_usb();
 
 	ath79_init_mac(mac, art + DS_WMAC_MAC_OFFSET, 0);
-	mac[3] |= 0x08;
+	// mac[3] |= 0x08;
+	mac[3] &= 0xF7;
 	ath79_register_wmac(art + DS_CALDATA_OFFSET, mac);
 	pr_info("%s-%d: wlan0 MAC:%02x:%02x:%02x:%02x:%02x:%02x\n", __FUNCTION__, __LINE__, mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
-	
-	mac[3] &= 0xF7;
+
+	// mac[3] &= 0xF7;
+	mac[3] |= 0x08;
 	pr_info("%s-%d: eth0  MAC:%02x:%02x:%02x:%02x:%02x:%02x\n", __FUNCTION__, __LINE__, mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 	ap91_pci_init(art + DS_PCIE_CALDATA_OFFSET, mac);
 	ath79_init_mac(ath79_eth0_data.mac_addr, mac, 0);
@@ -294,10 +296,10 @@ static void __init lei_setup(void)
 	ath79_eth0_data.mii_bus_dev = &ath79_mdio0_device.dev;
 	ath79_eth0_pll_data.pll_1000 = 0x06000000;
 	ath79_register_eth(0);
-	
+
 	/* enable OE of level shifters */
 	ds_setup_level_shifter_oe();
-	
+
 	/* Register Software SPI controller */
 	ds_register_spi();
 }
