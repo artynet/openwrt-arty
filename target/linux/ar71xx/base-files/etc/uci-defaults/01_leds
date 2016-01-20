@@ -585,6 +585,12 @@ zcn-1523h-5)
 	ucidef_set_led_netdev "lan1" "lan1" "zcn-1523h:green:lan1" "eth0"
 	ucidef_set_led_netdev "lan2" "lan2" "zcn-1523h:green:lan2" "eth1"
 	;;
+
+linino-tian)
+	ucidef_set_led_netdev "wlan" "WLAN" "wlan" "wlan0"
+	ucidef_set_led_usbdev "usb" "USB" "usb" "1-1"
+	ucidef_set_led_netdev "lan" "LAN" "ath9k-phy0" "eth0"
+	;;
 esac
 
 ucidef_commit_leds
