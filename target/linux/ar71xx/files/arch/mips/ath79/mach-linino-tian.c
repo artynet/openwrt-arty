@@ -35,8 +35,8 @@
 #include <linux/spi/spi_gpio.h>
 
 #define CHOWCHOW_GPIO_MCU_RESET	17
-#define CHOWCHOW_GPIO_LED0		12
-#define CHOWCHOW_GPIO_LED1		11
+#define CHOWCHOW_GPIO_LED0		11
+#define CHOWCHOW_GPIO_LED1		12
 
 #define LININO_TIAN 1
 
@@ -69,11 +69,11 @@ static struct gpio_led chowchow_leds_gpio[] __initdata = {
 	{
 		.name		= "usb",
 		.gpio		= CHOWCHOW_GPIO_LED0,
-		.active_low	= 0,
+		.active_low	= 1,
 	}, {
 		.name		= "wlan",
 		.gpio		= CHOWCHOW_GPIO_LED1,
-		.active_low	= 0,
+		.active_low	= 1,
 	}
 };
 
@@ -280,11 +280,13 @@ static void __init tian_setup(void)
 	ath79_register_usb();
 
 	ath79_init_mac(mac, art + DS_WMAC_MAC_OFFSET, 0);
-	mac[3] |= 0x08;
+	// mac[3] |= 0x08;
+	mac[3] &= 0xF7;
 	ath79_register_wmac(art + DS_CALDATA_OFFSET, mac);
 	pr_info("%s-%d: wlan0 MAC:%02x:%02x:%02x:%02x:%02x:%02x\n", __FUNCTION__, __LINE__, mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
-	mac[3] &= 0xF7;
+	// mac[3] &= 0xF7;
+	mac[3] |= 0x08;
 	pr_info("%s-%d: eth0  MAC:%02x:%02x:%02x:%02x:%02x:%02x\n", __FUNCTION__, __LINE__, mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 	ap91_pci_init(art + DS_PCIE_CALDATA_OFFSET, mac);
 	ath79_init_mac(ath79_eth0_data.mac_addr, mac, 0);
