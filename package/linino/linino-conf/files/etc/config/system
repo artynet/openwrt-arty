@@ -14,7 +14,7 @@ config led 'led_wlan'
 	option sysfs 'wlan'
 	option trigger 'netdev'
 	option dev 'wlan0'
-	option mode 'tx rx'
+	option mode 'link tx rx'
 	option default '0'
 
 config led 'led_usb'
