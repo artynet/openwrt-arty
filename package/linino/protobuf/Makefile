@@ -58,8 +58,7 @@ define Package/libprotobuf/description
  of its internal RPC protocols and file formats.
 endef
 
-CONFIGURE_ARGS += --with-protoc=$(STAGING_DIR_HOST)/bin/protoc
-
+CONFIGURE_ARGS += --with-protoc=$(STAGING_DIR)/host/bin/protoc
 
 define Host/Prepare
 	$(Host/Prepare/Default)
