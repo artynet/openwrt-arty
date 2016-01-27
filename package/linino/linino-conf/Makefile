@@ -66,7 +66,7 @@ define Package/linino-conf/install
 	
 	# /etc/arduino DIR
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Yun.hex $(1)/etc/arduino/
-	$(INSTALL_DATA) ./files/etc/arduino/Caterina-YunMini.hex $(1)/etc/arduino/
+	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Yun-Mini.hex $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-One.hex $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Lei.hex $(1)/etc/arduino/
 	$(INSTALL_DATA) ./files/etc/arduino/Caterina-Chiwawa.hex $(1)/etc/arduino/
