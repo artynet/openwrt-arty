@@ -16,7 +16,7 @@ PKG_SOURCE_URL:=https://github.com/fritzy/SleekXMPP/archive/
 PKG_BUILD_DIR:=$(BUILD_DIR)/SleekXMPP-$(PKG_NAME)-$(PKG_VERSION)
 PKG_MD5SUM:=
 
-PKG_BUILD_DEPENDS:=+python-expat +python-openssl +python-pyserial
+PKG_BUILD_DEPENDS:=+python-xml +python-openssl +python-pyserial
 
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python-package.mk)
@@ -27,7 +27,7 @@ define Package/python-sleekxmpp
   SUBMENU:=Python
   TITLE:=python-sleekxmpp
   URL:=http://sourceforge.net/projects/pysleekxmpp
-  DEPENDS:=+python +python-expat +python-openssl +python-pyserial
+  DEPENDS:=+python +python-xml +python-openssl +python-pyserial
 endef
 
 define Package/python-sleekxmpp/description
