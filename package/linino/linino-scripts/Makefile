@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.4
-PKG_RELEASE:=8
+PKG_RELEASE:=9
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -57,8 +57,7 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/lininoio $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/detect-console $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/wifi-refresh $(1)/usr/bin
-	# $(INSTALL_BIN) ./files/usr/bin/flash-samd21 $(1)/usr/bin
-	# $(INSTALL_BIN) ./files/usr/bin/flash-kl25z $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/overlay-only $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/linup $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/change-bootloader $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/lingpio $(1)/usr/bin
@@ -68,7 +67,6 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/etc/init.d/delete_uhttpd_cert $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/handle_wifi_reset $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/rngd-turn-off $(1)/etc/init.d
-	# $(INSTALL_BIN) ./files/etc/init.d/mcuio $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/alljoynfixboot $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/avahifixboot $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/board-panel $(1)/etc/init.d

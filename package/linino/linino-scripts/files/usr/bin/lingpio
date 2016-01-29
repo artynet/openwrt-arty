@@ -18,6 +18,15 @@
 # 122	D12
 # 123	D6
 
+if [ ! -d /sys/class/gpio/gpiochip100 ]
+then
+	echo ""
+	echo "LininoIO is not enabled ! Aborting...."
+	echo ""
+
+	exit 0
+fi
+
 BOARD=$(awk '/machine/ {print tolower($4)}' /proc/cpuinfo)
 
 case $BOARD in
