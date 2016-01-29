@@ -41,7 +41,7 @@ fi
 
 # unbind spi_gpio driver
 # the new kernel takes care of it so we can comment it out
-# echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind 
+echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind
 
 # program AVR
 echo $OE_LEVEL > $OE_PATH
@@ -59,7 +59,7 @@ fi
 
 # bind spi_gpio driver
 # the new kernel takes care of it so we can comment it out
-# echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/bind
+echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/bind
 
 # Restore previous status
 echo $OE_VALUE > $OE_PATH
