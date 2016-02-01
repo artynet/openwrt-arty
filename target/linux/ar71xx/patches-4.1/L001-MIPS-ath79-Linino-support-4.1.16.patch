@@ -112,7 +112,7 @@
 
 --- a/arch/mips/ath79/machtypes.h	2015-12-18 19:59:10.000000000 +0100
 +++ b/arch/mips/ath79/machtypes.h	2015-12-18 23:39:34.853217086 +0100
-@@ -242,6 +242,13 @@
+@@ -244,6 +244,13 @@
  	ATH79_MACH_WZR_450HP2,		/* Buffalo WZR-450HP2 */
  	ATH79_MACH_ZCN_1523H_2,		/* Zcomax ZCN-1523H-2-xx */
  	ATH79_MACH_ZCN_1523H_5,		/* Zcomax ZCN-1523H-5-xx */
