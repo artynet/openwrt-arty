@@ -3278,6 +3278,8 @@ CONFIG_PACKAGE_python-logging=m
 CONFIG_PACKAGE_python-multiprocessing=m
 CONFIG_PACKAGE_python-mysql=m
 CONFIG_PACKAGE_python-ncurses=m
+CONFIG_PACKAGE_python-nfcpy=m
+CONFIG_PACKAGE_python-nfcpy-examples=m
 CONFIG_PACKAGE_python-openssl=y
 CONFIG_PACKAGE_python-paho-mqtt=m
 CONFIG_PACKAGE_python-pip=m
@@ -3288,6 +3290,7 @@ CONFIG_PACKAGE_python-sleekxmpp=m
 # CONFIG_PACKAGE_python-smbus is not set
 CONFIG_PACKAGE_python-sqlite3=m
 CONFIG_PACKAGE_python-unittest=m
+CONFIG_PACKAGE_python-usb=m
 # CONFIG_PACKAGE_python-vte is not set
 CONFIG_PACKAGE_python-xml=m
 CONFIG_PACKAGE_python-yaml=m
@@ -6295,7 +6298,7 @@ CONFIG_PACKAGE_mtd-utils-ubirsvol=m
 CONFIG_PACKAGE_mtd-utils-ubiupdatevol=m
 CONFIG_PACKAGE_mtd-utils-tests=m
 CONFIG_PACKAGE_namei=m
-# CONFIG_PACKAGE_nfc-utils is not set
+CONFIG_PACKAGE_nfc-utils=m
 CONFIG_PACKAGE_obexfs=m
 CONFIG_PACKAGE_obexftp=m
 CONFIG_PACKAGE_ocf-crypto-headers=m
