@@ -78,7 +78,7 @@ $(eval $(call Profile,LININO_AVR))
 
 define Profile/LININO_YUN
 	NAME:=Linino Arduino Yun
-	PACKAGES:=kmod-usb-core kmod-usb2 luci-app-arduino-webpanel linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_YUN/Description
@@ -92,7 +92,7 @@ $(eval $(call Profile,LININO_YUN))
 
 define Profile/LININO_ONE
 	NAME:=Linino One
-	PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_ONE/Description
@@ -106,7 +106,7 @@ $(eval $(call Profile,LININO_ONE))
 
 define Profile/LININO_FREEDOG
 	NAME:=Linino Freedog
-	PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_FREEDOG/Description
@@ -120,7 +120,7 @@ $(eval $(call Profile,LININO_FREEDOG))
 
 define Profile/LININO_LEI
 	NAME:=Linino Lei
-	PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_LEI/Description
@@ -134,7 +134,7 @@ $(eval $(call Profile,LININO_LEI))
 
 define Profile/LININO_TIAN
 	NAME:=Linino Tian
-	PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_TIAN/Description
@@ -148,7 +148,7 @@ $(eval $(call Profile,LININO_TIAN))
 
 define Profile/LININO_CHIWAWA
         NAME:=Linino Chiwawa
-        PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+        PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_CHIWAWA/Description
@@ -163,7 +163,7 @@ $(eval $(call Profile,LININO_CHIWAWA))
 
 define Profile/LININO_YUN_MINI
         NAME:=Linino Yun mini
-        PACKAGES:=kmod-usb-core kmod-usb2 luci-webpanel-linino linino-scripts linino-conf
+        PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_YUN_MINI/Description
