@@ -3282,6 +3282,8 @@ CONFIG_PACKAGE_python-logging=m
 CONFIG_PACKAGE_python-multiprocessing=m
 # CONFIG_PACKAGE_python-mysql is not set
 CONFIG_PACKAGE_python-ncurses=m
+CONFIG_PACKAGE_python-nfcpy=m
+CONFIG_PACKAGE_python-nfcpy-examples=m
 CONFIG_PACKAGE_python-openssl=m
 CONFIG_PACKAGE_python-paho-mqtt=m
 # CONFIG_PACKAGE_python-pip is not set
@@ -3292,6 +3294,7 @@ CONFIG_PACKAGE_python-sleekxmpp=m
 # CONFIG_PACKAGE_python-smbus is not set
 CONFIG_PACKAGE_python-sqlite3=m
 CONFIG_PACKAGE_python-unittest=m
+CONFIG_PACKAGE_python-usb=m
 # CONFIG_PACKAGE_python-vte is not set
 CONFIG_PACKAGE_python-xml=m
 # CONFIG_PACKAGE_python-yaml is not set
@@ -3910,7 +3913,7 @@ CONFIG_PACKAGE_libustream-polarssl=m
 CONFIG_PACKAGE_libuuid=y
 CONFIG_PACKAGE_libuv=m
 CONFIG_PACKAGE_libuvc=m
-# CONFIG_PACKAGE_libv4l is not set
+CONFIG_PACKAGE_libv4l=m
 CONFIG_PACKAGE_libvorbis=m
 CONFIG_PACKAGE_libvorbisidec=m
 # CONFIG_PACKAGE_libvpx is not set
@@ -3965,31 +3968,31 @@ CONFIG_PACKAGE_luci-base=y
 #
 # Translations
 #
-# CONFIG_LUCI_LANG_ca is not set
-# CONFIG_LUCI_LANG_cs is not set
-# CONFIG_LUCI_LANG_de is not set
-# CONFIG_LUCI_LANG_el is not set
-# CONFIG_LUCI_LANG_en is not set
-# CONFIG_LUCI_LANG_es is not set
-# CONFIG_LUCI_LANG_fr is not set
-# CONFIG_LUCI_LANG_he is not set
-# CONFIG_LUCI_LANG_hu is not set
-# CONFIG_LUCI_LANG_it is not set
-# CONFIG_LUCI_LANG_ja is not set
-# CONFIG_LUCI_LANG_ms is not set
-# CONFIG_LUCI_LANG_no is not set
-# CONFIG_LUCI_LANG_pl is not set
-# CONFIG_LUCI_LANG_pt is not set
-# CONFIG_LUCI_LANG_pt-br is not set
-# CONFIG_LUCI_LANG_ro is not set
-# CONFIG_LUCI_LANG_ru is not set
-# CONFIG_LUCI_LANG_sk is not set
-# CONFIG_LUCI_LANG_sv is not set
-# CONFIG_LUCI_LANG_tr is not set
-# CONFIG_LUCI_LANG_uk is not set
-# CONFIG_LUCI_LANG_vi is not set
-# CONFIG_LUCI_LANG_zh-cn is not set
-# CONFIG_LUCI_LANG_zh-tw is not set
+CONFIG_LUCI_LANG_ca=m
+CONFIG_LUCI_LANG_cs=m
+CONFIG_LUCI_LANG_de=m
+CONFIG_LUCI_LANG_el=m
+CONFIG_LUCI_LANG_en=m
+CONFIG_LUCI_LANG_es=m
+CONFIG_LUCI_LANG_fr=m
+CONFIG_LUCI_LANG_he=m
+CONFIG_LUCI_LANG_hu=m
+CONFIG_LUCI_LANG_it=m
+CONFIG_LUCI_LANG_ja=m
+CONFIG_LUCI_LANG_ms=m
+CONFIG_LUCI_LANG_no=m
+CONFIG_LUCI_LANG_pl=m
+CONFIG_LUCI_LANG_pt=m
+CONFIG_LUCI_LANG_pt-br=m
+CONFIG_LUCI_LANG_ro=m
+CONFIG_LUCI_LANG_ru=m
+CONFIG_LUCI_LANG_sk=m
+CONFIG_LUCI_LANG_sv=m
+CONFIG_LUCI_LANG_tr=m
+CONFIG_LUCI_LANG_uk=m
+CONFIG_LUCI_LANG_vi=m
+CONFIG_LUCI_LANG_zh-cn=m
+CONFIG_LUCI_LANG_zh-tw=m
 CONFIG_PACKAGE_luci-mod-admin-full=y
 CONFIG_PACKAGE_luci-mod-failsafe=m
 CONFIG_PACKAGE_luci-mod-freifunk=m
@@ -4021,8 +4024,8 @@ CONFIG_PACKAGE_luci-app-hd-idle=m
 # CONFIG_PACKAGE_luci-app-hnet is not set
 CONFIG_PACKAGE_luci-app-lxc=m
 CONFIG_PACKAGE_luci-app-meshwizard=m
-# CONFIG_PACKAGE_luci-app-minidlna is not set
-# CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
+CONFIG_PACKAGE_luci-app-minidlna=m
+CONFIG_PACKAGE_luci-app-mjpg-streamer=m
 # CONFIG_PACKAGE_luci-app-mmc-over-gpio is not set
 CONFIG_PACKAGE_luci-app-multiwan=m
 # CONFIG_PACKAGE_luci-app-mwan3 is not set
@@ -4100,731 +4103,756 @@ CONFIG_PACKAGE_freifunk-policyrouting=m
 CONFIG_PACKAGE_freifunk-watchdog=m
 CONFIG_PACKAGE_meshwizard=m
 CONFIG_PACKAGE_remote-update=m
-# CONFIG_PACKAGE_luci-i18n-ahcp-ca is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-cs is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-de is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-el is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-en is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-es is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-fr is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-he is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-hu is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-it is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-ja is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-ms is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-no is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-pl is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-pt is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-ro is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-ru is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-sk is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-sv is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-tr is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-uk is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-vi is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-ahcp-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-base-ca is not set
-# CONFIG_PACKAGE_luci-i18n-base-cs is not set
-# CONFIG_PACKAGE_luci-i18n-base-de is not set
-# CONFIG_PACKAGE_luci-i18n-base-el is not set
-# CONFIG_PACKAGE_luci-i18n-base-en is not set
-# CONFIG_PACKAGE_luci-i18n-base-es is not set
-# CONFIG_PACKAGE_luci-i18n-base-fr is not set
-# CONFIG_PACKAGE_luci-i18n-base-he is not set
-# CONFIG_PACKAGE_luci-i18n-base-hu is not set
-# CONFIG_PACKAGE_luci-i18n-base-it is not set
-# CONFIG_PACKAGE_luci-i18n-base-ja is not set
-# CONFIG_PACKAGE_luci-i18n-base-ms is not set
-# CONFIG_PACKAGE_luci-i18n-base-no is not set
-# CONFIG_PACKAGE_luci-i18n-base-pl is not set
-# CONFIG_PACKAGE_luci-i18n-base-pt is not set
-# CONFIG_PACKAGE_luci-i18n-base-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-base-ro is not set
-# CONFIG_PACKAGE_luci-i18n-base-ru is not set
-# CONFIG_PACKAGE_luci-i18n-base-sk is not set
-# CONFIG_PACKAGE_luci-i18n-base-sv is not set
-# CONFIG_PACKAGE_luci-i18n-base-tr is not set
-# CONFIG_PACKAGE_luci-i18n-base-uk is not set
-# CONFIG_PACKAGE_luci-i18n-base-vi is not set
-# CONFIG_PACKAGE_luci-i18n-base-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-base-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-commands-ca is not set
-# CONFIG_PACKAGE_luci-i18n-commands-cs is not set
-# CONFIG_PACKAGE_luci-i18n-commands-de is not set
-# CONFIG_PACKAGE_luci-i18n-commands-el is not set
-# CONFIG_PACKAGE_luci-i18n-commands-en is not set
-# CONFIG_PACKAGE_luci-i18n-commands-es is not set
-# CONFIG_PACKAGE_luci-i18n-commands-fr is not set
-# CONFIG_PACKAGE_luci-i18n-commands-he is not set
-# CONFIG_PACKAGE_luci-i18n-commands-hu is not set
-# CONFIG_PACKAGE_luci-i18n-commands-it is not set
-# CONFIG_PACKAGE_luci-i18n-commands-ja is not set
-# CONFIG_PACKAGE_luci-i18n-commands-ms is not set
-# CONFIG_PACKAGE_luci-i18n-commands-no is not set
-# CONFIG_PACKAGE_luci-i18n-commands-pl is not set
-# CONFIG_PACKAGE_luci-i18n-commands-pt is not set
-# CONFIG_PACKAGE_luci-i18n-commands-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-commands-ro is not set
-# CONFIG_PACKAGE_luci-i18n-commands-ru is not set
-# CONFIG_PACKAGE_luci-i18n-commands-sk is not set
-# CONFIG_PACKAGE_luci-i18n-commands-sv is not set
-# CONFIG_PACKAGE_luci-i18n-commands-tr is not set
-# CONFIG_PACKAGE_luci-i18n-commands-uk is not set
-# CONFIG_PACKAGE_luci-i18n-commands-vi is not set
-# CONFIG_PACKAGE_luci-i18n-commands-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-commands-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-ca is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-cs is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-de is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-el is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-en is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-es is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-fr is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-he is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-hu is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-it is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-ja is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-ms is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-no is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-pl is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-pt is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-ro is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-ru is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-sk is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-sv is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-tr is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-uk is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-vi is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-ddns-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ca is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-cs is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-de is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-el is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-en is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-es is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-fr is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-he is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-hu is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-it is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ja is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ms is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-no is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pl is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pt is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ro is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ru is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-sk is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-sv is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-tr is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-uk is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-vi is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-ca is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-cs is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-de is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-el is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-en is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-es is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-fr is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-he is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-hu is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-it is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-ja is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-ms is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-no is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-pl is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-pt is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-ro is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-ru is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-sk is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-sv is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-tr is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-uk is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-vi is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-firewall-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-ca is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-cs is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-de is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-el is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-en is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-es is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-fr is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-he is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-hu is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-it is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-ja is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-ms is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-no is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-pl is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ca is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-cs is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-de is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-el is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-en is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-es is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-fr is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-he is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-hu is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-it is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ja is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ms is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-no is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pl is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pt is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ro is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ru is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-sk is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-sv is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-tr is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-uk is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-vi is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-pt is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-ro is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-ru is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-sk is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-sv is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-tr is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-uk is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-vi is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-freifunk-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-ca is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-cs is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-de is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-el is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-en is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-es is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-fr is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-he is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-hu is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-it is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-ja is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-ms is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-no is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-pl is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-pt is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-ro is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-ru is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-sk is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-sv is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-tr is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-uk is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-vi is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-hd-idle-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-ca is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-cs is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-de is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-el is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-en is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-es is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-fr is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-he is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-hu is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-it is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-ja is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-ms is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-no is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-pl is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-pt is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-ro is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-ru is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-sk is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-sv is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-tr is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-uk is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-vi is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-meshwizard-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-ca is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-cs is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-de is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-el is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-en is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-es is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-fr is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-he is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-hu is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-it is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-ja is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-ms is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-no is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-pl is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-pt is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-ro is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-ru is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-sk is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-sv is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-tr is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-uk is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-vi is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-multiwan-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-ca is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-cs is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-de is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-el is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-en is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-es is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-fr is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-he is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-hu is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-it is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-ja is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-ms is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-no is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-pl is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-pt is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-ro is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-ru is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-sk is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-sv is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-tr is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-uk is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-vi is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-ntpc-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-ca is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-cs is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-de is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-el is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-en is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-es is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-fr is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-he is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-hu is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-it is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-ja is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-ms is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-no is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-pl is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-pt is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-ro is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-ru is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-sk is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-sv is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-tr is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-uk is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-vi is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-olsr-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-ca is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-cs is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-de is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-el is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-en is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-es is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-fr is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-he is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-hu is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-it is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-ja is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-ms is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-no is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-pl is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-pt is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-ro is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-ru is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-sk is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-sv is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-tr is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-uk is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-vi is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-p2pblock-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-ca is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-cs is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-de is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-el is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-en is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-es is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-fr is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-he is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-hu is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-it is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-ja is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-ms is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-no is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-pl is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-pt is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-ro is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-ru is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-sk is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-sv is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-tr is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-uk is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-vi is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-p910nd-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-ca is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-cs is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-de is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-el is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-en is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-es is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-fr is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-he is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-hu is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-it is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-ja is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-ms is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-no is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-pl is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-pt is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-ro is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-ru is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-sk is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-sv is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-tr is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-uk is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-vi is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-pbx-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-ca is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-cs is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-de is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-el is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-en is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-es is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-fr is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-he is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-hu is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-it is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-ja is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-ms is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-no is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-pl is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-pt is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-ro is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-ru is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-sk is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-sv is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-tr is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-uk is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-vi is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-polipo-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ca is not set
-# CONFIG_PACKAGE_luci-i18n-qos-cs is not set
-# CONFIG_PACKAGE_luci-i18n-qos-de is not set
-# CONFIG_PACKAGE_luci-i18n-qos-el is not set
-# CONFIG_PACKAGE_luci-i18n-qos-en is not set
-# CONFIG_PACKAGE_luci-i18n-qos-es is not set
-# CONFIG_PACKAGE_luci-i18n-qos-fr is not set
-# CONFIG_PACKAGE_luci-i18n-qos-he is not set
-# CONFIG_PACKAGE_luci-i18n-qos-hu is not set
-# CONFIG_PACKAGE_luci-i18n-qos-it is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ja is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ms is not set
-# CONFIG_PACKAGE_luci-i18n-qos-no is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pl is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pt is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ro is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ru is not set
-# CONFIG_PACKAGE_luci-i18n-qos-sk is not set
-# CONFIG_PACKAGE_luci-i18n-qos-sv is not set
-# CONFIG_PACKAGE_luci-i18n-qos-tr is not set
-# CONFIG_PACKAGE_luci-i18n-qos-uk is not set
-# CONFIG_PACKAGE_luci-i18n-qos-vi is not set
-# CONFIG_PACKAGE_luci-i18n-qos-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-qos-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-ca is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-cs is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-de is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-el is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-en is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-es is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-fr is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-he is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-hu is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-it is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-ja is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-ms is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-no is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-pl is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-pt is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-ro is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-ru is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-sk is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-sv is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-tr is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-uk is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-vi is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-radvd-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-samba-ca is not set
-# CONFIG_PACKAGE_luci-i18n-samba-cs is not set
-# CONFIG_PACKAGE_luci-i18n-samba-de is not set
-# CONFIG_PACKAGE_luci-i18n-samba-el is not set
-# CONFIG_PACKAGE_luci-i18n-samba-en is not set
-# CONFIG_PACKAGE_luci-i18n-samba-es is not set
-# CONFIG_PACKAGE_luci-i18n-samba-fr is not set
-# CONFIG_PACKAGE_luci-i18n-samba-he is not set
-# CONFIG_PACKAGE_luci-i18n-samba-hu is not set
-# CONFIG_PACKAGE_luci-i18n-samba-it is not set
-# CONFIG_PACKAGE_luci-i18n-samba-ja is not set
-# CONFIG_PACKAGE_luci-i18n-samba-ms is not set
-# CONFIG_PACKAGE_luci-i18n-samba-no is not set
-# CONFIG_PACKAGE_luci-i18n-samba-pl is not set
-# CONFIG_PACKAGE_luci-i18n-samba-pt is not set
-# CONFIG_PACKAGE_luci-i18n-samba-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-samba-ro is not set
-# CONFIG_PACKAGE_luci-i18n-samba-ru is not set
-# CONFIG_PACKAGE_luci-i18n-samba-sk is not set
-# CONFIG_PACKAGE_luci-i18n-samba-sv is not set
-# CONFIG_PACKAGE_luci-i18n-samba-tr is not set
-# CONFIG_PACKAGE_luci-i18n-samba-uk is not set
-# CONFIG_PACKAGE_luci-i18n-samba-vi is not set
-# CONFIG_PACKAGE_luci-i18n-samba-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-samba-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-splash-ca is not set
-# CONFIG_PACKAGE_luci-i18n-splash-cs is not set
-# CONFIG_PACKAGE_luci-i18n-splash-de is not set
-# CONFIG_PACKAGE_luci-i18n-splash-el is not set
-# CONFIG_PACKAGE_luci-i18n-splash-en is not set
-# CONFIG_PACKAGE_luci-i18n-splash-es is not set
-# CONFIG_PACKAGE_luci-i18n-splash-fr is not set
-# CONFIG_PACKAGE_luci-i18n-splash-he is not set
-# CONFIG_PACKAGE_luci-i18n-splash-hu is not set
-# CONFIG_PACKAGE_luci-i18n-splash-it is not set
-# CONFIG_PACKAGE_luci-i18n-splash-ja is not set
-# CONFIG_PACKAGE_luci-i18n-splash-ms is not set
-# CONFIG_PACKAGE_luci-i18n-splash-no is not set
-# CONFIG_PACKAGE_luci-i18n-splash-pl is not set
-# CONFIG_PACKAGE_luci-i18n-splash-pt is not set
-# CONFIG_PACKAGE_luci-i18n-splash-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-splash-ro is not set
-# CONFIG_PACKAGE_luci-i18n-splash-ru is not set
-# CONFIG_PACKAGE_luci-i18n-splash-sk is not set
-# CONFIG_PACKAGE_luci-i18n-splash-sv is not set
-# CONFIG_PACKAGE_luci-i18n-splash-tr is not set
-# CONFIG_PACKAGE_luci-i18n-splash-uk is not set
-# CONFIG_PACKAGE_luci-i18n-splash-vi is not set
-# CONFIG_PACKAGE_luci-i18n-splash-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-splash-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-ca is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-cs is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-de is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-el is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-en is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-es is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-fr is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-he is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-hu is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-it is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-ja is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-ms is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-no is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-pl is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-pt is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-ro is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-ru is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-sk is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-sv is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-tr is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-uk is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-vi is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-tinyproxy-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-ca is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-cs is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-de is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-el is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-en is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-es is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-fr is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-he is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-hu is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-it is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-ja is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-ms is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-no is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-pl is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-pt is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-ro is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-ru is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-sk is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-sv is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-tr is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-uk is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-vi is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-transmission-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-ca is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-cs is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-de is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-el is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-en is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-es is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-fr is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-he is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-hu is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-it is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-ja is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-ms is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-no is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-pl is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-pt is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-ro is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-ru is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-sk is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-sv is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-tr is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-uk is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-vi is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-upnp-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-ca is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-cs is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-de is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-el is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-en is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-es is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-fr is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-he is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-hu is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-it is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-ja is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-ms is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-no is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-pl is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-pt is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-ro is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-ru is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-sk is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-sv is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-tr is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-uk is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-vi is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-vnstat-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-ca is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-cs is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-de is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-el is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-en is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-es is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-fr is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-he is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-hu is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-it is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-ja is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-ms is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-no is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-pl is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-pt is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-ro is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-ru is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-sk is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-sv is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-tr is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-uk is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-vi is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-voice-core-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-ca is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-cs is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-de is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-el is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-en is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-es is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-fr is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-he is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-hu is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-it is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-ja is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-ms is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-no is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-pl is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-pt is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-ro is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-ru is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-sk is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-sv is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-tr is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-uk is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-vi is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-watchcat-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-wol-ca is not set
-# CONFIG_PACKAGE_luci-i18n-wol-cs is not set
-# CONFIG_PACKAGE_luci-i18n-wol-de is not set
-# CONFIG_PACKAGE_luci-i18n-wol-el is not set
-# CONFIG_PACKAGE_luci-i18n-wol-en is not set
-# CONFIG_PACKAGE_luci-i18n-wol-es is not set
-# CONFIG_PACKAGE_luci-i18n-wol-fr is not set
-# CONFIG_PACKAGE_luci-i18n-wol-he is not set
-# CONFIG_PACKAGE_luci-i18n-wol-hu is not set
-# CONFIG_PACKAGE_luci-i18n-wol-it is not set
-# CONFIG_PACKAGE_luci-i18n-wol-ja is not set
-# CONFIG_PACKAGE_luci-i18n-wol-ms is not set
-# CONFIG_PACKAGE_luci-i18n-wol-no is not set
-# CONFIG_PACKAGE_luci-i18n-wol-pl is not set
-# CONFIG_PACKAGE_luci-i18n-wol-pt is not set
-# CONFIG_PACKAGE_luci-i18n-wol-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-wol-ro is not set
-# CONFIG_PACKAGE_luci-i18n-wol-ru is not set
-# CONFIG_PACKAGE_luci-i18n-wol-sk is not set
-# CONFIG_PACKAGE_luci-i18n-wol-sv is not set
-# CONFIG_PACKAGE_luci-i18n-wol-tr is not set
-# CONFIG_PACKAGE_luci-i18n-wol-uk is not set
-# CONFIG_PACKAGE_luci-i18n-wol-vi is not set
-# CONFIG_PACKAGE_luci-i18n-wol-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-wol-zh-tw is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-ca is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-cs is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-de is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-el is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-en is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-es is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-fr is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-he is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-hu is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-it is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-ja is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-ms is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-no is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-pl is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-pt is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-ro is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-ru is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-sk is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-sv is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-tr is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-uk is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-vi is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-zh-cn is not set
-# CONFIG_PACKAGE_luci-i18n-wshaper-zh-tw is not set
+CONFIG_PACKAGE_luci-i18n-ahcp-ca=m
+CONFIG_PACKAGE_luci-i18n-ahcp-cs=m
+CONFIG_PACKAGE_luci-i18n-ahcp-de=m
+CONFIG_PACKAGE_luci-i18n-ahcp-el=m
+CONFIG_PACKAGE_luci-i18n-ahcp-en=m
+CONFIG_PACKAGE_luci-i18n-ahcp-es=m
+CONFIG_PACKAGE_luci-i18n-ahcp-fr=m
+CONFIG_PACKAGE_luci-i18n-ahcp-he=m
+CONFIG_PACKAGE_luci-i18n-ahcp-hu=m
+CONFIG_PACKAGE_luci-i18n-ahcp-it=m
+CONFIG_PACKAGE_luci-i18n-ahcp-ja=m
+CONFIG_PACKAGE_luci-i18n-ahcp-ms=m
+CONFIG_PACKAGE_luci-i18n-ahcp-no=m
+CONFIG_PACKAGE_luci-i18n-ahcp-pl=m
+CONFIG_PACKAGE_luci-i18n-ahcp-pt=m
+CONFIG_PACKAGE_luci-i18n-ahcp-pt-br=m
+CONFIG_PACKAGE_luci-i18n-ahcp-ro=m
+CONFIG_PACKAGE_luci-i18n-ahcp-ru=m
+CONFIG_PACKAGE_luci-i18n-ahcp-sk=m
+CONFIG_PACKAGE_luci-i18n-ahcp-sv=m
+CONFIG_PACKAGE_luci-i18n-ahcp-tr=m
+CONFIG_PACKAGE_luci-i18n-ahcp-uk=m
+CONFIG_PACKAGE_luci-i18n-ahcp-vi=m
+CONFIG_PACKAGE_luci-i18n-ahcp-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-ahcp-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-base-ca=m
+CONFIG_PACKAGE_luci-i18n-base-cs=m
+CONFIG_PACKAGE_luci-i18n-base-de=m
+CONFIG_PACKAGE_luci-i18n-base-el=m
+CONFIG_PACKAGE_luci-i18n-base-en=m
+CONFIG_PACKAGE_luci-i18n-base-es=m
+CONFIG_PACKAGE_luci-i18n-base-fr=m
+CONFIG_PACKAGE_luci-i18n-base-he=m
+CONFIG_PACKAGE_luci-i18n-base-hu=m
+CONFIG_PACKAGE_luci-i18n-base-it=m
+CONFIG_PACKAGE_luci-i18n-base-ja=m
+CONFIG_PACKAGE_luci-i18n-base-ms=m
+CONFIG_PACKAGE_luci-i18n-base-no=m
+CONFIG_PACKAGE_luci-i18n-base-pl=m
+CONFIG_PACKAGE_luci-i18n-base-pt=m
+CONFIG_PACKAGE_luci-i18n-base-pt-br=m
+CONFIG_PACKAGE_luci-i18n-base-ro=m
+CONFIG_PACKAGE_luci-i18n-base-ru=m
+CONFIG_PACKAGE_luci-i18n-base-sk=m
+CONFIG_PACKAGE_luci-i18n-base-sv=m
+CONFIG_PACKAGE_luci-i18n-base-tr=m
+CONFIG_PACKAGE_luci-i18n-base-uk=m
+CONFIG_PACKAGE_luci-i18n-base-vi=m
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-base-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-commands-ca=m
+CONFIG_PACKAGE_luci-i18n-commands-cs=m
+CONFIG_PACKAGE_luci-i18n-commands-de=m
+CONFIG_PACKAGE_luci-i18n-commands-el=m
+CONFIG_PACKAGE_luci-i18n-commands-en=m
+CONFIG_PACKAGE_luci-i18n-commands-es=m
+CONFIG_PACKAGE_luci-i18n-commands-fr=m
+CONFIG_PACKAGE_luci-i18n-commands-he=m
+CONFIG_PACKAGE_luci-i18n-commands-hu=m
+CONFIG_PACKAGE_luci-i18n-commands-it=m
+CONFIG_PACKAGE_luci-i18n-commands-ja=m
+CONFIG_PACKAGE_luci-i18n-commands-ms=m
+CONFIG_PACKAGE_luci-i18n-commands-no=m
+CONFIG_PACKAGE_luci-i18n-commands-pl=m
+CONFIG_PACKAGE_luci-i18n-commands-pt=m
+CONFIG_PACKAGE_luci-i18n-commands-pt-br=m
+CONFIG_PACKAGE_luci-i18n-commands-ro=m
+CONFIG_PACKAGE_luci-i18n-commands-ru=m
+CONFIG_PACKAGE_luci-i18n-commands-sk=m
+CONFIG_PACKAGE_luci-i18n-commands-sv=m
+CONFIG_PACKAGE_luci-i18n-commands-tr=m
+CONFIG_PACKAGE_luci-i18n-commands-uk=m
+CONFIG_PACKAGE_luci-i18n-commands-vi=m
+CONFIG_PACKAGE_luci-i18n-commands-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-commands-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-ddns-ca=m
+CONFIG_PACKAGE_luci-i18n-ddns-cs=m
+CONFIG_PACKAGE_luci-i18n-ddns-de=m
+CONFIG_PACKAGE_luci-i18n-ddns-el=m
+CONFIG_PACKAGE_luci-i18n-ddns-en=m
+CONFIG_PACKAGE_luci-i18n-ddns-es=m
+CONFIG_PACKAGE_luci-i18n-ddns-fr=m
+CONFIG_PACKAGE_luci-i18n-ddns-he=m
+CONFIG_PACKAGE_luci-i18n-ddns-hu=m
+CONFIG_PACKAGE_luci-i18n-ddns-it=m
+CONFIG_PACKAGE_luci-i18n-ddns-ja=m
+CONFIG_PACKAGE_luci-i18n-ddns-ms=m
+CONFIG_PACKAGE_luci-i18n-ddns-no=m
+CONFIG_PACKAGE_luci-i18n-ddns-pl=m
+CONFIG_PACKAGE_luci-i18n-ddns-pt=m
+CONFIG_PACKAGE_luci-i18n-ddns-pt-br=m
+CONFIG_PACKAGE_luci-i18n-ddns-ro=m
+CONFIG_PACKAGE_luci-i18n-ddns-ru=m
+CONFIG_PACKAGE_luci-i18n-ddns-sk=m
+CONFIG_PACKAGE_luci-i18n-ddns-sv=m
+CONFIG_PACKAGE_luci-i18n-ddns-tr=m
+CONFIG_PACKAGE_luci-i18n-ddns-uk=m
+CONFIG_PACKAGE_luci-i18n-ddns-vi=m
+CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-ddns-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-diag-core-ca=m
+CONFIG_PACKAGE_luci-i18n-diag-core-cs=m
+CONFIG_PACKAGE_luci-i18n-diag-core-de=m
+CONFIG_PACKAGE_luci-i18n-diag-core-el=m
+CONFIG_PACKAGE_luci-i18n-diag-core-en=m
+CONFIG_PACKAGE_luci-i18n-diag-core-es=m
+CONFIG_PACKAGE_luci-i18n-diag-core-fr=m
+CONFIG_PACKAGE_luci-i18n-diag-core-he=m
+CONFIG_PACKAGE_luci-i18n-diag-core-hu=m
+CONFIG_PACKAGE_luci-i18n-diag-core-it=m
+CONFIG_PACKAGE_luci-i18n-diag-core-ja=m
+CONFIG_PACKAGE_luci-i18n-diag-core-ms=m
+CONFIG_PACKAGE_luci-i18n-diag-core-no=m
+CONFIG_PACKAGE_luci-i18n-diag-core-pl=m
+CONFIG_PACKAGE_luci-i18n-diag-core-pt=m
+CONFIG_PACKAGE_luci-i18n-diag-core-pt-br=m
+CONFIG_PACKAGE_luci-i18n-diag-core-ro=m
+CONFIG_PACKAGE_luci-i18n-diag-core-ru=m
+CONFIG_PACKAGE_luci-i18n-diag-core-sk=m
+CONFIG_PACKAGE_luci-i18n-diag-core-sv=m
+CONFIG_PACKAGE_luci-i18n-diag-core-tr=m
+CONFIG_PACKAGE_luci-i18n-diag-core-uk=m
+CONFIG_PACKAGE_luci-i18n-diag-core-vi=m
+CONFIG_PACKAGE_luci-i18n-diag-core-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-diag-core-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-firewall-ca=m
+CONFIG_PACKAGE_luci-i18n-firewall-cs=m
+CONFIG_PACKAGE_luci-i18n-firewall-de=m
+CONFIG_PACKAGE_luci-i18n-firewall-el=m
+CONFIG_PACKAGE_luci-i18n-firewall-en=m
+CONFIG_PACKAGE_luci-i18n-firewall-es=m
+CONFIG_PACKAGE_luci-i18n-firewall-fr=m
+CONFIG_PACKAGE_luci-i18n-firewall-he=m
+CONFIG_PACKAGE_luci-i18n-firewall-hu=m
+CONFIG_PACKAGE_luci-i18n-firewall-it=m
+CONFIG_PACKAGE_luci-i18n-firewall-ja=m
+CONFIG_PACKAGE_luci-i18n-firewall-ms=m
+CONFIG_PACKAGE_luci-i18n-firewall-no=m
+CONFIG_PACKAGE_luci-i18n-firewall-pl=m
+CONFIG_PACKAGE_luci-i18n-firewall-pt=m
+CONFIG_PACKAGE_luci-i18n-firewall-pt-br=m
+CONFIG_PACKAGE_luci-i18n-firewall-ro=m
+CONFIG_PACKAGE_luci-i18n-firewall-ru=m
+CONFIG_PACKAGE_luci-i18n-firewall-sk=m
+CONFIG_PACKAGE_luci-i18n-firewall-sv=m
+CONFIG_PACKAGE_luci-i18n-firewall-tr=m
+CONFIG_PACKAGE_luci-i18n-firewall-uk=m
+CONFIG_PACKAGE_luci-i18n-firewall-vi=m
+CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-firewall-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-freifunk-ca=m
+CONFIG_PACKAGE_luci-i18n-freifunk-cs=m
+CONFIG_PACKAGE_luci-i18n-freifunk-de=m
+CONFIG_PACKAGE_luci-i18n-freifunk-el=m
+CONFIG_PACKAGE_luci-i18n-freifunk-en=m
+CONFIG_PACKAGE_luci-i18n-freifunk-es=m
+CONFIG_PACKAGE_luci-i18n-freifunk-fr=m
+CONFIG_PACKAGE_luci-i18n-freifunk-he=m
+CONFIG_PACKAGE_luci-i18n-freifunk-hu=m
+CONFIG_PACKAGE_luci-i18n-freifunk-it=m
+CONFIG_PACKAGE_luci-i18n-freifunk-ja=m
+CONFIG_PACKAGE_luci-i18n-freifunk-ms=m
+CONFIG_PACKAGE_luci-i18n-freifunk-no=m
+CONFIG_PACKAGE_luci-i18n-freifunk-pl=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ca=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-cs=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-de=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-el=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-en=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-es=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-fr=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-he=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-hu=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-it=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ja=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ms=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-no=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pl=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pt=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-pt-br=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ro=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-ru=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-sk=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-sv=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-tr=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-uk=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-vi=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-freifunk-policyrouting-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-freifunk-pt=m
+CONFIG_PACKAGE_luci-i18n-freifunk-pt-br=m
+CONFIG_PACKAGE_luci-i18n-freifunk-ro=m
+CONFIG_PACKAGE_luci-i18n-freifunk-ru=m
+CONFIG_PACKAGE_luci-i18n-freifunk-sk=m
+CONFIG_PACKAGE_luci-i18n-freifunk-sv=m
+CONFIG_PACKAGE_luci-i18n-freifunk-tr=m
+CONFIG_PACKAGE_luci-i18n-freifunk-uk=m
+CONFIG_PACKAGE_luci-i18n-freifunk-vi=m
+CONFIG_PACKAGE_luci-i18n-freifunk-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-freifunk-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-ca=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-cs=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-de=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-el=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-en=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-es=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-fr=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-he=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-hu=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-it=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-ja=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-ms=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-no=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-pl=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-pt=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-pt-br=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-ro=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-ru=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-sk=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-sv=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-tr=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-uk=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-vi=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-hd-idle-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-ca=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-cs=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-de=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-el=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-en=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-es=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-fr=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-he=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-hu=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-it=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-ja=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-ms=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-no=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-pl=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-pt=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-pt-br=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-ro=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-ru=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-sk=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-sv=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-tr=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-uk=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-vi=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-meshwizard-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-minidlna-ca=m
+CONFIG_PACKAGE_luci-i18n-minidlna-cs=m
+CONFIG_PACKAGE_luci-i18n-minidlna-de=m
+CONFIG_PACKAGE_luci-i18n-minidlna-el=m
+CONFIG_PACKAGE_luci-i18n-minidlna-en=m
+CONFIG_PACKAGE_luci-i18n-minidlna-es=m
+CONFIG_PACKAGE_luci-i18n-minidlna-fr=m
+CONFIG_PACKAGE_luci-i18n-minidlna-he=m
+CONFIG_PACKAGE_luci-i18n-minidlna-hu=m
+CONFIG_PACKAGE_luci-i18n-minidlna-it=m
+CONFIG_PACKAGE_luci-i18n-minidlna-ja=m
+CONFIG_PACKAGE_luci-i18n-minidlna-ms=m
+CONFIG_PACKAGE_luci-i18n-minidlna-no=m
+CONFIG_PACKAGE_luci-i18n-minidlna-pl=m
+CONFIG_PACKAGE_luci-i18n-minidlna-pt=m
+CONFIG_PACKAGE_luci-i18n-minidlna-pt-br=m
+CONFIG_PACKAGE_luci-i18n-minidlna-ro=m
+CONFIG_PACKAGE_luci-i18n-minidlna-ru=m
+CONFIG_PACKAGE_luci-i18n-minidlna-sk=m
+CONFIG_PACKAGE_luci-i18n-minidlna-sv=m
+CONFIG_PACKAGE_luci-i18n-minidlna-tr=m
+CONFIG_PACKAGE_luci-i18n-minidlna-uk=m
+CONFIG_PACKAGE_luci-i18n-minidlna-vi=m
+CONFIG_PACKAGE_luci-i18n-minidlna-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-minidlna-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-multiwan-ca=m
+CONFIG_PACKAGE_luci-i18n-multiwan-cs=m
+CONFIG_PACKAGE_luci-i18n-multiwan-de=m
+CONFIG_PACKAGE_luci-i18n-multiwan-el=m
+CONFIG_PACKAGE_luci-i18n-multiwan-en=m
+CONFIG_PACKAGE_luci-i18n-multiwan-es=m
+CONFIG_PACKAGE_luci-i18n-multiwan-fr=m
+CONFIG_PACKAGE_luci-i18n-multiwan-he=m
+CONFIG_PACKAGE_luci-i18n-multiwan-hu=m
+CONFIG_PACKAGE_luci-i18n-multiwan-it=m
+CONFIG_PACKAGE_luci-i18n-multiwan-ja=m
+CONFIG_PACKAGE_luci-i18n-multiwan-ms=m
+CONFIG_PACKAGE_luci-i18n-multiwan-no=m
+CONFIG_PACKAGE_luci-i18n-multiwan-pl=m
+CONFIG_PACKAGE_luci-i18n-multiwan-pt=m
+CONFIG_PACKAGE_luci-i18n-multiwan-pt-br=m
+CONFIG_PACKAGE_luci-i18n-multiwan-ro=m
+CONFIG_PACKAGE_luci-i18n-multiwan-ru=m
+CONFIG_PACKAGE_luci-i18n-multiwan-sk=m
+CONFIG_PACKAGE_luci-i18n-multiwan-sv=m
+CONFIG_PACKAGE_luci-i18n-multiwan-tr=m
+CONFIG_PACKAGE_luci-i18n-multiwan-uk=m
+CONFIG_PACKAGE_luci-i18n-multiwan-vi=m
+CONFIG_PACKAGE_luci-i18n-multiwan-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-multiwan-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-ntpc-ca=m
+CONFIG_PACKAGE_luci-i18n-ntpc-cs=m
+CONFIG_PACKAGE_luci-i18n-ntpc-de=m
+CONFIG_PACKAGE_luci-i18n-ntpc-el=m
+CONFIG_PACKAGE_luci-i18n-ntpc-en=m
+CONFIG_PACKAGE_luci-i18n-ntpc-es=m
+CONFIG_PACKAGE_luci-i18n-ntpc-fr=m
+CONFIG_PACKAGE_luci-i18n-ntpc-he=m
+CONFIG_PACKAGE_luci-i18n-ntpc-hu=m
+CONFIG_PACKAGE_luci-i18n-ntpc-it=m
+CONFIG_PACKAGE_luci-i18n-ntpc-ja=m
+CONFIG_PACKAGE_luci-i18n-ntpc-ms=m
+CONFIG_PACKAGE_luci-i18n-ntpc-no=m
+CONFIG_PACKAGE_luci-i18n-ntpc-pl=m
+CONFIG_PACKAGE_luci-i18n-ntpc-pt=m
+CONFIG_PACKAGE_luci-i18n-ntpc-pt-br=m
+CONFIG_PACKAGE_luci-i18n-ntpc-ro=m
+CONFIG_PACKAGE_luci-i18n-ntpc-ru=m
+CONFIG_PACKAGE_luci-i18n-ntpc-sk=m
+CONFIG_PACKAGE_luci-i18n-ntpc-sv=m
+CONFIG_PACKAGE_luci-i18n-ntpc-tr=m
+CONFIG_PACKAGE_luci-i18n-ntpc-uk=m
+CONFIG_PACKAGE_luci-i18n-ntpc-vi=m
+CONFIG_PACKAGE_luci-i18n-ntpc-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-ntpc-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-olsr-ca=m
+CONFIG_PACKAGE_luci-i18n-olsr-cs=m
+CONFIG_PACKAGE_luci-i18n-olsr-de=m
+CONFIG_PACKAGE_luci-i18n-olsr-el=m
+CONFIG_PACKAGE_luci-i18n-olsr-en=m
+CONFIG_PACKAGE_luci-i18n-olsr-es=m
+CONFIG_PACKAGE_luci-i18n-olsr-fr=m
+CONFIG_PACKAGE_luci-i18n-olsr-he=m
+CONFIG_PACKAGE_luci-i18n-olsr-hu=m
+CONFIG_PACKAGE_luci-i18n-olsr-it=m
+CONFIG_PACKAGE_luci-i18n-olsr-ja=m
+CONFIG_PACKAGE_luci-i18n-olsr-ms=m
+CONFIG_PACKAGE_luci-i18n-olsr-no=m
+CONFIG_PACKAGE_luci-i18n-olsr-pl=m
+CONFIG_PACKAGE_luci-i18n-olsr-pt=m
+CONFIG_PACKAGE_luci-i18n-olsr-pt-br=m
+CONFIG_PACKAGE_luci-i18n-olsr-ro=m
+CONFIG_PACKAGE_luci-i18n-olsr-ru=m
+CONFIG_PACKAGE_luci-i18n-olsr-sk=m
+CONFIG_PACKAGE_luci-i18n-olsr-sv=m
+CONFIG_PACKAGE_luci-i18n-olsr-tr=m
+CONFIG_PACKAGE_luci-i18n-olsr-uk=m
+CONFIG_PACKAGE_luci-i18n-olsr-vi=m
+CONFIG_PACKAGE_luci-i18n-olsr-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-olsr-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-ca=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-cs=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-de=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-el=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-en=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-es=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-fr=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-he=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-hu=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-it=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-ja=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-ms=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-no=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-pl=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-pt=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-pt-br=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-ro=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-ru=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-sk=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-sv=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-tr=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-uk=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-vi=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-p2pblock-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-p910nd-ca=m
+CONFIG_PACKAGE_luci-i18n-p910nd-cs=m
+CONFIG_PACKAGE_luci-i18n-p910nd-de=m
+CONFIG_PACKAGE_luci-i18n-p910nd-el=m
+CONFIG_PACKAGE_luci-i18n-p910nd-en=m
+CONFIG_PACKAGE_luci-i18n-p910nd-es=m
+CONFIG_PACKAGE_luci-i18n-p910nd-fr=m
+CONFIG_PACKAGE_luci-i18n-p910nd-he=m
+CONFIG_PACKAGE_luci-i18n-p910nd-hu=m
+CONFIG_PACKAGE_luci-i18n-p910nd-it=m
+CONFIG_PACKAGE_luci-i18n-p910nd-ja=m
+CONFIG_PACKAGE_luci-i18n-p910nd-ms=m
+CONFIG_PACKAGE_luci-i18n-p910nd-no=m
+CONFIG_PACKAGE_luci-i18n-p910nd-pl=m
+CONFIG_PACKAGE_luci-i18n-p910nd-pt=m
+CONFIG_PACKAGE_luci-i18n-p910nd-pt-br=m
+CONFIG_PACKAGE_luci-i18n-p910nd-ro=m
+CONFIG_PACKAGE_luci-i18n-p910nd-ru=m
+CONFIG_PACKAGE_luci-i18n-p910nd-sk=m
+CONFIG_PACKAGE_luci-i18n-p910nd-sv=m
+CONFIG_PACKAGE_luci-i18n-p910nd-tr=m
+CONFIG_PACKAGE_luci-i18n-p910nd-uk=m
+CONFIG_PACKAGE_luci-i18n-p910nd-vi=m
+CONFIG_PACKAGE_luci-i18n-p910nd-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-p910nd-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-pbx-ca=m
+CONFIG_PACKAGE_luci-i18n-pbx-cs=m
+CONFIG_PACKAGE_luci-i18n-pbx-de=m
+CONFIG_PACKAGE_luci-i18n-pbx-el=m
+CONFIG_PACKAGE_luci-i18n-pbx-en=m
+CONFIG_PACKAGE_luci-i18n-pbx-es=m
+CONFIG_PACKAGE_luci-i18n-pbx-fr=m
+CONFIG_PACKAGE_luci-i18n-pbx-he=m
+CONFIG_PACKAGE_luci-i18n-pbx-hu=m
+CONFIG_PACKAGE_luci-i18n-pbx-it=m
+CONFIG_PACKAGE_luci-i18n-pbx-ja=m
+CONFIG_PACKAGE_luci-i18n-pbx-ms=m
+CONFIG_PACKAGE_luci-i18n-pbx-no=m
+CONFIG_PACKAGE_luci-i18n-pbx-pl=m
+CONFIG_PACKAGE_luci-i18n-pbx-pt=m
+CONFIG_PACKAGE_luci-i18n-pbx-pt-br=m
+CONFIG_PACKAGE_luci-i18n-pbx-ro=m
+CONFIG_PACKAGE_luci-i18n-pbx-ru=m
+CONFIG_PACKAGE_luci-i18n-pbx-sk=m
+CONFIG_PACKAGE_luci-i18n-pbx-sv=m
+CONFIG_PACKAGE_luci-i18n-pbx-tr=m
+CONFIG_PACKAGE_luci-i18n-pbx-uk=m
+CONFIG_PACKAGE_luci-i18n-pbx-vi=m
+CONFIG_PACKAGE_luci-i18n-pbx-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-pbx-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-polipo-ca=m
+CONFIG_PACKAGE_luci-i18n-polipo-cs=m
+CONFIG_PACKAGE_luci-i18n-polipo-de=m
+CONFIG_PACKAGE_luci-i18n-polipo-el=m
+CONFIG_PACKAGE_luci-i18n-polipo-en=m
+CONFIG_PACKAGE_luci-i18n-polipo-es=m
+CONFIG_PACKAGE_luci-i18n-polipo-fr=m
+CONFIG_PACKAGE_luci-i18n-polipo-he=m
+CONFIG_PACKAGE_luci-i18n-polipo-hu=m
+CONFIG_PACKAGE_luci-i18n-polipo-it=m
+CONFIG_PACKAGE_luci-i18n-polipo-ja=m
+CONFIG_PACKAGE_luci-i18n-polipo-ms=m
+CONFIG_PACKAGE_luci-i18n-polipo-no=m
+CONFIG_PACKAGE_luci-i18n-polipo-pl=m
+CONFIG_PACKAGE_luci-i18n-polipo-pt=m
+CONFIG_PACKAGE_luci-i18n-polipo-pt-br=m
+CONFIG_PACKAGE_luci-i18n-polipo-ro=m
+CONFIG_PACKAGE_luci-i18n-polipo-ru=m
+CONFIG_PACKAGE_luci-i18n-polipo-sk=m
+CONFIG_PACKAGE_luci-i18n-polipo-sv=m
+CONFIG_PACKAGE_luci-i18n-polipo-tr=m
+CONFIG_PACKAGE_luci-i18n-polipo-uk=m
+CONFIG_PACKAGE_luci-i18n-polipo-vi=m
+CONFIG_PACKAGE_luci-i18n-polipo-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-polipo-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-qos-ca=m
+CONFIG_PACKAGE_luci-i18n-qos-cs=m
+CONFIG_PACKAGE_luci-i18n-qos-de=m
+CONFIG_PACKAGE_luci-i18n-qos-el=m
+CONFIG_PACKAGE_luci-i18n-qos-en=m
+CONFIG_PACKAGE_luci-i18n-qos-es=m
+CONFIG_PACKAGE_luci-i18n-qos-fr=m
+CONFIG_PACKAGE_luci-i18n-qos-he=m
+CONFIG_PACKAGE_luci-i18n-qos-hu=m
+CONFIG_PACKAGE_luci-i18n-qos-it=m
+CONFIG_PACKAGE_luci-i18n-qos-ja=m
+CONFIG_PACKAGE_luci-i18n-qos-ms=m
+CONFIG_PACKAGE_luci-i18n-qos-no=m
+CONFIG_PACKAGE_luci-i18n-qos-pl=m
+CONFIG_PACKAGE_luci-i18n-qos-pt=m
+CONFIG_PACKAGE_luci-i18n-qos-pt-br=m
+CONFIG_PACKAGE_luci-i18n-qos-ro=m
+CONFIG_PACKAGE_luci-i18n-qos-ru=m
+CONFIG_PACKAGE_luci-i18n-qos-sk=m
+CONFIG_PACKAGE_luci-i18n-qos-sv=m
+CONFIG_PACKAGE_luci-i18n-qos-tr=m
+CONFIG_PACKAGE_luci-i18n-qos-uk=m
+CONFIG_PACKAGE_luci-i18n-qos-vi=m
+CONFIG_PACKAGE_luci-i18n-qos-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-qos-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-radvd-ca=m
+CONFIG_PACKAGE_luci-i18n-radvd-cs=m
+CONFIG_PACKAGE_luci-i18n-radvd-de=m
+CONFIG_PACKAGE_luci-i18n-radvd-el=m
+CONFIG_PACKAGE_luci-i18n-radvd-en=m
+CONFIG_PACKAGE_luci-i18n-radvd-es=m
+CONFIG_PACKAGE_luci-i18n-radvd-fr=m
+CONFIG_PACKAGE_luci-i18n-radvd-he=m
+CONFIG_PACKAGE_luci-i18n-radvd-hu=m
+CONFIG_PACKAGE_luci-i18n-radvd-it=m
+CONFIG_PACKAGE_luci-i18n-radvd-ja=m
+CONFIG_PACKAGE_luci-i18n-radvd-ms=m
+CONFIG_PACKAGE_luci-i18n-radvd-no=m
+CONFIG_PACKAGE_luci-i18n-radvd-pl=m
+CONFIG_PACKAGE_luci-i18n-radvd-pt=m
+CONFIG_PACKAGE_luci-i18n-radvd-pt-br=m
+CONFIG_PACKAGE_luci-i18n-radvd-ro=m
+CONFIG_PACKAGE_luci-i18n-radvd-ru=m
+CONFIG_PACKAGE_luci-i18n-radvd-sk=m
+CONFIG_PACKAGE_luci-i18n-radvd-sv=m
+CONFIG_PACKAGE_luci-i18n-radvd-tr=m
+CONFIG_PACKAGE_luci-i18n-radvd-uk=m
+CONFIG_PACKAGE_luci-i18n-radvd-vi=m
+CONFIG_PACKAGE_luci-i18n-radvd-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-radvd-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-samba-ca=m
+CONFIG_PACKAGE_luci-i18n-samba-cs=m
+CONFIG_PACKAGE_luci-i18n-samba-de=m
+CONFIG_PACKAGE_luci-i18n-samba-el=m
+CONFIG_PACKAGE_luci-i18n-samba-en=m
+CONFIG_PACKAGE_luci-i18n-samba-es=m
+CONFIG_PACKAGE_luci-i18n-samba-fr=m
+CONFIG_PACKAGE_luci-i18n-samba-he=m
+CONFIG_PACKAGE_luci-i18n-samba-hu=m
+CONFIG_PACKAGE_luci-i18n-samba-it=m
+CONFIG_PACKAGE_luci-i18n-samba-ja=m
+CONFIG_PACKAGE_luci-i18n-samba-ms=m
+CONFIG_PACKAGE_luci-i18n-samba-no=m
+CONFIG_PACKAGE_luci-i18n-samba-pl=m
+CONFIG_PACKAGE_luci-i18n-samba-pt=m
+CONFIG_PACKAGE_luci-i18n-samba-pt-br=m
+CONFIG_PACKAGE_luci-i18n-samba-ro=m
+CONFIG_PACKAGE_luci-i18n-samba-ru=m
+CONFIG_PACKAGE_luci-i18n-samba-sk=m
+CONFIG_PACKAGE_luci-i18n-samba-sv=m
+CONFIG_PACKAGE_luci-i18n-samba-tr=m
+CONFIG_PACKAGE_luci-i18n-samba-uk=m
+CONFIG_PACKAGE_luci-i18n-samba-vi=m
+CONFIG_PACKAGE_luci-i18n-samba-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-samba-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-splash-ca=m
+CONFIG_PACKAGE_luci-i18n-splash-cs=m
+CONFIG_PACKAGE_luci-i18n-splash-de=m
+CONFIG_PACKAGE_luci-i18n-splash-el=m
+CONFIG_PACKAGE_luci-i18n-splash-en=m
+CONFIG_PACKAGE_luci-i18n-splash-es=m
+CONFIG_PACKAGE_luci-i18n-splash-fr=m
+CONFIG_PACKAGE_luci-i18n-splash-he=m
+CONFIG_PACKAGE_luci-i18n-splash-hu=m
+CONFIG_PACKAGE_luci-i18n-splash-it=m
+CONFIG_PACKAGE_luci-i18n-splash-ja=m
+CONFIG_PACKAGE_luci-i18n-splash-ms=m
+CONFIG_PACKAGE_luci-i18n-splash-no=m
+CONFIG_PACKAGE_luci-i18n-splash-pl=m
+CONFIG_PACKAGE_luci-i18n-splash-pt=m
+CONFIG_PACKAGE_luci-i18n-splash-pt-br=m
+CONFIG_PACKAGE_luci-i18n-splash-ro=m
+CONFIG_PACKAGE_luci-i18n-splash-ru=m
+CONFIG_PACKAGE_luci-i18n-splash-sk=m
+CONFIG_PACKAGE_luci-i18n-splash-sv=m
+CONFIG_PACKAGE_luci-i18n-splash-tr=m
+CONFIG_PACKAGE_luci-i18n-splash-uk=m
+CONFIG_PACKAGE_luci-i18n-splash-vi=m
+CONFIG_PACKAGE_luci-i18n-splash-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-splash-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-ca=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-cs=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-de=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-el=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-en=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-es=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-fr=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-he=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-hu=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-it=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-ja=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-ms=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-no=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-pl=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-pt=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-pt-br=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-ro=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-ru=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-sk=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-sv=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-tr=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-uk=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-vi=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-tinyproxy-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-transmission-ca=m
+CONFIG_PACKAGE_luci-i18n-transmission-cs=m
+CONFIG_PACKAGE_luci-i18n-transmission-de=m
+CONFIG_PACKAGE_luci-i18n-transmission-el=m
+CONFIG_PACKAGE_luci-i18n-transmission-en=m
+CONFIG_PACKAGE_luci-i18n-transmission-es=m
+CONFIG_PACKAGE_luci-i18n-transmission-fr=m
+CONFIG_PACKAGE_luci-i18n-transmission-he=m
+CONFIG_PACKAGE_luci-i18n-transmission-hu=m
+CONFIG_PACKAGE_luci-i18n-transmission-it=m
+CONFIG_PACKAGE_luci-i18n-transmission-ja=m
+CONFIG_PACKAGE_luci-i18n-transmission-ms=m
+CONFIG_PACKAGE_luci-i18n-transmission-no=m
+CONFIG_PACKAGE_luci-i18n-transmission-pl=m
+CONFIG_PACKAGE_luci-i18n-transmission-pt=m
+CONFIG_PACKAGE_luci-i18n-transmission-pt-br=m
+CONFIG_PACKAGE_luci-i18n-transmission-ro=m
+CONFIG_PACKAGE_luci-i18n-transmission-ru=m
+CONFIG_PACKAGE_luci-i18n-transmission-sk=m
+CONFIG_PACKAGE_luci-i18n-transmission-sv=m
+CONFIG_PACKAGE_luci-i18n-transmission-tr=m
+CONFIG_PACKAGE_luci-i18n-transmission-uk=m
+CONFIG_PACKAGE_luci-i18n-transmission-vi=m
+CONFIG_PACKAGE_luci-i18n-transmission-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-transmission-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-upnp-ca=m
+CONFIG_PACKAGE_luci-i18n-upnp-cs=m
+CONFIG_PACKAGE_luci-i18n-upnp-de=m
+CONFIG_PACKAGE_luci-i18n-upnp-el=m
+CONFIG_PACKAGE_luci-i18n-upnp-en=m
+CONFIG_PACKAGE_luci-i18n-upnp-es=m
+CONFIG_PACKAGE_luci-i18n-upnp-fr=m
+CONFIG_PACKAGE_luci-i18n-upnp-he=m
+CONFIG_PACKAGE_luci-i18n-upnp-hu=m
+CONFIG_PACKAGE_luci-i18n-upnp-it=m
+CONFIG_PACKAGE_luci-i18n-upnp-ja=m
+CONFIG_PACKAGE_luci-i18n-upnp-ms=m
+CONFIG_PACKAGE_luci-i18n-upnp-no=m
+CONFIG_PACKAGE_luci-i18n-upnp-pl=m
+CONFIG_PACKAGE_luci-i18n-upnp-pt=m
+CONFIG_PACKAGE_luci-i18n-upnp-pt-br=m
+CONFIG_PACKAGE_luci-i18n-upnp-ro=m
+CONFIG_PACKAGE_luci-i18n-upnp-ru=m
+CONFIG_PACKAGE_luci-i18n-upnp-sk=m
+CONFIG_PACKAGE_luci-i18n-upnp-sv=m
+CONFIG_PACKAGE_luci-i18n-upnp-tr=m
+CONFIG_PACKAGE_luci-i18n-upnp-uk=m
+CONFIG_PACKAGE_luci-i18n-upnp-vi=m
+CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-upnp-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-vnstat-ca=m
+CONFIG_PACKAGE_luci-i18n-vnstat-cs=m
+CONFIG_PACKAGE_luci-i18n-vnstat-de=m
+CONFIG_PACKAGE_luci-i18n-vnstat-el=m
+CONFIG_PACKAGE_luci-i18n-vnstat-en=m
+CONFIG_PACKAGE_luci-i18n-vnstat-es=m
+CONFIG_PACKAGE_luci-i18n-vnstat-fr=m
+CONFIG_PACKAGE_luci-i18n-vnstat-he=m
+CONFIG_PACKAGE_luci-i18n-vnstat-hu=m
+CONFIG_PACKAGE_luci-i18n-vnstat-it=m
+CONFIG_PACKAGE_luci-i18n-vnstat-ja=m
+CONFIG_PACKAGE_luci-i18n-vnstat-ms=m
+CONFIG_PACKAGE_luci-i18n-vnstat-no=m
+CONFIG_PACKAGE_luci-i18n-vnstat-pl=m
+CONFIG_PACKAGE_luci-i18n-vnstat-pt=m
+CONFIG_PACKAGE_luci-i18n-vnstat-pt-br=m
+CONFIG_PACKAGE_luci-i18n-vnstat-ro=m
+CONFIG_PACKAGE_luci-i18n-vnstat-ru=m
+CONFIG_PACKAGE_luci-i18n-vnstat-sk=m
+CONFIG_PACKAGE_luci-i18n-vnstat-sv=m
+CONFIG_PACKAGE_luci-i18n-vnstat-tr=m
+CONFIG_PACKAGE_luci-i18n-vnstat-uk=m
+CONFIG_PACKAGE_luci-i18n-vnstat-vi=m
+CONFIG_PACKAGE_luci-i18n-vnstat-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-vnstat-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-voice-core-ca=m
+CONFIG_PACKAGE_luci-i18n-voice-core-cs=m
+CONFIG_PACKAGE_luci-i18n-voice-core-de=m
+CONFIG_PACKAGE_luci-i18n-voice-core-el=m
+CONFIG_PACKAGE_luci-i18n-voice-core-en=m
+CONFIG_PACKAGE_luci-i18n-voice-core-es=m
+CONFIG_PACKAGE_luci-i18n-voice-core-fr=m
+CONFIG_PACKAGE_luci-i18n-voice-core-he=m
+CONFIG_PACKAGE_luci-i18n-voice-core-hu=m
+CONFIG_PACKAGE_luci-i18n-voice-core-it=m
+CONFIG_PACKAGE_luci-i18n-voice-core-ja=m
+CONFIG_PACKAGE_luci-i18n-voice-core-ms=m
+CONFIG_PACKAGE_luci-i18n-voice-core-no=m
+CONFIG_PACKAGE_luci-i18n-voice-core-pl=m
+CONFIG_PACKAGE_luci-i18n-voice-core-pt=m
+CONFIG_PACKAGE_luci-i18n-voice-core-pt-br=m
+CONFIG_PACKAGE_luci-i18n-voice-core-ro=m
+CONFIG_PACKAGE_luci-i18n-voice-core-ru=m
+CONFIG_PACKAGE_luci-i18n-voice-core-sk=m
+CONFIG_PACKAGE_luci-i18n-voice-core-sv=m
+CONFIG_PACKAGE_luci-i18n-voice-core-tr=m
+CONFIG_PACKAGE_luci-i18n-voice-core-uk=m
+CONFIG_PACKAGE_luci-i18n-voice-core-vi=m
+CONFIG_PACKAGE_luci-i18n-voice-core-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-voice-core-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-watchcat-ca=m
+CONFIG_PACKAGE_luci-i18n-watchcat-cs=m
+CONFIG_PACKAGE_luci-i18n-watchcat-de=m
+CONFIG_PACKAGE_luci-i18n-watchcat-el=m
+CONFIG_PACKAGE_luci-i18n-watchcat-en=m
+CONFIG_PACKAGE_luci-i18n-watchcat-es=m
+CONFIG_PACKAGE_luci-i18n-watchcat-fr=m
+CONFIG_PACKAGE_luci-i18n-watchcat-he=m
+CONFIG_PACKAGE_luci-i18n-watchcat-hu=m
+CONFIG_PACKAGE_luci-i18n-watchcat-it=m
+CONFIG_PACKAGE_luci-i18n-watchcat-ja=m
+CONFIG_PACKAGE_luci-i18n-watchcat-ms=m
+CONFIG_PACKAGE_luci-i18n-watchcat-no=m
+CONFIG_PACKAGE_luci-i18n-watchcat-pl=m
+CONFIG_PACKAGE_luci-i18n-watchcat-pt=m
+CONFIG_PACKAGE_luci-i18n-watchcat-pt-br=m
+CONFIG_PACKAGE_luci-i18n-watchcat-ro=m
+CONFIG_PACKAGE_luci-i18n-watchcat-ru=m
+CONFIG_PACKAGE_luci-i18n-watchcat-sk=m
+CONFIG_PACKAGE_luci-i18n-watchcat-sv=m
+CONFIG_PACKAGE_luci-i18n-watchcat-tr=m
+CONFIG_PACKAGE_luci-i18n-watchcat-uk=m
+CONFIG_PACKAGE_luci-i18n-watchcat-vi=m
+CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-watchcat-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-wol-ca=m
+CONFIG_PACKAGE_luci-i18n-wol-cs=m
+CONFIG_PACKAGE_luci-i18n-wol-de=m
+CONFIG_PACKAGE_luci-i18n-wol-el=m
+CONFIG_PACKAGE_luci-i18n-wol-en=m
+CONFIG_PACKAGE_luci-i18n-wol-es=m
+CONFIG_PACKAGE_luci-i18n-wol-fr=m
+CONFIG_PACKAGE_luci-i18n-wol-he=m
+CONFIG_PACKAGE_luci-i18n-wol-hu=m
+CONFIG_PACKAGE_luci-i18n-wol-it=m
+CONFIG_PACKAGE_luci-i18n-wol-ja=m
+CONFIG_PACKAGE_luci-i18n-wol-ms=m
+CONFIG_PACKAGE_luci-i18n-wol-no=m
+CONFIG_PACKAGE_luci-i18n-wol-pl=m
+CONFIG_PACKAGE_luci-i18n-wol-pt=m
+CONFIG_PACKAGE_luci-i18n-wol-pt-br=m
+CONFIG_PACKAGE_luci-i18n-wol-ro=m
+CONFIG_PACKAGE_luci-i18n-wol-ru=m
+CONFIG_PACKAGE_luci-i18n-wol-sk=m
+CONFIG_PACKAGE_luci-i18n-wol-sv=m
+CONFIG_PACKAGE_luci-i18n-wol-tr=m
+CONFIG_PACKAGE_luci-i18n-wol-uk=m
+CONFIG_PACKAGE_luci-i18n-wol-vi=m
+CONFIG_PACKAGE_luci-i18n-wol-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-wol-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-wshaper-ca=m
+CONFIG_PACKAGE_luci-i18n-wshaper-cs=m
+CONFIG_PACKAGE_luci-i18n-wshaper-de=m
+CONFIG_PACKAGE_luci-i18n-wshaper-el=m
+CONFIG_PACKAGE_luci-i18n-wshaper-en=m
+CONFIG_PACKAGE_luci-i18n-wshaper-es=m
+CONFIG_PACKAGE_luci-i18n-wshaper-fr=m
+CONFIG_PACKAGE_luci-i18n-wshaper-he=m
+CONFIG_PACKAGE_luci-i18n-wshaper-hu=m
+CONFIG_PACKAGE_luci-i18n-wshaper-it=m
+CONFIG_PACKAGE_luci-i18n-wshaper-ja=m
+CONFIG_PACKAGE_luci-i18n-wshaper-ms=m
+CONFIG_PACKAGE_luci-i18n-wshaper-no=m
+CONFIG_PACKAGE_luci-i18n-wshaper-pl=m
+CONFIG_PACKAGE_luci-i18n-wshaper-pt=m
+CONFIG_PACKAGE_luci-i18n-wshaper-pt-br=m
+CONFIG_PACKAGE_luci-i18n-wshaper-ro=m
+CONFIG_PACKAGE_luci-i18n-wshaper-ru=m
+CONFIG_PACKAGE_luci-i18n-wshaper-sk=m
+CONFIG_PACKAGE_luci-i18n-wshaper-sv=m
+CONFIG_PACKAGE_luci-i18n-wshaper-tr=m
+CONFIG_PACKAGE_luci-i18n-wshaper-uk=m
+CONFIG_PACKAGE_luci-i18n-wshaper-vi=m
+CONFIG_PACKAGE_luci-i18n-wshaper-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-wshaper-zh-tw=m
 
 #
 # Mail
@@ -4879,8 +4907,15 @@ CONFIG_PACKAGE_imagemagick-jpeg=m
 CONFIG_PACKAGE_imagemagick-png=m
 CONFIG_PACKAGE_imagemagick-tiff=m
 CONFIG_PACKAGE_imagemagick-tools=m
-# CONFIG_PACKAGE_minidlna is not set
-# CONFIG_PACKAGE_mjpg-streamer is not set
+CONFIG_PACKAGE_minidlna=m
+CONFIG_PACKAGE_mjpg-streamer=m
+CONFIG_MJPG_STREAMER_V4L2=y
+CONFIG_MJPG_STREAMER_INPUT_FILE=y
+CONFIG_MJPG_STREAMER_INPUT_UVC=y
+CONFIG_MJPG_STREAMER_INPUT_TESTPICTURE=y
+CONFIG_MJPG_STREAMER_OUTPUT_FILE=y
+CONFIG_MJPG_STREAMER_OUTPUT_HTTP=y
+CONFIG_MJPG_STREAMER_WWW=y
 CONFIG_PACKAGE_motion=m
 CONFIG_PACKAGE_png2mono=m
 CONFIG_PACKAGE_vips=m
@@ -6295,7 +6330,7 @@ CONFIG_PACKAGE_mtd-utils-ubirsvol=m
 CONFIG_PACKAGE_mtd-utils-ubiupdatevol=m
 CONFIG_PACKAGE_mtd-utils-tests=m
 CONFIG_PACKAGE_namei=m
-# CONFIG_PACKAGE_nfc-utils is not set
+CONFIG_PACKAGE_nfc-utils=m
 CONFIG_PACKAGE_obexfs=m
 CONFIG_PACKAGE_obexftp=m
 CONFIG_PACKAGE_ocf-crypto-headers=m
