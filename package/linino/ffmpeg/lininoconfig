@@ -3748,10 +3748,10 @@ CONFIG_PACKAGE_libexslt=m
 CONFIG_PACKAGE_libfaad2=m
 # CONFIG_FAAD2_ALWAYS_USE_FLOATING_POINT is not set
 CONFIG_PACKAGE_libffi=y
-CONFIG_PACKAGE_libffmpeg-audio-dec=m
+# CONFIG_PACKAGE_libffmpeg-audio-dec is not set
 # CONFIG_PACKAGE_libffmpeg-custom is not set
 CONFIG_PACKAGE_libffmpeg-full=m
-CONFIG_PACKAGE_libffmpeg-mini=m
+# CONFIG_PACKAGE_libffmpeg-mini is not set
 CONFIG_PACKAGE_libflac=m
 # CONFIG_PACKAGE_libfreecwmp is not set
 CONFIG_PACKAGE_libfreetype=y
