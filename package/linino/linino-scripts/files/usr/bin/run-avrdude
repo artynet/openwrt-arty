@@ -8,7 +8,7 @@ case $boardname in
 		if [ -d /sys/class/gpio15 ]
 		then
 			GPIO=gpio15
-		else 
+		else
 			GPIO=gpio14
 		fi
 		OE_LEVEL=0
@@ -22,26 +22,17 @@ esac
 OE_PATH=/sys/class/gpio/$GPIO/value
 OE_VALUE=$(cat $OE_PATH)
 
-# remove SPI driver to avoid conflicts while AVR programming
+# unbind spi_gpio driver
+echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind
+
+# remove SPI driver to avoid conflicts while AVR programming (killing console)
 TTY_PLAIN=$(lsmod | grep spi_tty_plain)
 if [ "x$TTY_PLAIN" != "x" ]; then
-	rmmod spi-tty-plain
+	kill -9 `ps w | grep ash | grep login | tr -s ' '| cut -d" " -f2`
 	if [ "$?" != "0" ]; then
 		exit
 	fi
 fi
-
-GPIO_DS=$(lsmod | grep spi_gpio)
-if [ "x$GPIO_DS" != "x" ]; then
-	rmmod spi-gpio
-	if [ "$?" != "0" ]; then
-		exit
-	fi
-fi
-
-# unbind spi_gpio driver
-# the new kernel takes care of it so we can comment it out
-echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/unbind
 
 # program AVR
 echo $OE_LEVEL > $OE_PATH
@@ -58,15 +49,4 @@ else
 fi
 
 # bind spi_gpio driver
-# the new kernel takes care of it so we can comment it out
 echo spi_gpio.1 > /sys/bus/platform/drivers/spi_gpio/bind
-
-# Restore previous status
-echo $OE_VALUE > $OE_PATH
-if [ "x$GPIO_DS" != "x" ]; then
-	insmod spi-gpio
-fi
-
-if [ "x$TTY_PLAIN" != "x" ]; then
-	insmod spi-tty-plain
-fi
