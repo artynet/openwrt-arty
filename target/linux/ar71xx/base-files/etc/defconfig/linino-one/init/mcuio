@@ -26,7 +26,7 @@ start() {
 	# Set serial port baudrate
 	stty $BAUDRATE -echo raw < /dev/ttyATH0
 	# Start ldattach to set line discipline
-	ldattach -s $BAUDRATE 29 /dev/ttyATH0
+	ldattach -d -s $BAUDRATE 29 /dev/ttyATH0 &
 }
 
 stop() {
