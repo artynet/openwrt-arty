@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ciao
 PKG_REVISION:=6a313088ed14b932f11488d9ee114663f5afb6b2
 PKG_VERSION:=0.0.3
-PKG_RELEASE:=1
+PKG_RELEASE:=4
 
 PKG_SOURCE_PROTO:=git
 
@@ -27,7 +27,7 @@ define Package/ciao
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=The new Ciao CPU-MCU Bridge
-  DEPENDS:=+python-base +python-light +python-paho-mqtt +python-xml +python-openssl +python-pyserial +python-codecs
+  DEPENDS:=+python-base +python-light +python-paho-mqtt +python-xml +python-openssl +python-pyserial +python-codecs +python-logging
 endef
 
 define Package/ciao/description
@@ -57,14 +57,8 @@ define Package/ciao/install
 	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ciao/conf/*.conf $(1)/usr/lib/python2.7/ciao/conf
 
-	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/connectors/xmpp
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ciao/connectors/xmpp/* $(1)/usr/lib/python2.7/ciao/connectors/xmpp
-
-	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/connectors/mqtt
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ciao/connectors/mqtt/* $(1)/usr/lib/python2.7/ciao/connectors/mqtt
-
-	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/connectors/phant
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ciao/connectors/phant/* $(1)/usr/lib/python2.7/ciao/connectors/phant
+	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/connectors
+	$(CP) -r $(PKG_BUILD_DIR)/ciao/connectors/* $(1)/usr/lib/python2.7/ciao/connectors
 
 	# Installing run-ciao script in /usr/bin
 	$(INSTALL_DIR) $(1)/usr/bin
