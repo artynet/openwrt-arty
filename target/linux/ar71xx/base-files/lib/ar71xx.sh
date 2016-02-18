@@ -943,7 +943,7 @@ ar71xx_board_detect() {
 	*"HiWiFi HC6361")
 		name="hiwifi-hc6361"
 		;;
-	*"Linino Chiwawa")
+	*"Arduino Chiwawa")
 		name="linino-chiwawa"
 		;;
 	*"Linino Freedog")
@@ -952,7 +952,7 @@ ar71xx_board_detect() {
 	*"Linino One")
 		name="linino-one"
 		;;
-	*"Linino Lei")
+	*"Arduino Lei")
 		name="linino-lei"
 		;;
 	*"Arduino Tian")
