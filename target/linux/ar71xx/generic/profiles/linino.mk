@@ -119,7 +119,7 @@ $(eval $(call Profile,LININO_FREEDOG))
 # Linino Lei
 
 define Profile/LININO_LEI
-	NAME:=Linino Lei
+	NAME:=Arduino Lei
 	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
@@ -133,7 +133,7 @@ $(eval $(call Profile,LININO_LEI))
 # Linino Tian
 
 define Profile/LININO_TIAN
-	NAME:=Linino Tian
+	NAME:=Arduino Tian
 	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
@@ -147,7 +147,7 @@ $(eval $(call Profile,LININO_TIAN))
 # Linino Chiwawa
 
 define Profile/LININO_CHIWAWA
-        NAME:=Linino Chiwawa
+        NAME:=Arduino Chiwawa
         PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
