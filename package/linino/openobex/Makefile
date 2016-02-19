@@ -18,7 +18,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-Source
 #PKG_SOURCE_URL:=git://gitorious.org/openobex/mainline.git
 #PKG_SOURCE_VERSION:=2e1c0fc5a8f5e41886141a6b402d00db735ccf49
 
-PKG_INSTALL:=1
+# PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -28,7 +28,7 @@ define Package/openobex
   SECTION:=utils
   DEFAULT:=m
   CATEGORY:=Utilities
-  DEPENDS:=libusb-1.0 bluez-libs udev libxml2
+  DEPENDS:=+libusb-1.0 +bluez-libs +eudev +libxml2
   TITLE:=Free open source implementation of the Object Exchange (OBEX) protocol.
   URL:=https://gitorious.org/openobex
 endef
@@ -58,7 +58,7 @@ define Package/openobex/install
 	$(INSTALL_DIR) $(1)/sbin
 	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/* $(1)/sbin/
 	$(INSTALL_DIR) $(1)/lib/udev/rules.d
-	$(CP) $(PKG_INSTALL_DIR)/lib/udev/rules.d/* $(1)/lib/udev/rules.d/
+	$(CP) $(PKG_BUILD_DIR)/udev/openobex.rules $(1)/lib/udev/rules.d/60-openobex.rules
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopenobex.so* $(1)/usr/lib/
 endef
