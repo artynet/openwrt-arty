@@ -2333,6 +2333,7 @@ CONFIG_PACKAGE_ar=m
 CONFIG_PACKAGE_arm-none-eabi-gdb=m
 CONFIG_PACKAGE_autoconf=m
 CONFIG_PACKAGE_automake=m
+CONFIG_PACKAGE_avr-gdb=m
 CONFIG_PACKAGE_avr-toolchain=m
 CONFIG_PACKAGE_binutils=m
 CONFIG_PACKAGE_diffutils=m
