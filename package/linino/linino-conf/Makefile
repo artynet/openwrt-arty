@@ -92,6 +92,7 @@ define Package/linino-conf/install
 	# $(INSTALL_DATA) ./files/etc/linino/LeiSerialTerminal.hex $(1)/etc/linino/
 	# $(INSTALL_DATA) ./files/etc/linino/YunMiniSerialTerminal.hex $(1)/etc/linino/
 	$(INSTALL_DATA) ./files/etc/linino/mips-onoff-tian.hex $(1)/etc/linino/
+	# $(INSTALL_DATA) ./files/etc/linino/bathos-tian.hex $(1)/etc/linino/
 
 	# /etc/linino DIR (bathos firmware)
 	# $(INSTALL_DATA) ./files/etc/linino/bathos-one.hex $(1)/etc/linino
