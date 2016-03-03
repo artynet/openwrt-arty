@@ -6,8 +6,6 @@ STOP=11
 
 source /etc/config/mcuiocfg
 
-baudcmd="\xaa"
-
 checkmcuio () {
     if [ "x$MCUIO_ENABLED" != "xyes" ]; then
         echo "aborting mcuio init script..." > /dev/kmsg
