@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=findutils
-PKG_VERSION:=4.5.19
+PKG_VERSION:=4.6.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://alpha.gnu.org/gnu/findutils/
-PKG_MD5SUM:=1428516452520b51cf893c05500eda3d
+PKG_SOURCE_URL:=@GNU/findutils/
+PKG_MD5SUM:=9936aa8009438ce185bea2694a997fc1
 
 PKG_INSTALL:=1
 
