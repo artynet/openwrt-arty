@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=arduinoos
-PKG_VERSION:=2.0.0
-PKG_REVISION:=756e41b
+PKG_VERSION:=2.0.1
+PKG_REVISION:=166f90a
 PKG_RELEASE:=$(PKG_REVISION)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_REVISION).tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/sources
-PKG_MD5SUM:=fa59c1089c42258daf5506dc2881981f
+PKG_MD5SUM:=674ab3aae480669fdee0e185a305bef1
 PKG_BUILD_DIR:=$(BUILD_DIR)/arduinoos-$(PKG_VERSION)-$(PKG_REVISION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -40,10 +40,11 @@ define Package/arduinoos/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller/linino
 
 	$(CP) -R $(PKG_BUILD_DIR)/osjs $(1)/
 
-	# $(CP) -R $(PKG_BUILD_DIR)/lua/osjs $(1)/usr/lib/lua
+	$(CP) files/index.lua $(1)/usr/lib/lua/luci/controller/linino
 	$(CP) $(PKG_BUILD_DIR)/lua/osjs.lua $(1)/usr/lib/lua
 
 	$(INSTALL_BIN) files/osjs-init.sh $(1)/etc/init.d/osjs-init
