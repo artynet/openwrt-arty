@@ -14,7 +14,7 @@ PKG_RELEASE:=$(PKG_REVISION)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_REVISION).tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/sources
-# PKG_MD5SUM:=ea1d2a7bec889e6f75634afebb1e1c31
+PKG_MD5SUM:=674ab3aae480669fdee0e185a305bef1
 PKG_BUILD_DIR:=$(BUILD_DIR)/arduinoos-$(PKG_VERSION)-$(PKG_REVISION)
 
 include $(INCLUDE_DIR)/package.mk
