@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.5
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -72,7 +72,8 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/etc/init.d/defconfig $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/defconfig-init $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/console $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/etc/init.d/mcuio-shields-register $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/etc/init.d/generate_new_gpg_key $(1)/etc/init.d
+	# $(INSTALL_BIN) ./files/etc/init.d/mcuio-shields-register $(1)/etc/init.d
 endef
 
 $(eval $(call BuildPackage,linino-scripts))
