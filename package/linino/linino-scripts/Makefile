@@ -54,6 +54,7 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/tst $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/tsto $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/lininoio $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/lingpio $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/detect-console $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/wifi-refresh $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/flash-samd21 $(1)/usr/bin
