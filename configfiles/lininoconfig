@@ -290,7 +290,7 @@ CONFIG_TARGET_ROOTFS_INCLUDE_FIT=y
 #
 # CONFIG_ALL_KMODS is not set
 # CONFIG_ALL is not set
-# CONFIG_SIGNED_PACKAGES is not set
+CONFIG_SIGNED_PACKAGES=y
 
 #
 # General build options
@@ -2235,7 +2235,7 @@ CONFIG_UDEV_EXTRA_rule_generator=y
 CONFIG_UDEV_EXTRA_scsi_id=y
 CONFIG_UDEV_EXTRA_usb_id=y
 CONFIG_UDEV_EXTRA_v4l_id=y
-# CONFIG_PACKAGE_usign is not set
+CONFIG_PACKAGE_usign=y
 CONFIG_PACKAGE_wireless-tools=y
 # CONFIG_PACKAGE_zram-swap is not set
 
