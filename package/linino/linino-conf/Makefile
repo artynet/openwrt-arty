@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-conf
 PKG_VERSION:=1.0
-PKG_RELEASE:=7
+PKG_RELEASE:=8
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -92,6 +92,7 @@ define Package/linino-conf/install
 	# $(INSTALL_DATA) ./files/etc/linino/LeiSerialTerminal.hex $(1)/etc/linino/
 	# $(INSTALL_DATA) ./files/etc/linino/YunMiniSerialTerminal.hex $(1)/etc/linino/
 	$(INSTALL_DATA) ./files/etc/linino/mips-onoff-tian.hex $(1)/etc/linino/
+	$(INSTALL_DATA) ./files/etc/linino/bathos-tian.bin $(1)/etc/linino/
 	# $(INSTALL_DATA) ./files/etc/linino/bathos-tian.hex $(1)/etc/linino/
 
 	# /etc/linino DIR (bathos firmware)

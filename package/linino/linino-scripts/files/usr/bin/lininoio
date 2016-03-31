@@ -19,6 +19,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+# v02 : bugfixing to properly disable lininoIO
+#
 # v01 : rewriting the script just for Arduino tian
 #
 
@@ -212,7 +214,7 @@ then
 
 	case $boardname in
 			'tian')
-					FILE="mips-on-off.hex"
+					FILE="mips-onoff-tian.hex"
 					PROGRAMMER="/usr/bin/flash-samd21"
 					BATHOS=bathos-$boardname.bin
 				;;
@@ -306,7 +308,9 @@ then
 
 					case $yn in
 						[Yy]*)
+							# flashing baThos to samd21
 							$PROGRAMMER /etc/linino/$BATHOS
+							# enabling mcuio service
 							/etc/init.d/mcuio enable &>/dev/null
 							# setting the enable variable to yes
 							sed -i -e s/no/yes/g /etc/config/mcuiocfg
@@ -368,11 +372,14 @@ then
 
 					case $yn in
 						[Yy]*)
-
+							# disabling mcuio service
 							/etc/init.d/mcuio disable &>/dev/null
-							$PROGRAMMER /etc/linino/$FILE
 							# setting the enable variable to yes
 							sed -i -e s/yes/no/g /etc/config/mcuiocfg
+							# resetting the mcu
+							# mcu-reset
+							# waking-up the mips cpu
+							$PROGRAMMER /etc/linino/$FILE
 
 							# echo "Rebooting..."
 							# reboot && exit
