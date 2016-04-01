@@ -63,7 +63,7 @@ sshcheck () {
 
 statusio () {
 
-	if [ -d /sys/class/gpio/gpiochip100 ] && `cat /etc/inittab | grep -qs SPI0`
+	if [ -d /sys/class/gpio/gpiochip100 ]
 	then
 		echo ""
 		echo "STATUS : ENABLED"
@@ -177,7 +177,7 @@ reboot_io () {
 
 mcuio_ok () {
 
-	if [ -d /sys/class/gpio/gpiochip100 ] && `cat /etc/inittab | grep -qs SPI0`
+	if [ -d /sys/class/gpio/gpiochip100 ]
 	then
 
 		echo ""
@@ -192,7 +192,7 @@ mcuio_ok () {
 
 mcuio_ko () {
 
-	if [ ! -d /sys/class/gpio/gpiochip100 ] && `cat /etc/inittab | grep -qs ATH0`
+	if [ ! -d /sys/class/gpio/gpiochip100 ]
 	then
 
 		echo ""
