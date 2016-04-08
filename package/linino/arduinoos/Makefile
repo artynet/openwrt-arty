@@ -82,7 +82,7 @@ then
 	rm -rf /osjs
 
 	# Restarting uHttp server
-	/etc/init.d/uhttpd restart
+	# /etc/init.d/uhttpd restart
 fi
 exit 0
 endef
