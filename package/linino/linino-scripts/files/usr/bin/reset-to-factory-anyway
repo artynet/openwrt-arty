@@ -7,4 +7,5 @@ blink-start 100
 . /sbin/firstboot
 
 reset_has_fo=true
+rm /root/.osjs/settings.json
 jffs2reset -y && reboot
