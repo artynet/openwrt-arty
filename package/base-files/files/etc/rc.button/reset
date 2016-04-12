@@ -19,6 +19,7 @@ then
 	echo "FACTORY RESET" > /dev/console
 	logger "resetting to factory defaults"
 	sleep 2
+	rm /root/.osjs/settings.json
 	jffs2reset -y && reboot &
 	exit 0
 fi
