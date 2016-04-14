@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=monkey
-PKG_VERSION:=1.6.6
-PKG_RELEASE:=3
+PKG_VERSION:=1.6.8
+PKG_RELEASE:=4
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://monkey-project.com/releases/1.6/
-PKG_MD5SUM:=03966619b24c999803806b345fe1916a
+PKG_MD5SUM:=aa9b95e16023a7fc062f00a197da059a
 
 PKG_INSTALL:=1
 
@@ -31,62 +31,63 @@ define Package/monkey
 endef
 
 CMAKE_OPTIONS = \
-        -DCMAKE_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX="" \
         -DWITH_SYSTEM_MALLOC=ON \
         -DWITH_BACKTRACE=OFF \
-        -DWITH_UCLIB=1
+        -DWITH_UCLIB=1 \
+		-DINSTALL_WEBROOTDIR=/www/monkey
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
 			$(1)/usr/include \
 			$(1)/usr/lib
 					
-	$(CP) -R $(PKG_INSTALL_DIR)/usr/include/monkey $(1)/usr/include/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/usr/lib/
+	$(CP) -R $(PKG_INSTALL_DIR)/include/monkey $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/lib/*.so $(1)/usr/lib/
 endef
 
 define Package/monkey/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/{monkey,mk_passwd} $(1)/usr/sbin/
+	$(CP) $(PKG_INSTALL_DIR)/sbin/{monkey,mk_passwd} $(1)/usr/sbin/
 	
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/lib/*.so $(1)/usr/lib
 	
-	$(INSTALL_DIR) $(1)/usr/var/www
-	$(CP) -R $(PKG_INSTALL_DIR)/usr/var/www/monkey $(1)/usr/var/www
+	$(INSTALL_DIR) $(1)/www/monkey
+	$(CP) -R $(PKG_INSTALL_DIR)/www/monkey/* $(1)/www/monkey
 	
-	$(INSTALL_DIR) $(1)/usr/etc
-	$(CP) -R $(PKG_INSTALL_DIR)/usr/etc/monkey $(1)/usr/etc
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) -R $(PKG_INSTALL_DIR)/etc/monkey $(1)/etc
 endef
 
 define Package/monkey/postinst
 #!/bin/sh
-if [ -e $${IPKG_INSTROOT}/usr/etc/monkey/monkey.conf ]
+if [ -e $${IPKG_INSTROOT}/etc/monkey/monkey.conf ]
 then
-	sed -i -e s/www-data/root/g $${IPKG_INSTROOT}/usr/etc/monkey/monkey.conf
+	sed -i -e s/www-data/root/g $${IPKG_INSTROOT}/etc/monkey/monkey.conf
 fi
 
-if [ ! -d $${IPKG_INSTROOT}/usr/var/run ]
+if [ ! -d $${IPKG_INSTROOT}/var/run ]
 then
-    mkdir -p $${IPKG_INSTROOT}/usr/var/run
+    mkdir -p $${IPKG_INSTROOT}/var/run
 fi
 
-if [ ! -d $${IPKG_INSTROOT}/usr/var/log ]
+if [ ! -d $${IPKG_INSTROOT}/var/log ]
 then
-    mkdir -p $${IPKG_INSTROOT}/usr/var/log
+    mkdir -p $${IPKG_INSTROOT}/var/log
 fi
 endef
 
 define Package/monkey/postrm
 #!/bin/sh
-if [ -d $${IPKG_INSTROOT}/usr/etc/monkey ]
+if [ -d $${IPKG_INSTROOT}/etc/monkey ]
 then
-    rm -rf $${IPKG_INSTROOT}/usr/etc/monkey
+    rm -rf $${IPKG_INSTROOT}/etc/monkey
 fi
 
-if [ -d $${IPKG_INSTROOT}/usr/var/www/monkey ]
+if [ -d $${IPKG_INSTROOT}/var/www/monkey ]
 then
-    rm -rf $${IPKG_INSTROOT}/usr/var/www/monkey
+    rm -rf $${IPKG_INSTROOT}/var/www/monkey
 fi
 
 exit 0
