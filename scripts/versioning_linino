@@ -13,7 +13,7 @@ writeinfo () {
 	builddate=`date +"%Y-%m-%d"`
 	#gittag=`git describe --tags --abbrev=0`
 	
-	echo "DISTRIB_ID="\""LininoBLE"\""" >> $LININOFILE
+	echo "DISTRIB_ID="\""LininoIO"\""" >> $LININOFILE
 	# echo "DISTRIB_RELEASE="\""$branchname"\""" >> $LININOFILE
 	echo "DISTRIB_RELEASE="\""avr"\""" >> $LININOFILE
 	echo "DISTRIB_REVISION="\""$gitcommit"\""" >> $LININOFILE
