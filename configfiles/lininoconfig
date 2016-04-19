@@ -413,9 +413,9 @@ CONFIG_BUILD_SUFFIX=""
 CONFIG_TARGET_ROOTFS_DIR=""
 # CONFIG_CCACHE is not set
 CONFIG_EXTERNAL_KERNEL_TREE=""
-CONFIG_KERNEL_GIT_CLONE_URI="http://github.com/linino/linux.git"
+CONFIG_KERNEL_GIT_CLONE_URI="https://github.com/artynet/linux-3.18.11.git"
 CONFIG_KERNEL_GIT_LOCAL_REPOSITORY=""
-CONFIG_KERNEL_GIT_BRANCH="for-15.05-rc2"
+CONFIG_KERNEL_GIT_BRANCH="nfc-uart"
 # CONFIG_BUILD_LOG is not set
 # CONFIG_SRC_TREE_OVERRIDE is not set
 CONFIG_EXTRA_OPTIMIZATION="-fno-caller-saves"
@@ -490,7 +490,6 @@ CONFIG_TARGET_INIT_SUPPRESS_STDERR=y
 CONFIG_VERSIONOPT=y
 CONFIG_VERSION_DIST="LininoIO"
 CONFIG_VERSION_NICK="chaos_calmer"
-CONFIG_VERSION_NUMBER="2.0"
 CONFIG_VERSION_REPO="http://download.linino.org/linino_distro/linino-2.0/avr/latest/packages"
 CONFIG_VERSION_MANUFACTURER="Linino.org"
 CONFIG_VERSION_PRODUCT=""
@@ -2573,6 +2572,15 @@ CONFIG_PACKAGE_kmod-lib-raid6=m
 CONFIG_PACKAGE_kmod-lib-textsearch=m
 CONFIG_PACKAGE_kmod-lib-xor=m
 CONFIG_PACKAGE_kmod-lib-zlib=m
+
+#
+# NFC
+#
+CONFIG_PACKAGE_kmod-nfc=y
+CONFIG_PACKAGE_kmod-nfc-digital=y
+CONFIG_PACKAGE_kmod-nfc-digital-uart=y
+CONFIG_PACKAGE_kmod-nfcst=y
+CONFIG_PACKAGE_kmod-nfcst-uart=y
 
 #
 # Native Language Support
@@ -5676,26 +5684,9 @@ CONFIG_PACKAGE_6to4=m
 CONFIG_PACKAGE_adblock=m
 CONFIG_PACKAGE_ahcpd=m
 # CONFIG_PACKAGE_aiccu is not set
-CONFIG_PACKAGE_ajtcl=m
-CONFIG_PACKAGE_ajtcl-alljoynjs=m
-CONFIG_PACKAGE_ajtcl-alljoynjs-samples=m
-CONFIG_PACKAGE_ajtcl-samples=m
-CONFIG_PACKAGE_ajtcl-services=m
+# CONFIG_PACKAGE_ajtcl is not set
 # CONFIG_PACKAGE_alfred is not set
-CONFIG_PACKAGE_alljoyn=m
-CONFIG_PACKAGE_alljoyn-about=m
-CONFIG_PACKAGE_alljoyn-c=m
-CONFIG_PACKAGE_alljoyn-config=m
-CONFIG_PACKAGE_alljoyn-config-samples=m
-CONFIG_PACKAGE_alljoyn-controlpanel=m
-CONFIG_PACKAGE_alljoyn-controlpanel-samples=m
-CONFIG_PACKAGE_alljoyn-non-gw-config=m
-CONFIG_PACKAGE_alljoyn-notification=m
-CONFIG_PACKAGE_alljoyn-notification-samples=m
-CONFIG_PACKAGE_alljoyn-onboarding=m
-CONFIG_PACKAGE_alljoyn-sample_apps=m
-CONFIG_PACKAGE_alljoyn-samples=m
-CONFIG_PACKAGE_alljoyn-services_common=m
+# CONFIG_PACKAGE_alljoyn is not set
 CONFIG_PACKAGE_apcupsd=m
 # CONFIG_PACKAGE_apcupsd-cgi is not set
 # CONFIG_PACKAGE_apinger is not set
@@ -6683,3 +6674,4 @@ CONFIG_PACKAGE_pixman=m
 #
 # CONFIG_PACKAGE_fluxbox is not set
 # CONFIG_PACKAGE_matchbox-window-manager is not set
+CONFIG_VERSION_NUMBER="2.0"
