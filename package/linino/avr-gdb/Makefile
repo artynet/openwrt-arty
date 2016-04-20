@@ -59,14 +59,14 @@ CONFIGURE_ARGS+= \
 	--target=avr \
 	--disable-nls \
 	--disable-binutils \
-	--disable-doc
+	--disable-docs
 
 CONFIGURE_VARS+= \
 	ac_cv_search_tgetent="$(TARGET_LDFLAGS) -lncurses -lreadline"
 
 define Build/Prepare
 	/bin/tar xvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
-	$(call Build/Prepare/Patch)
+	$(call Build/Patch)
 endef
 
 define Build/Compile
@@ -75,17 +75,6 @@ define Build/Compile
 		CPPFLAGS="$(TARGET_CPPFLAGS)" \
 		MAKEINFO=true all
 endef
-
-#	MAKEINFO=true all-bfd TARGET-bfd=headers \
-#rm $(PKG_BUILD_DIR)bfd/Makefile \
-#+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-#	DESTDIR="$(PKG_INSTALL_DIR)" \
-#	CPPFLAGS="$(TARGET_CPPFLAGS)" \
-#	MAKEINFO=true configure-host \
-#+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-#	DESTDIR="$(PKG_INSTALL_DIR)" \
-#	CPPFLAGS="$(TARGET_CPPFLAGS)" \
-#	MAKEINFO=true all
 
 define Build/Install
 	$(MAKE) -C $(PKG_BUILD_DIR) \
