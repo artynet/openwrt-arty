@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=udev
 PKG_VERSION:=173
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=@KERNEL/linux/utils/kernel/hotplug/
@@ -136,6 +136,7 @@ define Package/udev/install
 			80-drivers.rules \
 			95-udev-late.rules) \
 			./files/11-media-by-label-auto-mount-alt.rules \
+			./files/10-samd.rules \
 		$(1)/lib/udev/rules.d
 
 	$(INSTALL_DIR) $(1)/etc/init.d
