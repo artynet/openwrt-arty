@@ -10,13 +10,13 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=python-nfcpy
 PKG_RELEASE:=7
 
-PKG_REVISION:=77f9521d8c044301b4c30bd6ccf320e16c109055
-PKG_VERSION:=0.12.x
+PKG_REVISION:=056fe71e0e6baa738821bc83c4e875ce8ccabdb9
+PKG_VERSION:=0.11.0
 
 PKG_SOURCE_PROTO:=git
 
 PKG_SOURCE:=nfcpy-$(PKG_VERSION)-$(PKG_REVISION).tar.gz
-PKG_SOURCE_URL:=https://github.com/artynet/nfcpy.git
+PKG_SOURCE_URL:=https://github.com/nfcpy/nfcpy.git
 PKG_SOURCE_VERSION:=$(PKG_REVISION)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
