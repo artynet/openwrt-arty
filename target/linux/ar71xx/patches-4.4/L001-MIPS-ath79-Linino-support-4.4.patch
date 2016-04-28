@@ -1,6 +1,6 @@
 --- a/arch/mips/ath79/Kconfig.openwrt	2015-12-18 19:59:10.000000000 +0100
 +++ b/arch/mips/ath79/Kconfig.openwrt	2015-12-18 23:34:12.465221405 +0100
-@@ -1540,3 +1540,94 @@
+@@ -1550,3 +1550,94 @@
  	select ATH79_DEV_WMAC
  	select ATH79_DEV_USB
  	select ATH79_NVRAM
@@ -98,7 +98,7 @@
 
 --- a/arch/mips/ath79/Makefile	2015-12-18 23:37:58.145218382 +0100
 +++ b/arch/mips/ath79/Makefile	2015-12-18 23:38:26.829217997 +0100
-@@ -200,3 +200,10 @@
+@@ -201,3 +201,10 @@
  obj-$(CONFIG_ATH79_MACH_ZCN_1523H)	+= mach-zcn-1523h.o
  obj-$(CONFIG_ATH79_MACH_CARAMBOLA2)	+= mach-carambola2.o
  obj-$(CONFIG_ATH79_MACH_NBG6716)	+= mach-nbg6716.o
@@ -112,7 +112,7 @@
 
 --- a/arch/mips/ath79/machtypes.h	2015-12-18 19:59:10.000000000 +0100
 +++ b/arch/mips/ath79/machtypes.h	2015-12-18 23:39:34.853217086 +0100
-@@ -253,6 +253,13 @@
+@@ -254,6 +254,13 @@
  	ATH79_MACH_WZR_450HP2,		/* Buffalo WZR-450HP2 */
  	ATH79_MACH_ZCN_1523H_2,		/* Zcomax ZCN-1523H-2-xx */
  	ATH79_MACH_ZCN_1523H_5,		/* Zcomax ZCN-1523H-5-xx */
