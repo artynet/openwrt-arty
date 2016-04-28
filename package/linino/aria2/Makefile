@@ -12,7 +12,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://github.com/tatsuhiro-t/aria2/releases/download/release-$(PKG_VERSION)/
-PKG_MD5SUM:=ad6eb57511a05ce823e194eb71a7e9fa
+PKG_MD5SUM:=27fceb23990d5c38c94c51d14afa8f2f
 PKG_INSTALL:=1
 
 PKG_MAINTAINER:=Imre Kaloz <kaloz@openwrt.org>
