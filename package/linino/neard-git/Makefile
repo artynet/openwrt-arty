@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neard-git
 PKG_VERSION:=0.15
-PKG_RELEASE:=5
+PKG_RELEASE:=6
 
 PKG_FIXUP:=autoreconf
 PKG_SOURCE_PROTO:=git
