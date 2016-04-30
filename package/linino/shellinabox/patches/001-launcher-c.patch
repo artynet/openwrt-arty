@@ -1,11 +1,13 @@
---- a/shellinabox/launcher.c	2016-01-12 10:39:32.885122752 +0100
-+++ b/shellinabox/launcher.c	2016-01-12 10:40:55.467676780 +0100
-@@ -638,7 +638,7 @@
-   return utmp;
- }
+--- a/shellinabox/launcher.c	2016-04-30 18:29:20.067289912 +0200
++++ b/shellinabox/launcher.c	2016-04-30 18:49:36.479015732 +0200
+@@ -85,10 +85,6 @@
+ #include <util.h>
+ #endif
  
--#if defined(HAVE_UPDWTMP) && !defined(HAVE_UPDWTMPX)
-+#if defined(HAVE_UPDWTMP) && !defined(HAVE_UPDWTMPX) && defined(HAVE_UTMPX_H)
- #define min(a,b) ({ typeof(a) _a=(a); typeof(b) _b=(b); _a < _b ? _a : _b; })
- #define updwtmpx x_updwtmpx
- 
+-#ifdef HAVE_UTMP_H
+-#include <utmp.h>
+-#endif
+-
+ #ifdef HAVE_UTMPX_H
+ #include <utmpx.h>
+ #endif
