@@ -47,14 +47,25 @@ CONFIGURE_ARGS= \
 	--shared-openssl \
 	--prefix=/usr
 
-NODEJS:=node-$(PKG_VERSION)-linux-x64.tar.gz
+CPUHOST:=$(subst x86_64-linux-gnu,x64,$(subst i686-linux-gnu,x86,$(GNU_HOST_NAME)))
+
+NODEJS:=node-$(PKG_VERSION)-linux-$(CPUHOST).tar.gz
+
+ifeq ($(CPUHOST),x64)
+	# NODEJS:=node-$(PKG_VERSION)-linux-x64.tar.gz
+	MD5SUM_NODE:=6c89bd44bc01e3806958192913cd2df1
+endif
+ifeq ($(CPUHOST),x86)
+	# NODEJS:=node-$(PKG_VERSION)-linux-x86.tar.gz
+	MD5SUM_NODE:=6c89bd44bc01e3806958192913cd2df1
+endif
 
 # Distribution URL doesn't always have the correct version
 # Using the OpenWrt mirror provides a stable version
 define Download/nodebin
   URL:=https://nodejs.org/dist/$(PKG_VERSION)/
   FILE:=$(NODEJS)
-  MD5SUM:=6c89bd44bc01e3806958192913cd2df1
+  MD5SUM:=$(MD5SUM_NODE)
 endef
 
 # Fetch latest nodejs that works
