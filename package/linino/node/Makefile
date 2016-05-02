@@ -36,14 +36,23 @@ define Package/node/description
  Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 endef
 
-NODEJS:=node-$(PKG_VERSION)-linux-x64.tar.gz
+CPUHOST:=$(subst x86_64-linux-gnu,x64,$(subst i686-linux-gnu,x86,$(GNU_HOST_NAME)))
+
+NODEJS:=node-$(PKG_VERSION)-linux-$(CPUHOST).tar.gz
+
+ifeq ($(CPUHOST),x64)
+    MD5SUM_NODE:=8893f1f5ce16c612ba2805432edc0138
+endif
+ifeq ($(CPUHOST),x86)
+    MD5SUM_NODE:=2baaa134763a6fcf4c9335d21afbcaac
+endif
 
 # Distribution URL doesn't always have the correct version
 # Using the OpenWrt/Linino mirror provides a stable version
 define Download/nodebin
   URL:=https://nodejs.org/dist/$(PKG_VERSION)/
   FILE:=$(NODEJS)
-  MD5SUM:=8893f1f5ce16c612ba2805432edc0138
+  MD5SUM:=$(MD5SUM_NODE)
 endef
 
 # Fetch latest nodejs that works
