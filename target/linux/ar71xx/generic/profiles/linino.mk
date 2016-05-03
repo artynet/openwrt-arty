@@ -134,7 +134,7 @@ $(eval $(call Profile,LININO_LEI))
 
 define Profile/LININO_TIAN
 	NAME:=Linino Tian
-	PACKAGES:=kmod-usb-core kmod-usb2 arduinos linino-scripts linino-conf
+	PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
 define Profile/LININO_TIAN/Description
