@@ -147,7 +147,7 @@ $(eval $(call Profile,LININO_TIAN))
 # Linino Chiwawa
 
 define Profile/LININO_CHIWAWA
-        NAME:=Arduino Chiwawa
+        NAME:=Arduino Industrial 101
         PACKAGES:=kmod-usb-core kmod-usb2 arduinoos linino-scripts linino-conf
 endef
 
