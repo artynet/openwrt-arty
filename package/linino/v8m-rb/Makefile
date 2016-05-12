@@ -13,6 +13,7 @@ PKG_RELEASE:=37
 
 # PKG_SOURCE_PROTO:=git
 # GIT_SOURCE:=https://github.com/paul99/v8m-rb.git
+# GYP_MD5SUM=e3ed455c825ae88549ac07e14d465e91
 
 PKG_SOURCE:=v8m-rb-dm-mipsbe-3.14.tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/pkg-src/
@@ -35,10 +36,17 @@ endef
 
 # /bin/tar zxvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
 
+define Download/gypbin
+  URL:=http://download.linino.org/sources/
+  FILE:=gyp-1501.tar.gz
+  MD5SUM:=e3ed455c825ae88549ac07e14d465e91
+endef
+
 define Build/Prepare
 	/bin/tar zxvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
 	$(call Build/Patch)
-	(cd $(PKG_BUILD_DIR) && make dependencies)
+	$(eval $(call Download,gypbin))
+	$(TAR) -xvf $(DL_DIR)/gyp-1501.tar.gz -C $(PKG_BUILD_DIR)/build
 endef
 
 define Build/InstallDev
