@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neard
 PKG_VERSION:=0.15
-PKG_RELEASE:=7
+PKG_RELEASE:=8
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/linux/network/nfc/
@@ -40,6 +40,7 @@ endef
 
 define Package/neard/conffiles
 /etc/dbus-1/system.d/org.neard.conf
+/etc/neard/main.conf
 endef
 
 define Package/python-neard
@@ -81,6 +82,9 @@ define Package/neard/install
 
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/neard-openwrt $(1)/etc/init.d
+
+	$(INSTALL_DIR) $(1)/etc/neard
+	$(INSTALL_BIN) ./files/main.conf $(1)/etc/neard
 endef
 
 define Package/python-neard/install
