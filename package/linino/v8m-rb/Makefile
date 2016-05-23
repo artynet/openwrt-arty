@@ -36,17 +36,10 @@ endef
 
 # /bin/tar zxvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
 
-define Download/gypbin
-  URL:=http://download.linino.org/sources/
-  FILE:=gyp-1501.tar.gz
-  MD5SUM:=e3ed455c825ae88549ac07e14d465e91
-endef
-
 define Build/Prepare
 	/bin/tar zxvf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
 	$(call Build/Patch)
-	$(eval $(call Download,gypbin))
-	$(TAR) -xvf $(DL_DIR)/gyp-1501.tar.gz -C $(PKG_BUILD_DIR)/build
+	(cd $(PKG_BUILD_DIR) && make dependencies)
 endef
 
 define Build/InstallDev

@@ -1,0 +1,16 @@
+--- a/src/SConscript	2016-05-10 12:44:16.000000000 +0200
++++ b/src/SConscript	2016-05-10 12:44:51.000000000 +0200
+@@ -324,12 +324,12 @@
+ liveedit-debugger.js
+ mirror-debugger.js
+ debug-debugger.js
++collection.js
+ '''.split()
+ 
+ 
+ EXPERIMENTAL_LIBRARY_FILES = '''
+ proxy.js
+-collection.js
+ '''.split()
+ 
+ 
