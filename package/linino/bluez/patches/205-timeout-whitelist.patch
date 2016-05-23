@@ -1,0 +1,32 @@
+From e6d794bc111135d7c578f12382c91acdf9e5d083 Mon Sep 17 00:00:00 2001
+From: glennrub <glennbakke@gmail.com>
+Date: Thu, 19 May 2016 12:49:41 +0200
+Subject: [PATCH] Removing timeout deincrementation in whitelist mode, and
+ falling back to the general wallclock timeout. Correcting minor language
+ error in debug print.
+
+---
+ patches/openwrt/bluetooth_6lowpand_5.30-1.patch | 13 ++++++-------
+ patches/ubuntu/bluetooth_6lowpand_5.30-1.patch  |  9 ++++-----
+ src/bluetooth_6lowpand.c                        |  5 ++---
+ 3 files changed, 12 insertions(+), 15 deletions(-)
+
+diff --git a/tools/bluetooth_6lowpand.c b/tools/bluetooth_6lowpand.c
+index 2e91f42..b232f86 100644
+--- a/tools/bluetooth_6lowpand.c
++++ b/tools/bluetooth_6lowpand.c
+@@ -554,12 +554,11 @@ static bool scan_ipsp_device(int dd, unsigned int timeout, char *dev_name, char
+
+ 		ba2str(&info->bdaddr, addr);
+ 		if (parse_ip_service(info->data, info->length, name, sizeof(name) - 1)) {
+-			DEBUG_PRINT("Find IPSP supported device %s %s\n", name, addr);
++			DEBUG_PRINT("Found IPSP supported device %s %s\n", name, addr);
+ 			memcpy(dev_name, name, sizeof(name));
+ 			memcpy(dev_addr, addr, sizeof(addr));
+ 			if (use_whitelist && (check_whitelist(addr) == false)) {
+-				sleep(1);
+-				timeout--;
++				/* Nothing to do. Check whitelist for next entry. */
+ 			} else {
+ 				scan_ret = true;
+ 				break;
