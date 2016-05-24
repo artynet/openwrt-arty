@@ -232,7 +232,7 @@ function index()
   mailbox_api.sysauth = rest_api_sysauth
   mailbox_api.sysauth_authenticator = webpanel.sysauth_authenticator
   make_entry({ "mailbox" }, call("build_bridge_mailbox_request"), nil).sysauth = rest_api_sysauth
-  
+
   --plain socket endpoint
   local plain_socket_endpoint = make_entry({ "arduino" }, call("board_plain_socket"), nil)
   plain_socket_endpoint.sysauth = rest_api_sysauth
@@ -310,7 +310,7 @@ function homepage()
   sysinfo["load"] = math.floor(l1 * 100)
   sysinfo["memtot"] = tmpmemtot
   sysinfo["memfree"] = tmpmemfree
-  
+
 
   local ctx = {
     hostname = luci.sys.hostname(),
@@ -620,7 +620,7 @@ local function build_bridge_request(command, params)
   local bridge_request = {
     command = command
   }
-  
+
   if command == "raw" then
     params = table.concat(params, "/")
     if not_nil_or_empty(params) then
@@ -822,8 +822,7 @@ function board_plain_socket()
   sock:setopt("socket", "rcvtimeo", 5)
   sock:setopt("tcp", "nodelay", 1)
 
-  sock:write(params)
-  sock:writeall("\r\n")
+  sock:write(params .. "\r\n")
 
   local response_text = sock:readall()
   sock:close()

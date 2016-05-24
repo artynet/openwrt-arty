@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=arduinoos
 PKG_VERSION:=2.0.2
-PKG_REVISION:=2
+PKG_REVISION:=3
 PKG_SRC_REVISION:=36c0e0b
 PKG_RELEASE:=$(PKG_REVISION)
 
@@ -65,7 +65,7 @@ then
 	ln -sf /www/cgi-bin/luci /osjs/dist/cgi-bin/luci
 
 	# Restarting uHttp server
-	/etc/init.d/uhttpd restart
+	# /etc/init.d/uhttpd restart
 fi
 exit 0
 endef
@@ -82,7 +82,7 @@ then
 	rm -rf /osjs
 
 	# Restarting uHttp server
-	# /etc/init.d/uhttpd restart
+	/etc/init.d/uhttpd restart
 fi
 exit 0
 endef
