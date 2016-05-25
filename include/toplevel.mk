@@ -109,6 +109,11 @@ deflinino: scripts/config/conf prepare-tmpinfo FORCE
 	@if [ -e $(TOPDIR)/configfiles/lininoconfig ]; then cp $(TOPDIR)/configfiles/lininoconfig .config; fi
 	$< --defconfig=.config Config.in
 
+defminimal: scripts/config/conf prepare-tmpinfo FORCE
+	touch .config
+	@if [ -e $(TOPDIR)/configfiles/lininominimal ]; then cp $(TOPDIR)/configfiles/lininominimal .config; fi
+	$< --defconfig=.config Config.in
+
 confdefault-y=allyes
 confdefault-m=allmod
 confdefault-n=allno
