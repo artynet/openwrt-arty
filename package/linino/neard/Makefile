@@ -19,6 +19,8 @@ PKG_LICENSE:=GPL-2.0+
 PKG_LICENSE_FILES:=COPYING
 PKG_MAINTAINER:=Nicolas Thill <nico@openwrt.org>
 
+PKG_BUILD_DEPENDS:=+libnl
+
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
@@ -28,7 +30,7 @@ include $(INCLUDE_DIR)/nls.mk
 define Package/neard
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE+= NFC daemon utilities
+  TITLE:=NFC daemon utilities
   DEPENDS:=+libc +libstdcpp +dbus +libnl +glib2
   URL:=https://01.org/linux-nfc
 endef
