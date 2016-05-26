@@ -51,7 +51,7 @@ define Package/python-neard
   DEFAULT:=m
   CATEGORY:=Languages
   SUBMENU:=Python
-  DEPENDS:=+libpthread +libc +libstdcpp +python-base +python-light +dbus-python
+  DEPENDS:=+libpthread +libc +libstdcpp +python-base +python-light +dbus-python +python-logging
   URL:=https://01.org/linux-nfc
 endef
 
