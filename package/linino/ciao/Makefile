@@ -8,9 +8,9 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ciao
-PKG_REVISION:=6a313088ed14b932f11488d9ee114663f5afb6b2
-PKG_VERSION:=0.0.3
-PKG_RELEASE:=4
+PKG_REVISION:=6fb18de3758c93ab9da2959cb6161357b918b3e0
+PKG_VERSION:=0.1.0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 
@@ -26,6 +26,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/ciao
   SECTION:=utils
   CATEGORY:=Utilities
+  SUBMENU:=Ciao
   TITLE:=The new Ciao CPU-MCU Bridge
   DEPENDS:=+python-base +python-light +python-paho-mqtt +python-xml +python-openssl +python-pyserial +python-codecs +python-logging
 endef
@@ -63,10 +64,15 @@ define Package/ciao/install
 	# Installing run-ciao script in /usr/bin
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) ./files/run-ciao $(1)/usr/bin
+	$(INSTALL_BIN) ./files/ciao-daemon $(1)/usr/bin
+
+	# Installing "ciao" service
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/ciao $(1)/etc/init.d
 
 	# Installing "sleekxmpp" python module
-	$(INSTALL_DIR) $(1)/usr/lib/python2.7
-	$(CP) -R $(PKG_BUILD_DIR)/sleekxmpp $(1)/usr/lib/python2.7
+	# $(INSTALL_DIR) $(1)/usr/lib/python2.7
+	# $(CP) -R $(PKG_BUILD_DIR)/sleekxmpp $(1)/usr/lib/python2.7
 
 	# Installing ciaotools.py
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ciaotools.py $(1)/usr/lib/python2.7
@@ -80,9 +86,23 @@ then
 	sed -i '/kernel.printk/d' /etc/sysctl.conf
 	echo "kernel.printk = 3 4 1 3" >> /etc/sysctl.conf
 	/sbin/sysctl -p 2>&1 /dev/null
+
+	# starting service
+	/etc/init.d/ciao start
+fi
+
+if [ -e /usr/lib/python2.7/asyncore.py ]
+then
+	sed -i -e s/512/8192/g /usr/lib/python2.7/asyncore.py
 fi
 endef
 
+define Package/ciao/prerm
+# check if we are on a real system
+#!/bin/sh
+/etc/init.d/ciao stop
+/etc/init.d/ciao disable
+endef
 
 define Package/ciao/postrm
 #!/bin/sh
