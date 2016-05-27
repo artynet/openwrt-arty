@@ -17,7 +17,16 @@ stop() {
     PID=`/usr/bin/pgrep -f "python -u ciao.py"`
     if [ "x$PID" != "x" ]; then
         /bin/kill -9 $PID
+        echo "kill bridge"
+    else
+        echo "no bridge to kill"
     fi
 
-	killall ciao-daemon
+    PID=`/usr/bin/pgrep -f "ciao-daemon"`
+    if [ "x$PID" != "x" ]; then
+        /bin/kill -9 $PID
+        echo "kill daemon"
+    else
+        echo "no daemon to kill"
+    fi
 }
