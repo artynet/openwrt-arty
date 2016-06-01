@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neard-git
 PKG_VERSION:=0.15
-PKG_RELEASE:=6
+PKG_RELEASE:=7
 
 PKG_FIXUP:=autoreconf
 PKG_SOURCE_PROTO:=git
@@ -81,6 +81,9 @@ endef
 define Package/neard-git/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/nfc/neard $(1)/usr/bin
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/neard-openwrt $(1)/etc/init.d
 
 	$(INSTALL_DIR) $(1)/etc/dbus-1/system.d
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/etc/dbus-1/system.d/org.neard.conf $(1)/etc/dbus-1/system.d
