@@ -10,16 +10,14 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ciao
 PKG_REVISION:=e0a169cd87006f8a265b337cb66362b07566f7d7
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 PKG_SOURCE_PROTO:=git
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_REVISION).tar.gz
 PKG_SOURCE_URL:=https://github.com/arduino-org/Ciao.git
 PKG_SOURCE_VERSION:=$(PKG_REVISION)
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_REVISION)
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_REVISION)
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -35,16 +33,9 @@ define Package/ciao/description
  The new Ciao Bridge lets linux and arduino communicate
 endef
 
-define Download/sleekxmpp
-	URL:=http://download.linino.org/sources
-	FILE:=sleekxmpp.tar.gz
-	MD5SUM:=9a49f33ce532f92c58e569342b951e65
-endef
-
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(eval $(call Download,sleekxmpp))
-	$(TAR) -xvf $(DL_DIR)/sleekxmpp.tar.gz -C $(PKG_BUILD_DIR)
+	find $(PKG_BUILD_DIR)/ciao/connectors -name "*.py" -exec chmod +x {} \;
 endef
 
 define Build/Compile
@@ -53,7 +44,7 @@ endef
 
 define Package/ciao/install
 	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ciao/*.py $(1)/usr/lib/python2.7/ciao
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ciao/*.py $(1)/usr/lib/python2.7/ciao
 	
 	$(INSTALL_DIR) $(1)/usr/lib/python2.7/ciao/conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ciao/conf/*.conf $(1)/usr/lib/python2.7/ciao/conf
@@ -70,12 +61,8 @@ define Package/ciao/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/ciao $(1)/etc/init.d
 
-	# Installing "sleekxmpp" python module
-	# $(INSTALL_DIR) $(1)/usr/lib/python2.7
-	# $(CP) -R $(PKG_BUILD_DIR)/sleekxmpp $(1)/usr/lib/python2.7
-
 	# Installing ciaotools.py
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/ciaotools.py $(1)/usr/lib/python2.7
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/ciaotools.py $(1)/usr/lib/python2.7
 endef
 
 define Package/ciao/postinst
