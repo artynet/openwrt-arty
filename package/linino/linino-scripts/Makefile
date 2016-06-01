@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.5
-PKG_RELEASE:=3
+PKG_RELEASE:=4
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -62,6 +62,7 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/change-bootloader $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/overlay-only $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/wifi-reload $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/update-all $(1)/usr/bin
 
 	$(INSTALL_BIN) ./files/etc/init.d/rename-wifi-if-access-point $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/delete_uhttpd_cert $(1)/etc/init.d
