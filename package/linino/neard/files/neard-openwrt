@@ -16,24 +16,16 @@ DAEMON=/usr/bin/$NAME
 
 start () {
     echo -n "Starting $NAME: "
-    start-stop-daemon -S -q -p /var/run/${NAME}.pid -x $DAEMON -- -d '*'
+    service_start $DAEMON
     echo "OK"
 }
 
 stop () {
     echo -n "Stopping $NAME: "
-    start-stop-daemon -K -q -p /var/run/${NAME}.pid
+    service_stop $DAEMON
     echo "OK"
 }
 
-restart () {
-    $0 stop
-    sleep 1
-    $0 start
-}
-
 reload () {
-    $0 stop
-    sleep 1
-    $0 start
+    service_reload $DAEMON
 }
