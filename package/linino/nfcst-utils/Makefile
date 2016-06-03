@@ -9,10 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nfcst-utils
 PKG_VERSION:=1.0.0
-PKG_RELEASE:=2
-
-# PKG_FILE:="$(STAGING_DIR)/pkginfo/libc.provides"
-# PKG_CAT=`cat $(PKG_FILE) | grep libc.so.6`
+PKG_RELEASE:=3
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -45,7 +42,7 @@ define Package/nfcst-utils/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/stnfcwake_test $(1)/usr/bin/
 
 	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/stnfcd-openwrt $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/stnfcd-openwrt $(1)/etc/init.d/stnfcd-openwrt
 endef
 
 $(eval $(call BuildPackage,nfcst-utils))
