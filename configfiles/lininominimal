@@ -3563,7 +3563,7 @@ CONFIG_PACKAGE_libdbus-glib=y
 # CONFIG_PACKAGE_libdevmapper is not set
 # CONFIG_PACKAGE_libdmapsharing is not set
 # CONFIG_PACKAGE_libdnet is not set
-CONFIG_PACKAGE_libedit=m
+CONFIG_PACKAGE_libedit=y
 CONFIG_PACKAGE_libelf1=y
 # CONFIG_PACKAGE_libdw is not set
 # CONFIG_PACKAGE_libesmtp is not set
@@ -3828,6 +3828,7 @@ CONFIG_PACKAGE_arduinoos=y
 # CONFIG_PACKAGE_luci-app-bird4 is not set
 # CONFIG_PACKAGE_luci-app-bird6 is not set
 # CONFIG_PACKAGE_luci-app-bmx6 is not set
+# CONFIG_PACKAGE_luci-app-bmx7 is not set
 # CONFIG_PACKAGE_luci-app-cjdns is not set
 # CONFIG_PACKAGE_luci-app-commands is not set
 # CONFIG_PACKAGE_luci-app-cshark is not set
@@ -5104,7 +5105,7 @@ CONFIG_PACKAGE_mtd-utils=y
 # CONFIG_PACKAGE_namei is not set
 CONFIG_PACKAGE_neard=y
 CONFIG_PACKAGE_neard-git=m
-CONFIG_PACKAGE_neardal=m
+CONFIG_PACKAGE_neardal=y
 CONFIG_PACKAGE_nfc-utils=m
 CONFIG_PACKAGE_nfcst-utils=y
 # CONFIG_PACKAGE_ocf-crypto-headers is not set

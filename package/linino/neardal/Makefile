@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neardal
 PKG_VERSION:=0.14
-PKG_RELEASE:=5
+PKG_RELEASE:=6
 
 PKG_FIXUP:=libtool autoreconf
 PKG_SOURCE_PROTO:=git
@@ -79,6 +79,7 @@ define Package/neardal/install
 
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/ncl $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/demo/.libs/demo $(1)/usr/bin/ncl-demo
 endef
 
 $(eval $(call BuildPackage,neardal))
