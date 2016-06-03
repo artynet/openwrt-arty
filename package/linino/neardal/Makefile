@@ -9,16 +9,16 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=neardal
 PKG_VERSION:=0.14
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PKG_FIXUP:=libtool autoreconf
 PKG_SOURCE_PROTO:=git
 
-PKG_REVISION:=fe0fa79c94e9a0f1c2cfa1f58b3acc9bdc7d5e13
+PKG_REVISION:=5b1c8b5c2c45c10f11cee12fbcb397f8953850d7
 PKG_SOURCE_VERSION=$(PKG_REVISION)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_URL:=https://github.com/connectivity/neardal.git
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_REVISION).tar.gz
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
@@ -58,11 +58,6 @@ CONFIGURE_ARGS += \
 	--enable-debug \
 	--enable-trace \
 	--disable-c99
-
-# define Build/Prepare
-#     $(call Build/Prepare/Default)
-# 	(cd $(PKG_BUILD_DIR) && ./autogen.sh)
-# endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/neardal
