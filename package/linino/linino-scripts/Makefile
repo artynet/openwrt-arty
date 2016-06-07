@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.2
-PKG_RELEASE:=6
+PKG_RELEASE:=8
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -54,9 +54,10 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/mcu-reset $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/tst $(1)/usr/bin
 	$(INSTALL_BIN) ./files/usr/bin/tsto $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/overlay-only $(1)/usr/bin
+	$(INSTALL_BIN) ./files/usr/bin/update-all $(1)/usr/bin
 
 	$(INSTALL_BIN) ./files/etc/init.d/rename-wifi-if-access-point $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/etc/init.d/generate_new_gpg_key $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/delete_uhttpd_cert $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/handle_wifi_reset $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/etc/init.d/rngd-turn-off $(1)/etc/init.d
