@@ -78,7 +78,7 @@ static struct gpio_keys_button ds_gpio_keys[] __initdata = {
 	{
 		.desc = "configuration button",
 		.type = EV_KEY,
-		.code = KEY_WPS_BUTTON,
+		.code = KEY_RESTART,
 		.debounce_interval = DS_KEYS_DEBOUNCE_INTERVAL,
 		.gpio = DS_GPIO_CONF_BTN,
 		.active_low = 1,
