@@ -8,14 +8,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=arduinoos
-PKG_VERSION:=2.0.2
-PKG_REVISION:=2
-PKG_SRC_REVISION:=36c0e0b
+PKG_VERSION:=2.0.3
+PKG_REVISION:=1
+PKG_SRC_REVISION:=2ec5e2a
 PKG_RELEASE:=$(PKG_REVISION)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SRC_REVISION).tar.gz
 PKG_SOURCE_URL:=http://download.linino.org/sources
-PKG_MD5SUM:=dee13fa79994373f9ca1e7bf86f871c7
+PKG_MD5SUM:=806975cb0ec68addbb4d7b218fb80769
 PKG_BUILD_DIR:=$(BUILD_DIR)/arduinoos-$(PKG_VERSION)-$(PKG_SRC_REVISION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,7 @@ define Package/arduinoos
   CATEGORY:=LuCI
   SUBMENU:=3. Applications
   TITLE:=The new Linino configuration panel based on Os.js
-  DEPENDS:=+luci +luci-lib-json +uhttpd-mod-lua +lua-coxpcall +lua-wsapi-base +lua-wsapi-xavante +lua-base64 +lua-xavante +luafilesystem +iw
+  DEPENDS:=+luci +luci-lib-json +uhttpd-mod-lua +lua-coxpcall +lua-wsapi-base +lua-wsapi-xavante +lua-base64 +lua-xavante +luafilesystem +iw +shellinabox
 endef
 
 define Package/arduinoos/description
@@ -65,7 +65,7 @@ then
 	ln -sf /www/cgi-bin/luci /osjs/dist/cgi-bin/luci
 
 	# Restarting uHttp server
-	/etc/init.d/uhttpd restart
+	# /etc/init.d/uhttpd restart
 fi
 exit 0
 endef
@@ -82,7 +82,7 @@ then
 	rm -rf /osjs
 
 	# Restarting uHttp server
-	# /etc/init.d/uhttpd restart
+	/etc/init.d/uhttpd restart
 fi
 exit 0
 endef
