@@ -110,6 +110,12 @@ deflinino: scripts/config/conf prepare-tmpinfo FORCE
 	@if [ -e $(TOPDIR)/configfiles/linino_defconfig ]; then cp $(TOPDIR)/configfiles/linino_defconfig target/linux/ar71xx/config-3.18; fi
 	$< --defconfig=.config Config.in
 
+defminimal: scripts/config/conf prepare-tmpinfo FORCE
+	touch .config
+	@if [ -e $(TOPDIR)/configfiles/lininominimal ]; then cp $(TOPDIR)/configfiles/lininominimal .config; fi
+	@if [ -e $(TOPDIR)/configfiles/linino_defconfig ]; then cp $(TOPDIR)/configfiles/linino_defconfig target/linux/ar71xx/config-3.18; fi
+	$< --defconfig=.config Config.in
+
 confdefault-y=allyes
 confdefault-m=allmod
 confdefault-n=allno
