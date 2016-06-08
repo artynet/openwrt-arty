@@ -12,28 +12,21 @@ NAME=stnfcd
 DAEMON=/usr/bin/$NAME
 
 # Exit gracefully if the package has been removed
-[ -x $DAEMON ] || exit 0
+# [ -x $DAEMON ] || exit 0
+# [ -e /dev/ttyACM0 ] || exit 0
 
 start () {
     echo -n "Starting $NAME: "
-    start-stop-daemon -S -q -p /var/run/${NAME}.pid -x $DAEMON -- /dev/ttyACM0
+    service_start $DAEMON /dev/ttyACM0
     echo "OK"
 }
 
 stop () {
     echo -n "Stopping $NAME: "
-    start-stop-daemon -K -q -p /var/run/${NAME}.pid
+    service_stop $DAEMON
     echo "OK"
 }
 
-restart () {
-    $0 stop
-    sleep 1
-    $0 start
-}
-
 reload () {
-    $0 stop
-    sleep 1
-    $0 start
+    service_reload $DAEMON /dev/ttyACM0
 }
