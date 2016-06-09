@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=linino-scripts
 PKG_VERSION:=1.2
-PKG_RELEASE:=8
+PKG_RELEASE:=9
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -35,6 +35,7 @@ define Package/linino-scripts/install
 	$(INSTALL_BIN) ./files/usr/bin/run-sysupgrade $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/wifi-live-or-reset $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/wifi-reset-and-reboot $(1)/usr/bin/
+	$(INSTALL_BIN) ./files/usr/bin/wifi-reload $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/reset-to-factory-anyway $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/run-avrdude $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/usr/bin/run-swddude $(1)/usr/bin/
