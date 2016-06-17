@@ -2684,6 +2684,15 @@ CONFIG_PACKAGE_kmod-lib-xor=m
 CONFIG_PACKAGE_kmod-lib-zlib=m
 
 #
+# NFC
+#
+CONFIG_PACKAGE_kmod-nfc=m
+CONFIG_PACKAGE_kmod-nfc-digital=m
+CONFIG_PACKAGE_kmod-nfc-digital-uart=m
+CONFIG_PACKAGE_kmod-nfcst=m
+CONFIG_PACKAGE_kmod-nfcst-uart=m
+
+#
 # Native Language Support
 #
 CONFIG_PACKAGE_kmod-nls-base=y
