@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libArcus
-PKG_VERSION:=15.06.03
+PKG_VERSION:=16.06.22
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Ultimaker/libArcus.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=b46f2376967fcec7f84ca71a045d749a43774141
+PKG_SOURCE_VERSION:=c33e01da61d412bf9d3f025bc5e1701b8cb1d6d5
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 
 PKG_INSTALL:=1
@@ -35,7 +35,8 @@ define Package/libArcus
 endef
 
 CMAKE_OPTIONS = \
-        -DCMAKE_PREFIX=/usr
+        -DCMAKE_PREFIX=/usr \
+		-DBUILD_PYTHON=OFF
 
 define package/libArcus/Description
     This library contains a C++ and Python3 class for creating a socket in a thread and using
