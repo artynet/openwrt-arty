@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=curaengine
-PKG_VERSION:=15.06.03
+PKG_VERSION:=16.06.22
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Ultimaker/CuraEngine.git
 PKG_SOURCE_SUBDIR:=CuraEngine-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=41f7258e25aa12ace67c8d5fe40ca9b6afa85c29
+PKG_SOURCE_VERSION:=cc349cd0461b7a2604719920c87deaa77a459a58
 PKG_SOURCE:=CuraEngine-$(PKG_VERSION).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/CuraEngine-$(PKG_VERSION)
 
@@ -49,7 +49,8 @@ define Package/curaengine/install
 	$(INSTALL_DIR) $(1)/usr/bin
 
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/CuraEngine $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/fdmprinter.json $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/command_line_settings.json $(1)/usr/bin
+	# $(CP) $(PKG_BUILD_DIR)/fdmprinter.json $(1)/usr/bin
 endef
 
 $(eval $(call BuildPackage,curaengine))
