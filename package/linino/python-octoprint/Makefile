@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-octoprint
-PKG_VERSION:=1.2.8
+PKG_VERSION:=1.2.13
 PKG_RELEASE:=6
 
 PKG_SOURCE:=$(PKG_VERSION).tar.gz
