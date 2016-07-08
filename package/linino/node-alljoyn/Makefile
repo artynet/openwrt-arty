@@ -9,20 +9,20 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=alljoyn
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.0.0
+PKG_VERSION:=1.0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+PKG_SOURCE:=node-$(PKG_NPM_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=http://download.linino.org/sources/
 # PKG_MD5SUM:=62939cc82beafed7a75c18bef7d1e1b9
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-alljoyn
-    DEPENDS:=@BROKEN +node +libopenssl +openssl-util
+    DEPENDS:=+node +libopenssl +openssl-util
     SUBMENU:=Node.js
     SECTION:=lang
     CATEGORY:=Languages

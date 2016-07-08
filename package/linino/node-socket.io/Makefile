@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=socket.io
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.3.7
+PKG_VERSION:=1.4.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,7 +17,7 @@ PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=8fa9a1e556a5ac5fa17b23630691df00
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 

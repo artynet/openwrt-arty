@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=nitrogen-leveldb-store-mips
 PKG_NAME:=node-nitrogen-leveldb-store
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.2.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,7 +17,7 @@ PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=0b6afa537cbaef17d0abd3232088eb4f
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 

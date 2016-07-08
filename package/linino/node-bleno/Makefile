@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=bleno
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=0.3.1
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,12 +17,12 @@ PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=ac44812db9d602856cc234f923507fe1
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-bleno
-  DEPENDS:=+node +bluez-libs +udev
+  DEPENDS:=+node +bluez-libs +eudev +node-bluetooth-hci-socket
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages

@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=opencv
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=3.2.0
+PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,12 +17,12 @@ PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=60e0c8577596d3f925df48ed8c5e0dc4
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-opencv
-  DEPENDS:=@BROKEN +node +opencv
+  DEPENDS:=+node +opencv
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
