@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=node
-PKG_VERSION:=v4.2.1
+PKG_VERSION:=v6.3.0
 PKG_RELEASE:=3
 
 PKG_SOURCE:=node-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://nodejs.org/dist/${PKG_VERSION}
-PKG_MD5SUM:=41d2b9fb5220af3fd98dd70fb33a2a10
+PKG_MD5SUM:=8c14e5c89d66d4d060c91b3ba15dfd31
 
 PKG_BUILD_DEPENDS:=python/host
 PKG_INSTALL:=1
@@ -45,6 +45,7 @@ CONFIGURE_ARGS= \
 	--without-snapshot \
 	--shared-zlib \
 	--shared-openssl \
+	--with-intl=none \
 	--prefix=/usr
 
 CPUHOST:=$(subst x86_64-linux-gnu,x64,$(subst i686-linux-gnu,x86,$(GNU_HOST_NAME)))
@@ -53,11 +54,11 @@ NODEJS:=node-$(PKG_VERSION)-linux-$(CPUHOST).tar.gz
 
 ifeq ($(CPUHOST),x64)
 	# NODEJS:=node-$(PKG_VERSION)-linux-x64.tar.gz
-	MD5SUM_NODE:=6c89bd44bc01e3806958192913cd2df1
+	MD5SUM_NODE:=41d14f57079c5935a4f0b470abd9f6b6
 endif
 ifeq ($(CPUHOST),x86)
 	# NODEJS:=node-$(PKG_VERSION)-linux-x86.tar.gz
-	MD5SUM_NODE:=6c89bd44bc01e3806958192913cd2df1
+	MD5SUM_NODE:=99c35fe8ab89183efe9d6d046182f84b
 endif
 
 # Distribution URL doesn't always have the correct version
