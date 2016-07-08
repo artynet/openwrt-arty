@@ -9,20 +9,20 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=noble
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.1.0
+PKG_VERSION:=1.6.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
 PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=f0de658691c32002da54e97750ee7e0e
 
-PKG_BUILD_DEPENDS:=node +udev
-PKG_NODE_VERSION:=4.2.1
+PKG_BUILD_DEPENDS:=node +eudev
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-$(PKG_NPM_NAME)
-  DEPENDS:=+node +bluez-libs +udev
+  DEPENDS:=+node +bluez-libs +eudev +bluetooth-hci-socket
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -38,14 +38,6 @@ define Build/Prepare
 	/bin/tar xzf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
 	$(Build/Patch)
 endef
-
-#CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-#CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-#AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-#RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-#LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-#LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-#PATH="/usr/bin/:$(PATH)" \
 
 define Build/Compile
 	$(MAKE_FLAGS) \

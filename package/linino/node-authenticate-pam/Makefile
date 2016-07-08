@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=authenticate-pam
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=0.2.2
+PKG_VERSION:=1.0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,12 +17,12 @@ PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=fa4034f98a2fbee4a48f0ff36b8c25dd
 
 PKG_BUILD_DEPENDS:=node libpam
-PKG_NODE_VERSION:=4.2.1
+PKG_NODE_VERSION:=6.3.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-authenticate-pam
-  DEPENDS:=@BROKEN +node +libpam +libc +libstdcpp
+  DEPENDS:=+node +libpam +libc +libstdcpp
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
