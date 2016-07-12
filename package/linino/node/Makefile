@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2006-2011 OpenWrt.org
+# Copyright (C) 2015 DogHunter AG
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,61 +8,52 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=node
-PKG_VERSION:=v6.3.0
-PKG_RELEASE:=3
+PKG_VERSION:=v0.10.46
+PKG_RELEASE:=1
 
 PKG_SOURCE:=node-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://nodejs.org/dist/${PKG_VERSION}
-PKG_MD5SUM:=8c14e5c89d66d4d060c91b3ba15dfd31
+# PKG_MD5SUM:=3f45f994f1f02736576bf7bff1870897
 
-PKG_BUILD_DEPENDS:=python/host
+PKG_BUILD_PARALLEL:=3
+PKG_BUILD_DEPENDS:=v8m-rb +python/host
+PKG_V8_VERSION:=3.14.5
+
 PKG_INSTALL:=1
-
-PKG_MAINTAINER:=John Crispin <blogic@openwrt.org>
-PKG_LICENSE:=
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node
+  DEPENDS:=+libpthread +librt +uclibcxx +v8m-rb +libopenssl +libstdcpp
+  SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
-  SUBMENU:=Node.js
   TITLE:=Node.js is a platform built on Chrome's JavaScript runtime
   URL:=http://nodejs.org/
-  DEPENDS:=+libpthread +librt +libstdcpp +libopenssl +libuv
 endef
 
 define Package/node/description
-  Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses
-  an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js'
-   package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+	Node.js is a platform built on Chrome's JavaScript runtime for easily building fast,
+	scalable network applications. Node.js uses an event-driven, non-blocking I/O model
+	that makes it lightweight and efficient, perfect for data-intensive real-time applications
+	that run across distributed devices.
 endef
 
-CONFIGURE_ARGS= \
-	--dest-cpu=$(CONFIG_ARCH) \
-	--dest-os=linux \
-	--with-mips-float-abi=soft \
-	--without-snapshot \
-	--shared-zlib \
-	--shared-openssl \
-	--with-intl=none \
-	--prefix=/usr
+# NODEJS:=node-$(PKG_VERSION)-linux-x86.tar.gz
 
 CPUHOST:=$(subst x86_64-linux-gnu,x64,$(subst i686-linux-gnu,x86,$(GNU_HOST_NAME)))
 
 NODEJS:=node-$(PKG_VERSION)-linux-$(CPUHOST).tar.gz
 
 ifeq ($(CPUHOST),x64)
-	# NODEJS:=node-$(PKG_VERSION)-linux-x64.tar.gz
-	MD5SUM_NODE:=41d14f57079c5935a4f0b470abd9f6b6
+    MD5SUM_NODE:=cd36e700215520e02eda9f2ae4d3fba5
 endif
 ifeq ($(CPUHOST),x86)
-	# NODEJS:=node-$(PKG_VERSION)-linux-x86.tar.gz
-	MD5SUM_NODE:=99c35fe8ab89183efe9d6d046182f84b
+    MD5SUM_NODE:=b4b9145436740fe6009449167ae780d4
 endif
 
 # Distribution URL doesn't always have the correct version
-# Using the OpenWrt mirror provides a stable version
+# Using the OpenWrt/Linino mirror provides a stable version
 define Download/nodebin
   URL:=https://nodejs.org/dist/$(PKG_VERSION)/
   FILE:=$(NODEJS)
@@ -71,6 +62,26 @@ endef
 
 # Fetch latest nodejs that works
 # Yes, I know this is ugly
+
+CPU:=$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))
+
+MAKE_VARS += \
+	DESTCPU=$(CPU) \
+	snapshot=off \
+	werror=no
+
+CONFIGURE_ARGS= \
+	--prefix=/usr \
+	--without-snapshot \
+	--shared-v8 \
+	--shared-v8-includes="$(STAGING_DIR)/include/" \
+	--shared-v8-libpath="$(STAGING_DIR)/usr/lib" \
+	--dest-cpu=$(CPU) \
+	--shared-zlib \
+	--shared-openssl \
+	--dest-os=linux \
+	--with-mips-float-abi=soft
+
 define Build/Prepare
     $(call Build/Prepare/Default)
 	$(eval $(call Download,nodebin))
