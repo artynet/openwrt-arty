@@ -6041,7 +6041,8 @@ CONFIG_PACKAGE_avrdude=m
 # CONFIG_PACKAGE_bandwidthd is not set
 # CONFIG_PACKAGE_bandwidthd-pgsql is not set
 CONFIG_PACKAGE_bash=m
-# CONFIG_PACKAGE_bc is not set
+CONFIG_PACKAGE_bc=m
+CONFIG_PACKAGE_bluez-6lowpan-daemon=m
 CONFIG_PACKAGE_bluez-daemon=m
 CONFIG_PACKAGE_bluez-examples=m
 CONFIG_PACKAGE_bluez-utils=m
@@ -6211,6 +6212,7 @@ CONFIG_PACKAGE_cpu-mcu-bridge=y
 CONFIG_PACKAGE_dbus=y
 # CONFIG_PACKAGE_dbus-launch-x is not set
 CONFIG_PACKAGE_dbus-utils=m
+CONFIG_PACKAGE_dc=m
 CONFIG_PACKAGE_dmesg=m
 CONFIG_PACKAGE_dropbearconvert=m
 # CONFIG_PACKAGE_dump1090 is not set
