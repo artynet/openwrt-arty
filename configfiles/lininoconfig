@@ -6429,6 +6429,7 @@ CONFIG_PACKAGE_avrdude=y
 CONFIG_PACKAGE_bash=m
 # CONFIG_PACKAGE_bc is not set
 # CONFIG_PACKAGE_bluelog is not set
+CONFIG_PACKAGE_bluez-6lowpan-daemon=m
 CONFIG_PACKAGE_bluez-daemon=m
 CONFIG_PACKAGE_bluez-examples=m
 CONFIG_PACKAGE_bluez-utils=m

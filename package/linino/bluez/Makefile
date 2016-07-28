@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bluez
-PKG_VERSION:=5.40
+PKG_VERSION:=5.41
 PKG_RELEASE:=7
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@KERNEL/linux/bluetooth/
-PKG_MD5SUM:=eb24c0d9eaeb1fb69833f322ec669e8b
+PKG_MD5SUM:=318341b2188698130adb73236ee69244
 
 PKG_LICENSE:=GPL-2.0+
 PKG_LICENSE_FILES:=COPYING
@@ -40,6 +40,18 @@ endef
 
 define Package/bluez-examples/description
   contains many examples apps for bluetooth, requiring python
+endef
+
+define Package/bluez-6lowpan-daemon
+$(call Package/bluez/Default)
+  SECTION:=utils
+  CATEGORY:=Utilities
+  TITLE+= Nordic BLE 6lowpan daemon
+  DEPENDS:=+bluez-libs +bluez-utils +kmod-ipv6 +kmod-6lowpan +kmod-bluetooth_6lowpan +luci-app-6lowpand
+endef
+
+define Package/bluez-6lowpan-daemon/description
+  Nordic BLE 6lowpan daemon
 endef
 
 define Package/bluez-libs
@@ -72,8 +84,11 @@ define Package/bluez-daemon/conffiles
 /etc/bluetooth/input.conf
 /etc/bluetooth/proximity.conf
 /etc/bluetooth/audio.conf
-/etc/bluetooth/bluetooth_6lowpand.conf
 /etc/config/bluetooth
+endef
+
+define Package/bluez-6lowpan-daemon/conffiles
+/etc/bluetooth/bluetooth_6lowpand.conf
 endef
 
 CONFIGURE_ARGS += \
@@ -122,7 +137,6 @@ define Package/bluez-utils/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bccmd $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bluemoon $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/btmon $(1)/usr/bin/
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/bluetooth_6lowpand $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/tools/btmgmt $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ciptool $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/hciattach $(1)/usr/bin/
@@ -138,6 +152,17 @@ define Package/bluez-utils/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/attrib/gatttool $(1)/usr/bin/
 endef
 
+define Package/bluez-6lowpan-daemon/install
+	$(INSTALL_DIR) $(1)/etc/bluetooth
+	$(INSTALL_DATA) ./files/bluetooth_6lowpand.conf $(1)/etc/bluetooth/bluetooth_6lowpand.conf
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/bluetooth_6lowpand.init $(1)/etc/init.d/bluetooth_6lowpand
+
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/bluetooth_6lowpand $(1)/usr/bin/
+endef
+
 define Package/bluez-daemon/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/bluetooth/bluetoothd $(1)/usr/bin/
@@ -150,13 +175,11 @@ define Package/bluez-daemon/install
 	$(INSTALL_DIR) $(1)/etc/bluetooth
 	$(INSTALL_DATA) ./files/main.conf $(1)/etc/bluetooth/main.conf
 	$(INSTALL_DATA) ./files/audio.conf $(1)/etc/bluetooth/audio.conf
-	$(INSTALL_DATA) ./files/bluetooth_6lowpand.conf $(1)/etc/bluetooth/bluetooth_6lowpand.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/network/network.conf $(1)/etc/bluetooth/network.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/input/input.conf $(1)/etc/bluetooth/input.conf
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/profiles/proximity/proximity.conf $(1)/etc/bluetooth/proximity.conf
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/bluetoothd.init $(1)/etc/init.d/bluetoothd
-	$(INSTALL_BIN) ./files/bluetooth_6lowpand.init $(1)/etc/init.d/bluetooth_6lowpand
 endef
 
 define Package/bluez-daemon/postinst
@@ -182,3 +205,4 @@ $(eval $(call BuildPackage,bluez-examples))
 $(eval $(call BuildPackage,bluez-libs))
 $(eval $(call BuildPackage,bluez-utils))
 $(eval $(call BuildPackage,bluez-daemon))
+$(eval $(call BuildPackage,bluez-6lowpan-daemon))
