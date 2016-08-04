@@ -7,12 +7,10 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=avahi
+PKG_NAME:=avahi-daemon-service-arduino
 PKG_VERSION:=0.6.31
 PKG_RELEASE:=12
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://avahi.org/download/
 PKG_MAINTAINER:=Ted Hess <thess@kitschensync.net>
 
 PKG_BUILD_PARALLEL:=1
@@ -33,6 +31,10 @@ endef
 
 define Package/avahi-daemon-service-arduino/conffiles
 /etc/avahi/services/arduino.service
+endef
+
+define Build/Compile
+ # NOOP
 endef
 
 define Package/avahi-daemon-service-arduino/install
