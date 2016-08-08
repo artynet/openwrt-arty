@@ -4,6 +4,8 @@
 START=30
 
 start() {
+    #----------- create run dir ---------------------
+    [ ! -d /run/udev ] && mkdir -p /run/udev
     #----------- START the UDEV daemon --------------
     /sbin/udevd --daemon &
     }
