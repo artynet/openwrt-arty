@@ -1,9 +1,0 @@
-#!/bin/sh /etc/rc.common
-# Copyright (C) 2006 OpenWrt.org
-
-START=60
-
-start() {
-    # trigger udev
-    /sbin/udevadm trigger &
-}
