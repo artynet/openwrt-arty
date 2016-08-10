@@ -26,6 +26,7 @@ stop() {
     # stopping 6lowpan daemon
     echo "stopping bluetooth_6lowpand"
     service_stop $PROG
+    echo 0 > /sys/kernel/debug/bluetooth/6lowpan_enable
     # starting plain BT daemon
     /etc/init.d/bluetoothd reload
 }
