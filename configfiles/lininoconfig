@@ -6457,6 +6457,7 @@ CONFIG_PACKAGE_alsa-utils-tests=m
 CONFIG_PACKAGE_avrdude=y
 # CONFIG_PACKAGE_bandwidthd is not set
 # CONFIG_PACKAGE_bandwidthd-pgsql is not set
+# CONFIG_PACKAGE_bandwidthd-php is not set
 # CONFIG_PACKAGE_banhostlist is not set
 CONFIG_PACKAGE_bash=m
 # CONFIG_PACKAGE_bc is not set
