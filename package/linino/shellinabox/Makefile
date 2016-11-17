@@ -9,23 +9,25 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shellinabox
-PKG_VERSION:=2.19
-PKG_RELEASE:=9
+PKG_VERSION:=2.20
+PKG_RELEASE:=6
 
 PKG_INSTALL:=1
 
 PKG_SOURCE_PROTO:=git
 
-PKG_REVISION:=2c93404bd0b2b3dac244b3664741603f9a619664
+PKG_REVISION:=v2.20
 
 PKG_SOURCE_VERSION=$(PKG_REVISION)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_URL:=https://github.com/shellinabox/shellinabox.git
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_REVISION).tar.gz
 
 PKG_FIXUP:=libtool autoreconf
 
 PKG_BUILD_DEPENDS:=+libopenssl +libpam
+
+TARGET_CFLAGS += -Wno-error
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -33,7 +35,7 @@ define Package/shellinabox
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Shell In A Box
-  DEPENDS:=+libopenssl +libpam +openssl-util
+  DEPENDS:=+libopenssl +libpam +openssl-util +zlib
   URL:=http://shellinabox.googlecode.com
 endef
 
@@ -42,7 +44,7 @@ define Package/shellinabox/description
 endef
 
 define Build/Configure
-	$(call Build/Configure/Default,--disable-runtime-loading)
+	$(call Build/Configure/Default,--disable-runtime-loading --disable-utmp)
 endef
 
 define Build/Compile
@@ -58,15 +60,11 @@ define Package/shellinabox/install
 	$(INSTALL_BIN) files/shellinabox-init.sh $(1)/etc/init.d/shellinabox-init
 endef
 
-define Package/shellinabox/prerm
-#!/bin/sh
-# check if we are on real system
+define Package/shellianbox/prerm
+!#/bin/sh
 
-killall shellinabox 2> /dev/null
 /etc/init.d/shellinabox-init stop 2> /dev/null
-/etc/init.d/shellinabox-init disable
 
-exit 0
 endef
 
 $(eval $(call BuildPackage,shellinabox))
