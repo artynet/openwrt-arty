@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Setting to HIGH the level shifter
+echo 1 > /sys/class/gpio/gpio15/value
+
+# Running restore of SAMD21 mcu
+/usr/bin/openocd -f board/ghostdog_samd21.cfg -c "init; halt; at91samd restore; reset; shutdown"
+
+# Setting again to LOW the level shifter as it should be
+echo 0 > /sys/class/gpio/gpio15/value
