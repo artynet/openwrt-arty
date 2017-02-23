@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 Dog Hunter 2014
+# Copyright (C) 2014 Arduino LLC
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -7,54 +7,55 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NPM_NAME:=nitrogen-leveldb-store-mips
-PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=0.2.0
-PKG_RELEASE:=1
+PKG_NPM_NAME:=node-red
+PKG_NAME:=node-node-red
+PKG_VERSION:=0.16.2
+PKG_RELEASE:=4
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
-PKG_MD5SUM:=0b6afa537cbaef17d0abd3232088eb4f
+PKG_SOURCE_URL:=http://registry.npmjs.com/$(PKG_NPM_NAME)/-/
+# PKG_MD5SUM:=60e0c8577596d3f925df48ed8c5e0dc4
 
 PKG_BUILD_DEPENDS:=node
 PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/$(PKG_NAME)
-  DEPENDS:=+node +node-nitrogen
+define Package/node-node-red
+  DEPENDS:=+node
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=This is the leveldb storage backend for devices to store credential information.
-  URL:=https://www.npmjs.org/package/nitrogen-leveldb-store
+  TITLE:=A visual tool for wiring the Internet of Things
+  URL:=https://www.npmjs.org/package/node-red
 endef
 
-define Package/$(PKG_NAME)/description
-	Nitrogen is a platform for building connected devices. Nitrogen provides the authentication,
-	authorization, and real time message passing framework so that you can focus on your device and application
+define Package/node-node-red/description
+	A visual tool for wiring the Internet of Things
 endef
 
 define Build/Prepare
-	/bin/tar xzf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components=1
+	/bin/tar xzf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components 1
 	$(Build/Patch)
 endef
 
 define Build/Compile
 	$(MAKE_FLAGS) \
-	PATH="/usr/bin/:$(PATH)" \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
 	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
 	npm_config_arch=mips \
 	npm_config_nodedir=$(BUILD_DIR)/node-v$(PKG_NODE_VERSION)/ \
 	PREFIX="$(PKG_INSTALL_DIR)/usr/" \
-	$(STAGING_DIR_HOST)/bin/npm install --target_arch=mips --build-from-source -g $(PKG_BUILD_DIR)
+	$(STAGING_DIR_HOST)/bin/npm install --target_arch=mips -g $(PKG_BUILD_DIR) --build-from-source
 endef
 
-define Package/$(PKG_NAME)/install
+define Package/node-node-red/install
 	$(INSTALL_DIR) $(1)/usr/lib/
-	
+	$(INSTALL_DIR) $(1)/usr/bin/
+
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/node_modules $(1)/usr/lib/
+	ln -sf ../lib/node_modules/node-red/red.js $(1)/usr/bin/node-red
+	ln -sf ../lib/node_modules/node-red/bin/node-red-pi $(1)/usr/bin/node-red-pi
 endef
 
 define Package/$(PKG_NAME)/postrm
@@ -68,4 +69,4 @@ else
 fi
 endef
 
-$(eval $(call BuildPackage,$(PKG_NAME)))
+$(eval $(call BuildPackage,node-node-red))

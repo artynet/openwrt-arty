@@ -1,0 +1,10 @@
+diff --git a/make_libmodbus.sh b/make_libmodbus.sh
+index 78068e0..b8bec7b 100755
+--- a/make_libmodbus.sh
++++ b/make_libmodbus.sh
+@@ -10,4 +10,4 @@ git reset --hard f935846
+ # patch -c -p2 < ../mt.patch
+ 
+ #./autogen.sh && ./configure --enable-static=yes --enable-shared=no && make
+-./autogen.sh && ./configure && make
++./autogen.sh && ./configure --host=TARGET_CPU CFLAGS="-fPIC $(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" && make

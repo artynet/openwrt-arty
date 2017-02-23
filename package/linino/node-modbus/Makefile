@@ -9,15 +9,15 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=modbus
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=0.0.12
+PKG_VERSION:=0.0.14
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
-PKG_MD5SUM:=f68e9c828c1b55ba00445d3e09872325
+PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+# PKG_MD5SUM:=f68e9c828c1b55ba00445d3e09872325
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -37,6 +37,7 @@ endef
 define Build/Prepare
 	/bin/tar xzf $(DL_DIR)/$(PKG_SOURCE) -C $(PKG_BUILD_DIR) --strip-components 1
 	$(Build/Patch)
+	$(SED) s/TARGET_CPU/$$(REAL_GNU_TARGET_NAME)/g $(PKG_BUILD_DIR)/make_libmodbus.sh
 endef
 
 EXTRA_CXXFLAGS =+ $(FPIC)
