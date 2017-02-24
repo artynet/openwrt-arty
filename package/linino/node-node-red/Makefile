@@ -8,30 +8,30 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=node-red
-PKG_NAME:=node-red
-PKG_VERSION:=0.13.2
-PKG_RELEASE:=3
+PKG_NAME:=node-node-red
+PKG_VERSION:=0.16.2
+PKG_RELEASE:=4
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
+PKG_SOURCE_URL:=http://registry.npmjs.com/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=60e0c8577596d3f925df48ed8c5e0dc4
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-red
+define Package/node-node-red
   DEPENDS:=+node
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Node.js package to access serial ports for reading and writing
+  TITLE:=A visual tool for wiring the Internet of Things
   URL:=https://www.npmjs.org/package/node-red
 endef
 
-define Package/node-red/description
- Node.js package to access serial ports for reading and writing OR Welcome your robotic JavaScript overlords. Better yet, program them!
+define Package/node-node-red/description
+	A visual tool for wiring the Internet of Things
 endef
 
 define Build/Prepare
@@ -40,13 +40,7 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	PATH="/usr/bin/:$(PATH)" \
+	$(MAKE_FLAGS) \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
 	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
 	npm_config_arch=mips \
@@ -55,10 +49,10 @@ define Build/Compile
 	$(STAGING_DIR_HOST)/bin/npm install --target_arch=mips -g $(PKG_BUILD_DIR) --build-from-source
 endef
 
-define Package/node-red/install
+define Package/node-node-red/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/bin/
-	
+
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/node_modules $(1)/usr/lib/
 	ln -sf ../lib/node_modules/node-red/red.js $(1)/usr/bin/node-red
 	ln -sf ../lib/node_modules/node-red/bin/node-red-pi $(1)/usr/bin/node-red-pi
@@ -75,4 +69,4 @@ else
 fi
 endef
 
-$(eval $(call BuildPackage,node-red))
+$(eval $(call BuildPackage,node-node-red))
