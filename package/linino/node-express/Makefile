@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=express
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=4.13.3
+PKG_VERSION:=4.14.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,7 +17,7 @@ PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=8fa9a1e556a5ac5fa17b23630691df00
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 

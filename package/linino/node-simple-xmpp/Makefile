@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=simple-xmpp
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=0.1.92
+PKG_VERSION:=1.3.0
 PKG_RELEASE:=4
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -17,12 +17,12 @@ PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=0040b8af0d12594c675d04529e0b2c3e
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-simple-xmpp
-  DEPENDS:=+node +libexpat +libicu
+  DEPENDS:=+node +libexpat +icu
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages

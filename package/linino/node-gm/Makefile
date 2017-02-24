@@ -9,15 +9,15 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=gm
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.16.0
+PKG_VERSION:=1.23.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
-PKG_MD5SUM:=80f8e3dea8348de6a63f5b0e35d73e7a
+PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+# PKG_MD5SUM:=80f8e3dea8348de6a63f5b0e35d73e7a
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
