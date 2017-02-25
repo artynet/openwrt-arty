@@ -9,20 +9,20 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=node-red-node-arduino
 PKG_NAME:=node-red-node-arduino
-PKG_VERSION:=0.0.7
+PKG_VERSION:=0.0.13
 PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=http://registry.nodejitsu.com/$(PKG_NPM_NAME)/-/
+PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 # PKG_MD5SUM:=60e0c8577596d3f925df48ed8c5e0dc4
 
 PKG_BUILD_DEPENDS:=node
-PKG_NODE_VERSION:=0.10.38
+PKG_NODE_VERSION:=6.10.0
 
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node-red-node-arduino
-  DEPENDS:=+node +node-red
+  DEPENDS:=+node +node-node-red
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -40,13 +40,7 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	PATH="/usr/bin/:$(PATH)" \
+	$(MAKE_FLAGS) \
 	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
 	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
 	npm_config_arch=mips \
