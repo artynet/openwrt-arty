@@ -1,8 +1,8 @@
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2008 OpenWrt.org
 
-START=11
-STOP=11
+START=62
+STOP=62
 
 source /etc/config/mcuiocfg
 
@@ -17,7 +17,7 @@ start() {
     # checks if mcuio needs to be activated
     checkmcuio
     # if not, the serial channel is attached
-    ldattach 29 /dev/ttyACM0
+    ldattach 29 /dev/ttySAMD
 }
 
 stop() {
