@@ -137,7 +137,7 @@ define Package/udev/install
 			95-udev-late.rules) \
 			./files/81-arduino-nfc-shield-acm.rules \
 			./files/11-media-by-label-auto-mount-alt.rules \
-			./files/10-samd.rules \
+			./files/80-samd.rules \
 		$(1)/lib/udev/rules.d
 
 	$(INSTALL_DIR) $(1)/etc/init.d
