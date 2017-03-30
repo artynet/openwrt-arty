@@ -45,15 +45,15 @@ fi
 # 114 "D10"
 # 115 "D11"
 # 116 "D12"
-# 117 "SCK"
+# 117 "D13"
 
 for i in $(seq 100 117); do
 	echo $i > /sys/class/gpio/$1 2>/dev/null
 done
 
-if [ -d /sys/class/gpio/SCK/direction ]
+if [ -d /sys/class/gpio/D13/direction ]
 then
-	echo out > /sys/class/gpio/SCK/direction
+	echo out > /sys/class/gpio/D13/direction
 fi
 
 echo ""
