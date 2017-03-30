@@ -51,7 +51,7 @@ for i in $(seq 100 117); do
 	echo $i > /sys/class/gpio/$1 2>/dev/null
 done
 
-if [ -d /sys/class/gpio/D13/direction ]
+if [ -f /sys/class/gpio/D13/direction ]
 then
 	echo out > /sys/class/gpio/D13/direction
 fi
