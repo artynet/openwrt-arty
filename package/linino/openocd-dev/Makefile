@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openocd-dev
 PKG_VERSION:=0.10.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 
@@ -30,6 +30,7 @@ PKG_INSTALL:=1
 PKG_FIXUP:=libtool autoreconf
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 
 define Package/openocd-dev
   SECTION:=utils
@@ -81,6 +82,7 @@ define Package/openocd-dev/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/openocd/scripts $(1)/usr/share/openocd
 	$(CP) ./files/freedog_kl25.cfg $(1)/usr/share/openocd/scripts/board
 	$(CP) ./files/ghostdog_samd21.cfg $(1)/usr/share/openocd/scripts/board
+	$(CP) ./files/stm32_primo.cfg $(1)/usr/share/openocd/scripts/board
 endef
 
 $(eval $(call BuildPackage,openocd-dev))
